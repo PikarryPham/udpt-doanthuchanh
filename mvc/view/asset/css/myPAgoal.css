@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+/*
+font-family: 'Clicker Script', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Merienda One', cursive;
+font-family: 'Mulish', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Rubik', sans-serif; 
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Mulish', sans-serif;
+    text-transform: capitalize;
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+:root {
+    --primary-lighter: #CDEDE3;
+    --green-lighter: #1BDCA0;
+    --green-light: #68c690;
+    --green: #059669;
+    --green-dark: #026345;
+    --green-darker: #013F2C;
+    --dark-gray-30: #b3b3b3;
+    --dark-gray-50: #808080;
+    --dark-gray-60: #666666;
+    --dark-gray-80: #333333;
+    --black: #000;
+    --white: #fff;
+    --light-gray-8: #ebebeb;
+    --light-gray-16: #d6d6d6;
+    --light-gray-16: #656363;
+    --pink-light: #f18989;
+    --yellow-lemon: #f6d982; 
+    --blue: #1C83C6;
+    --nav: #f5f8fa;
+    --red: #EB5757;
+}
+
+.pending {
+    color: var(--dark-gray-60) !important;
+}
+
+.rejected {
+    color: rgba(235, 87, 87, 0.7) !important;
+}
+
+.accepted {
+    color: #1C83C6 !important;
+}
+
+.draft {
+    color: var(--black) !important;
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: calc(100% - 228px);
+    height: 100vh;
+    padding: 20px 80px;
+    background-color: var(--primary-lighter);
+}
+
+.content h2{
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--dark-gray-80);
+}
+
+.content .sub-heading{
+    color: var(--green-dark);
+    font-weight: 700;
+    margin: 18px 0;
+}
+
+/* Input line css */
+.content .my-fb-body {
+    position: relative;
+    border-bottom: 1.5px solid var(--green);
+    padding-bottom: 20px;
+}
+
+.content .my-fb-body .input-line{
+    display: flex;
+    justify-content: start;
+    gap: 0 20px;
+    align-items: center;
+}
+
+.content .my-fb-body .input-line p{
+    font-size: 12px;
+    color: var(--dark-gray-60);
+    margin-bottom: 5px;
+}
+
+.content .my-fb-body .input-line .search-line{
+    background-color: var(--white);
+    padding: 5px 10px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.content .my-fb-body .input-line .search-line i{
+    cursor: pointer;
+}
+
+.content .my-fb-body .input-line input[type="date"]::-webkit-calendar-picker-indicator{
+    background-image: url(/asset/img/icon/calendar-icon-removebg-preview.png);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.content .my-fb-body .input-line .date {
+    text-transform: none;
+    
+}
+
+.content .my-fb-body .input-line .date {
+    width: 200px;
+    cursor: pointer;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+/* Show status css */
+.content .my-fb-body .show-status {
+    display: flex;
+    margin-top: 20px;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.content .my-fb-body .show-status p{
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 600;
+}
+
+.content .my-fb-body .show-status .squarecheck{
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.content .my-fb-body .show-status .squarecheck input{
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.content .my-fb-body .func-button {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.content .my-fb-body .func-button .btn{
+    padding: 8px 40px;
+    color: var(--green);
+    font-weight: 400;
+    outline: 1.5px solid var(--green);
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.content .my-fb-body .func-button .btn:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: all ease .2s;
+}
+
+.content .my-fb-body .status-empty {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.content .my-fb-body .status-empty p{
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.content .my-fb-body .status-empty .btn{
+    color: var(--green);
+    outline: 1.5px solid var(--green);
+    border-radius: 4px;
+    padding: 6px 30px;
+    background-color: transparent;
+}
+
+.content .my-fb-body .status-empty .btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .2s;
+}
+
+/* Table */
+.pa-goal .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.pa-goal .header h4{
+    color: var(--green);
+}
+
+.pa-goal .header .header-page{
+    display: flex;
+    align-items: center;
+}
+
+.pa-goal .header .header-page span{
+    color: var(--green);
+}
+
+/* table */
+#history.open{
+    display: block;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#history {
+    /* display: none; */
+    background-color: var(--white);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#history td, #history th{
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+#history th {
+    color: var(--green);
+}
+
+#history td {
+    font-weight: 600;
+    color: var(--dark-gray-60);
+}
+#history .action-area a {
+    color: var(--dark-gray-60);
+}
+#history .action-area i{
+    margin-right: 5px;
+    cursor: pointer;
+}
+/* End table */
+
+/* Error modal và Error fix modal*/
+.modal-error-fix,
+.modal-error {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-error-fix.open,
+.modal-error.open {
+    display: flex;
+}
+
+.modal-error-fix .modal-contain,
+.modal-error .modal-contain {
+    background-color: var(--white);
+    width: 400px;
+    min-height: 170px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    border-radius: 10px;
+}
+
+.modal-error-fix .modal-content,
+.modal-error .modal-content {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.modal-error-fix .modal-content i,
+.modal-error .modal-content i{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    color: red;
+}
+
+.modal-error-fix .modal-content p,
+.modal-error .modal-content p{
+    color: var(--dark-gray-80);
+}
+
+.modal-close-fix,
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 16px;
+    cursor: pointer;
+    color: var(--dark-gray-50);
+}
+
+.modal-close-fix i,
+.modal-close i{
+    font-size: 24px;
+}
+
+.modal-close-fix:hover,
+.modal-close:hover {
+    color: var(--black);
+}
+
+/* Key frame dùng chung cho 2 modal */
+@keyframes modalFaceIn {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

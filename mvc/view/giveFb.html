@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./asset/css/give_feedback.css">
+    <link rel="stylesheet" href="./asset/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Give Feedback</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="./asset/img/icon/logo.png" width="29px" height="25px" alt="">
+            <img src="./asset/img/icon/heading_logo.png" height="25px" alt="">
+        </div>  
+        <div class="user">
+            <img src="./asset/img/image/user.png" width="120px" height="120px" alt="">
+            <p class="user-title">job title</p>
+            <p class="user-id">employee ID</p>
+        </div>
+        <div class="main-func">
+            <a href="index.html"><i class="fa-solid fa-house"></i>dash board</a>
+            <a href="#"><i class="fa-solid fa-circle-info"></i>information</a>
+            <a href="#"><i class="fa-solid fa-arrow-right-arrow-left"></i>transfer</a>
+            <a href="#"><i class="fa-solid fa-code-merge"></i>org, chart</a>
+            <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
+        </div>
+        <div class="login">
+            <a href="#"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="header">
+            <h2>give your feedback</h2>
+            <div class="header-page">
+                <i class="fa-solid fa-angle-left"></i>
+                <p><span class="green">1</span> /1</p>
+                <i class="fa-solid fa-angle-right"></i>
+            </div>
+        </div>
+        <table id="feedback">
+            <tr>
+                <th>employee_id</th>
+                <th>fullName</th>
+                <th>title</th>
+                <th>department</th>
+                <th>status</th>
+                <th>manager ID</th>
+                <th>data responded</th>
+                <th>action</th>
+            </tr>
+            <!-- <tr>
+                <td>5009</td>
+                <td>Nguyen trung tin</td>
+                <td>data anlynist</td>
+                <td>data department</td>
+                <td class="status">not responding</td>
+                <td>1970</td>
+                <td>2022-07-10 09:15:00</td>
+                <td><a href="#" class="feedback feedback-er">feedback</a></td>
+            </tr>
+            <tr>
+                <td>4719</td>
+                <td>Nguyen trung hieu</td>
+                <td>data anlynist</td>
+                <td>data department</td>
+                <td class="status">not responding</td>
+                <td>1970</td>
+                <td>2022-07-10 09:15:00</td>
+                <td><a href="#" class="feedback feedback-er">feedback</a></td>
+            </tr> -->
+            <tr>
+                <td>5009</td>
+                <td>Nguyen trung tin</td>
+                <td>data anlynist</td>
+                <td>data department</td>
+                <td class="status">not responding</td>
+                <td>1970</td>
+                <td>none</td>
+                <td><a href="#" class="feedback feedback-er">feedback</a></td>
+            </tr>
+            <tr>
+                <td>4719</td>
+                <td>Nguyen trung hieu</td>
+                <td>data anlynist</td>
+                <td>data department</td>
+                <td class="status">not responding</td>
+                <td>1970</td>
+                <td>none</td>
+                <td><a href="#" class="feedback feedback-er">feedback</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-feedback-er js-modal-feedback-er">
+        <div class="modal-contain js-modal-contain-feedback-er">
+                <div class="modal-close js-modal-close-feedback-er">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            <div class="modal-content">
+                <i class="fa-regular fa-circle-xmark"></i>
+                <p style="text-transform: none;">You cannot give feedback anymore because time for your feedback request is overdue</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal-feedback-send js-modal-feedback-send">
+        <div class="modal-contain js-modal-contain-feedback-send">
+            <h1>give your feedback</h1>
+            <div class="time">
+                <p>last responded:</p>
+                <p>deadline feedback 2022-07-15 23:00:00</p>
+            </div>
+            <div class="user">
+                <h3 class="blue">tran chi minh <span>(1234)</span></h3>
+                <p>feedback for</p>
+                <h3 class="black">nguyen trung tin <span>(5009)</span></h3>
+            </div>
+            <div class="form">
+                <p>give your feedback here</p>
+                <textarea name="" id="" cols="30" rows="10" required placeholder="Type the feedback for the employee here"></textarea>
+            </div>
+            <div class="btn-send">
+                <button type="submit" class="btn save">save</button>
+                <p class="btn cancel">Cancel</p>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="modal-fb-success js-modal-fb-success">
+        <div class="modal-contain js-modal-contain-fb-success">
+            <div class="modal-header js-modal-header-fb-success">
+                <p class="modal--heading">give feedback successfully</p>
+                <div class="modal-close js-modal-close-fb-success">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div class="modal-content">
+                <p>congratulations! you've responded the feedback successfully!</p>
+                <p>you can go back to main to see your feedback</p>
+                <div class="button">
+                    <a href="#" class="btn ok">OK</a>
+                    <a href="giveFb_achieve.html" class="btn">go back to main</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./asset/js/provi_fb.js"></script>
+</body>

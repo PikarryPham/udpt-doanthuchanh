@@ -1,0 +1,758 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+/*
+font-family: 'Clicker Script', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Merienda One', cursive;
+font-family: 'Mulish', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Rubik', sans-serif; 
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Mulish', sans-serif;
+    text-transform: capitalize;
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+:root {
+    --primary-lighter: #CDEDE3;
+    --green-lighter: #1BDCA0;
+    --green-light: #68c690;
+    --green: #059669;
+    --green-dark: #026345;
+    --green-darker: #013F2C;
+    --dark-gray-30: #b3b3b3;
+    --dark-gray-50: #808080;
+    --dark-gray-60: #666666;
+    --dark-gray-80: #333333;
+    --black: #000;
+    --white: #fff;
+    --light-gray-8: #ebebeb;
+    --light-gray-16: #d6d6d6;
+    --light-gray-16: #656363;
+    --pink-light: #f18989;
+    --yellow-lemon: #f6d982; 
+    --blue: #1C83C6;
+    --nav: #f5f8fa;
+    --red: #EB5757;
+}
+
+.dark-60 {
+    color: var(--dark-gray-60);
+}
+
+.green {
+    color: var(--green);
+}
+
+.pending {
+    color: var(--red);
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    width: calc(100% - 228px);
+    height: 100vh;
+}
+
+/* self-assess new goal */
+.content .content-header {
+    height: 90px;
+    background-color: var(--primary-lighter);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.content .content-header h1{
+    font-size: 28px;
+    color: var(--dark-gray-80);
+    font-weight: 600;
+}
+
+.content .content-body {
+    padding: 20px 90px;
+    background-color: var(--nav);
+    height: 100vh;
+}
+
+.content .content-body .per-ex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .content-body .per-ex .perform{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.content .content-body .per-ex .perform h4{
+    color: var(--green-dark);
+    font-weight: 600;
+}
+
+.content .content-body .per-ex .perform p{
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.content .content-body .per-ex .export {
+    padding: 7px 20px;
+    outline: 1px solid var(--green);
+    border-radius: 4px;
+    background-color: var(--green);
+    color: var(--white);
+    cursor: pointer;
+    opacity: .8;
+}
+
+.content .content-body .button .btn:hover,
+.content .content-body .per-ex .export:hover {
+    transition: ease .3s;
+    opacity: 1;
+}
+
+.content .content-body .user-info {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.content .content-body .user-info p{
+    margin-bottom: 5px;
+}
+
+.content .content-body .user-info p:nth-child(3){
+    font-weight: 600;
+}
+
+.content .content-body .button {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.content .content-body .button .btn{
+    padding: 7px 20px;
+    outline: 1px solid var(--green);
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.content .content-body .button .btn-submit{
+    background-color: var(--green);
+    color: var(--white);
+    opacity: .8;
+}
+
+.content .content-body .button .btn-save{
+    background-color: var(--green-light);
+    color: var(--white);
+    opacity: .8;
+}
+
+.content .content-body .button .btn-cancel {
+    color: var(--green);
+}
+
+.content .content-body .button .btn-cancel:hover{
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.content .content-body .add-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.content .content-body .add-new .js-add-new {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--green);
+    cursor: pointer;
+}
+
+.content .content-body .add-new .delete-line button {
+    background-color: transparent;
+}
+
+.content .content-body .add-new .delete-line .btn-delete{
+    outline: 1px solid var(--green);
+    color: var(--green);
+    padding: 7px 25px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.content .content-body .add-new .delete-line .btn-delete:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .2s;
+    cursor: pointer;
+}
+
+.content .content-body .add-new .delete-line .delete-all{
+    color: var(--red);
+    cursor: pointer;
+}
+
+.content .content-body .add-new .js-add-new span{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.content .content-body .nothing-content {
+    text-align: center;
+}
+
+.content .content-body .nothing-content p{
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* Goal box */
+.content .goal-name-box {
+    position: absolute;
+    top: 300px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    height: 60vh;
+    margin-top: 30px;
+    padding: 0px 90px;
+
+}
+
+.content .goal-name-box .goal-name{
+    width: 100%;
+    background-color: var(--primary-lighter);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.content .goal-name-box .goal-name .goal-name-checkbox{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.content .goal-name-box .goal-name .goal-name-checkbox h4{
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.content .goal-name-box .goal-name .goal-name-checkbox p{
+    font-size: 13px;
+}
+
+.content .goal-name-box .goal-name .time {
+    display: flex;
+    gap: 30px;
+    color: var(--dark-gray-60);
+    font-size: 14px;
+    margin-left: 22px;
+    margin-bottom: 10px;
+}
+
+.content .goal-name-box .goal-name .func button{
+    background-color: transparent;
+    text-decoration: underline;
+    margin-left: 20px;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.content .goal-name-box .goal-name .func button:hover{
+    color: var(--green);
+}
+
+
+
+
+
+
+
+
+/* Form create new goal */
+.modal-new-goal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+    display: none;
+}
+
+.modal-new-goal.open{
+    display: flex;
+}
+
+.modal-new-goal .modal-contain{
+    background-color: var(--white);
+    width: 800px;
+    min-height: 350px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    padding: 30px;
+    background-color: #F5F8FA;
+}
+
+.modal-new-goal .modal-contain h1{
+    font-size: 28px;
+    color: var(--dark-gray-80);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.modal-new-goal .modal-contain .time{  
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.modal-new-goal .modal-contain .input-form p,
+.modal-new-goal .modal-contain .time p{  
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--dark-gray-60);
+    margin-bottom: 5px;
+}
+
+.modal-new-goal .modal-contain .time input {
+    background-color: transparent;
+    width: 230px;
+    border-bottom: .8px solid var(--dark-gray-30);
+}
+
+.modal-new-goal .modal-contain .time input[type="date"]::-webkit-calendar-picker-indicator{  
+    background-image: url(/asset/img/icon/calendar-icon-removebg-preview.png);
+    width: 20px;
+    height: 20px;
+}
+
+.modal-new-goal .modal-contain .select select{
+    background-color: transparent;
+    width: 150px;
+    overflow: -moz-hidden-unscrollable;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(/asset/img/icon/arrow_down.png) no-repeat;
+    background-position: right;
+    background-size: 15px;
+    padding: 4px 0 0 10px;
+    border-bottom: .8px solid var(--dark-gray-30);
+}
+
+.modal-new-goal .modal-contain .input-form {
+    padding-bottom: 20px;
+}
+
+.modal-new-goal .modal-contain .input-form .input {
+    margin-bottom: 10px;
+}
+
+.modal-new-goal .modal-contain .input-form input{
+    background-color: var(--light-gray-8);
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 4px;
+}
+
+.modal-new-goal .modal-contain .button {
+    text-align: center;
+}
+
+.modal-new-goal .modal-contain .button .btn{
+    color: var(--dark-gray-80);
+    outline: 1px solid var(--green);
+    padding: 8px 20px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.modal-new-goal .modal-contain .button .btn:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .2s;
+}
+
+/* Key frame dùng chung cho 2 modal */
+@keyframes modalFaceIn {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* toast success */
+.toast-save-edit {
+    gap: 10px;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    top: 70px;
+    background-color: rgba(39, 174, 96, 0.7);
+    height: 30px;
+    padding: 15px;
+    color: var(--white);
+    width: 450px;
+    animation: slideInLeft ease .3s, slideOutLeft ease 1s 2s forwards;
+    display: none;
+    z-index: 999;
+}
+
+.toast {
+    gap: 10px;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 170px;
+    background-color: rgba(39, 174, 96, 0.7);
+    height: 30px;
+    padding: 15px;
+    color: var(--white);
+    width: 450px;
+    animation: slideInLeft ease .3s, slideOutLeft ease 1s 2s forwards;
+    display: none;
+}
+
+.toast-save-edit.open,
+.toast.open {
+    display: flex;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    to {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+}
+
+.toast i{
+    font-size: 23px;
+}
+
+/* Edit error */
+.modal-edit-error {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-edit-error .modal-contain {
+    background-color: var(--white);
+    width: 400px;
+    height: 170px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    border-radius: 10px;
+}
+
+.modal-edit-error.open {
+    display: flex;
+}
+
+.modal-edit-error .modal-content {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.modal-edit-error .modal-content i{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    color: red;
+}
+
+.modal-edit-error .modal-content p{
+    color: var(--dark-gray-80);
+}
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 16px;
+    cursor: pointer;
+    color: var(--dark-gray-50);
+}
+
+.modal-close i{
+    font-size: 24px;
+}
+
+.modal-close:hover {
+    color: var(--black);
+}
+
+/* Notification */
+.modal-unsubmit-success,
+.modal-delete-co-all,
+.modal-delete-re-all,
+.modal-delete-co,
+.modal-delete-re {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-unsubmit-success.open,
+.modal-unsubmit.open,
+.modal-delete-co-all.open,
+.modal-delete-re-all.open,
+.modal-delete-co.open,
+.modal-delete-re.open {
+    display: flex;
+}
+
+.modal-delete-re-all .modal-contain {
+    background-color: var(--white);
+    width: 500px;
+    min-height: 240px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    border-radius: 10px;
+}
+
+.modal-unsubmit-success .modal-contain,
+.modal-delete-co-all .modal-contain,
+.modal-delete-co .modal-contain,
+.modal-delete-re .modal-contain {
+    background-color: var(--white);
+    width: 500px;
+    min-height: 210px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--dark-gray-50);
+}
+
+.modal-header .modal--heading {
+    padding: 12px;
+    font-size: 24px;
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.modal-close-unsubmit-success,
+.modal-close-delete-co-all,
+.modal-close-delete-re-all,
+.modal-close-delete-co,
+.modal-close-delete-re {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px;
+    cursor: pointer;
+    color: var(--dark-gray-50);
+}
+
+.modal-close-unsubmit-success
+.modal-close-delete-co i,
+.modal-close-delete-co-all i,
+.modal-close-delete-re-all i,
+.modal-close-delete-re i{
+    font-size: 24px;
+}
+
+.modal-close-unsubmit-success:hover,
+.modal-close-delete-co-all:hover,
+.modal-close-delete-re-all:hover,
+.modal-close-delete-co:hover,
+.modal-close-delete-re:hover {
+    color: var(--black);
+}
+
+.modal-unsubmit-success .modal-content,
+.modal-delete-co-all .modal-content,
+.modal-delete-re-all .modal-content,
+.modal-delete-co .modal-content,
+.modal-delete-re .modal-content {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.modal-close-unsubmit-success .modal-content p, 
+.modal-delete-co-all .modal-content p,
+.modal-delete-re-all .modal-content p,
+.modal-delete-co .modal-content p,
+.modal-delete-re .modal-content p{
+    color: var(--dark-gray-80);
+    margin-top: 30px;
+    line-height: 1.5;
+    margin-bottom: 50px;
+}
+
+.modal-close-unsubmit-success .modal-content .btn,
+.modal-delete-co-all .modal-content .btn,
+.modal-delete-re-all .modal-content .btn,
+.modal-delete-co .modal-content .btn,
+.modal-delete-re .modal-content .btn{
+    background-color: var(--nav);
+    outline: 1px solid var(--blue);
+    color: var(--black);
+    padding: 10px 38px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.modal-delete-co-all .modal-content .js-confirm,
+.modal-delete-re-all .modal-content .js-confirm,
+.modal-delete-co .modal-content .js-confirm,
+.modal-delete-re .modal-content .js-confirm {
+    padding: 10px 48px;
+}
+
+.modal-close-unsubmit-success .modal-content .btn:hover,
+.modal-delete-co-all .modal-content .btn:hover,
+.modal-delete-re-all .modal-content .btn:hover,
+.modal-delete-co .modal-content .btn:hover,
+.modal-delete-re .modal-content .btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    transition: linear .3s;
+}
+
+/* Unsubmit */
+.modal-unsubmit {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-unsubmit .modal-contain {
+    padding: 5px 12px 10px 12px;
+    outline: 1.5px solid var(--blue);
+    border-radius: 0;
+    background-color: var(--white);
+    width: 500px;
+    height: 330px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+}
+
+.modal-unsubmit h1{
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+.modal-unsubmit p{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-gray-60);
+    margin-bottom: 10px;
+}
+
+.modal-unsubmit textarea{
+    width: 100%;
+    outline: 1.5px solid var(--green);
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.modal-unsubmit .button-unsubmit {
+    text-align: center;
+    color: var(--green);
+}
+
+.modal-unsubmit .button-unsubmit .btn{
+    background-color: transparent;
+    outline: 1.2px solid var(--green);
+    padding: 9px 40px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.modal-unsubmit .button-unsubmit .btn:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .2s;
+    cursor: pointer;
+}

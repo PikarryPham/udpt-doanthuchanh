@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./asset/css/sel_as_n_goal.css">
+    <link rel="stylesheet" href="./asset/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Self Assessment</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="./asset/img/icon/logo.png" width="29px" height="25px" alt="">
+            <img src="./asset/img/icon/heading_logo.png" height="25px" alt="">
+        </div>  
+        <div class="user">
+            <img src="./asset/img/image/user.png" width="120px" height="120px" alt="">
+            <p class="user-title">job title</p>
+            <p class="user-id">employee ID</p>
+        </div>
+        <div class="main-func">
+            <a href="index.html"><i class="fa-solid fa-house"></i>dash board</a>
+            <a href="#"><i class="fa-solid fa-circle-info"></i>information</a>
+            <a href="#"><i class="fa-solid fa-arrow-right-arrow-left"></i>transfer</a>
+            <a href="#"><i class="fa-solid fa-code-merge"></i>org, chart</a>
+            <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
+        </div>
+        <div class="login">
+            <a href="#"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="content-header">
+            <h1 class="heading">self assessment | deadline submit: 2022-07-15 23:00:00</h1>
+        </div>
+        <div class="content-body">
+            <div class="per-ex">
+                <div class="perform">
+                    <h4>performance & development agreement</h4>
+                    <p>last updated:</p>
+                </div>
+                <a href="export_pdf_page.html" class="export">export PDF</a>
+            </div>
+            <div class="user-info">
+                <p class="dark-60">tran chi dung - id: 1234</p>
+                <p class="dark-60">software engineer - data department</p>
+                <p class="green">Appraiser: john willy</p>
+            </div>
+            <div class="button">
+                <button class="btn btn-submit">submit</button>
+                <button class="btn btn-save">save</button>
+                <button class="btn btn-cancel">cancel</button>
+            </div>
+            <div class="add-new">
+                <div class="js-add-new">
+                    <i class="fa-solid fa-circle-plus js-create"></i>
+                    <span>add a new goal</span>
+                </div>
+            </div>
+            <div class="nothing-content">
+                <img src="./asset/img/image/oh crap.png" width="300" height="210" alt="">
+                <p>you don't have any goal. you can create a new one!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-new-goal js-modal-new-goal">
+        <div class="modal-contain js-modal-contain-new-goal">
+            <h1>create a new goal</h1>
+            <div class="time">
+                <div class="due-date">
+                    <p>due date</p>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="due-date">
+                    <p>completed date</p>
+                    <input type="date" name="" id="">
+                </div>
+                <div class="select">
+                    <p>status</p>
+                    <select name="" id="">
+                        <option value="processing">processing</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-form">
+                <div class="input">
+                    <p>goal/objects name</p>
+                    <input type="text" placeholder="type something here">
+                </div>
+                <div class="input">
+                    <p>action/steps</p>
+                    <input type="text" placeholder="type something here">
+                </div>
+                <div class="input">
+                    <p>comment</p>
+                    <input type="text" placeholder="type something here">
+                </div>
+            </div>
+
+            <div class="button">
+                <a href="self_result.html" class="btn save">save</a>
+                <a href="#" class="btn cancel">cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JS for self assessment create a new goal
+        const modal_new_goal = document.querySelector('.js-modal-new-goal')
+        const add_news = document.querySelectorAll('.js-add-new')
+        const modalContainer_new_goal = document.querySelector('.js-modal-contain-new-goal')
+        const cancel = document.querySelector('.cancel')
+
+        for (const add_new of add_news) {
+            add_new.addEventListener('click',showNewGoalCreate)
+        }
+
+        function showNewGoalCreate () {
+            modal_new_goal.classList.add('open')
+        }
+
+        function hideNewGoalCreate () {
+            modal_new_goal.classList.remove('open')
+        }
+
+        cancel.addEventListener('click',hideNewGoalCreate)
+
+        modalContainer_new_goal.addEventListener('click', function(even){
+            even.stopPropagation()
+        })
+    </script>
+</body>

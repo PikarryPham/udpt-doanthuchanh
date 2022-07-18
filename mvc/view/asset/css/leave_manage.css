@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+/*
+font-family: 'Clicker Script', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Merienda One', cursive;
+font-family: 'Mulish', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Rubik', sans-serif; 
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Mulish', sans-serif;
+    text-transform: capitalize;
+}
+
+:root {
+    --primary-lighter: #CDEDE3;
+    --green-lighter: #1BDCA0;
+    --green-light: #68c690;
+    --green: #059669;
+    --green-dark: #026345;
+    --green-darker: #013F2C;
+    --dark-gray-30: #b3b3b3;
+    --dark-gray-50: #808080;
+    --dark-gray-60: #666666;
+    --dark-gray-80: #333333;
+    --black: #000;
+    --white: #fff;
+    --light-gray-8: #ebebeb;
+    --light-gray-16: #d6d6d6;
+    --light-gray-16: #656363;
+    --pink-light: #f18989;
+    --yellow-lemon: #f6d982; 
+    --blue: #1C83C6;
+    --nav: #F5F8FA;
+}
+
+.content {
+    width: calc(100% - 228px);
+    height: 100vh;
+    padding: 10px 70px;
+    background-color: var(--primary-lighter);
+}
+
+.content-cate {
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+    gap: 20px;
+}
+
+.content h2{
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--dark-gray-80);
+}
+
+.content-cate a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 300px;
+    background-color: var(--white);
+    font-weight: 600;
+    color: var(--dark-gray-80);
+    box-shadow: 0 4px 8px 0 var(--dark-gray-30);
+}
+
+.content-cate a:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .3s;
+}
