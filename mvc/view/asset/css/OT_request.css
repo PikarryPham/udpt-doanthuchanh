@@ -1,0 +1,252 @@
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--green);
+}
+
+.flex_start {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.text-align {
+    text-align: center;
+}
+
+.content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: calc(100% - 228px);
+    height: 100vh;
+    padding: 20px 80px;
+    background-color: var(--primary-lighter);
+}
+
+.content__heading h1{
+    font-weight: 700;
+    color: var(--dark-gray-80);
+    margin-bottom: 15px;
+    font-size: 48px;
+}
+
+.content__heading .btn{
+    background-color: var(--green);
+    color: var(--white);
+    padding: 10px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.content__heading .btn:hover{
+    opacity: .8;
+}
+
+.content__body {
+    text-align: center;
+    color: var(--green-dark);
+    font-weight: 700;
+}
+
+.content__body img{
+    margin-bottom: 15px;
+}
+
+/* Form create new rq */
+.modal-new-rq {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px 20px 20px;
+    display: flex;
+    display: none;
+}
+
+.modal-new-rq.open{
+    display: flex;
+}
+
+.modal-new-rq .modal-contain{
+    background-color: var(--white);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: modalFaceIn ease .5s;
+    padding: 20px;
+    background-color: #F5F8FA;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.modal__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--green);
+    font-weight: 600;
+}
+
+.modal__heading h1{
+    font-size: 28px;
+}
+
+.modal__heading .btn{
+    padding: 8px 20px;
+    background-color: transparent;
+    outline: 1px solid var(--green);
+    border-radius: 4px;
+    margin-right: 8px;
+    color: var(--green);
+}
+
+.modal__heading .btn:hover{
+    opacity: .8;
+    cursor: pointer;
+    transition: ease .2s;
+}
+
+.modal__heading .btn:nth-child(1){
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.modal__heading .btn:nth-child(2){
+    color: var(--white);
+    background-color: #65c48e;
+}
+
+.modal__body .employ_info {
+    margin-top: 30px;
+}
+
+.modal__body .appraiser_info {
+    margin: 20px 0;
+}
+
+.modal__body h3 {
+    text-transform: none;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.modal__body p {
+    font-size: 10px;
+    margin-bottom: 3px;
+    color: var(--dark-gray-60);
+}
+
+.modal__body input {
+    padding: 3px 10px;
+    border-radius: 3px;
+    color: var(--black);
+    border-bottom: .8px solid var(--dark-gray-30);
+    background-color: var(--nav);
+    outline: 1px solid var(--white);
+    text-transform: none;
+}
+
+.modal__body input[type="date"]::-webkit-calendar-picker-indicator{  
+    background-image: url(/asset/img/icon/calendar-icon-removebg-preview.png);
+    width: 17px;
+    height: 17px;
+}
+
+.modal__body select {
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    overflow: -moz-hidden-unscrollable;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(/asset/img/icon/arrow_down.png) no-repeat;
+    background-position: right;
+    background-size: 10px;
+    border-bottom: .8px solid var(--dark-gray-30);
+}
+
+.modal__body .textare-form {
+    margin-top: 10px;
+}
+
+.modal__body .textare-form textarea{
+    width: 40%;
+    height: 70px;
+    padding: 5px;
+    border: 1.3px solid #026345;
+    background-color: #F5F8FA;
+}
+
+.modal__body .ot-rq-detail {
+    margin-top: 7px;
+}
+
+.modal__body .ot-rq-detail .btn{
+    background-color: transparent;
+    outline: 1px solid var(--green);
+    color: var(--green);
+    padding: 8px 25px;
+    border-radius: 4px;
+}
+
+.modal__body .ot-rq-detail .btn:hover{
+    background-color: var(--green);
+    color: var(--white);
+    transition: ease .2s;
+    cursor: pointer;
+}
+
+/* Key frame dùng chung cho 2 modal */
+@keyframes modalFaceIn {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Table */
+.table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-top: 25px;
+    margin-left: 200px;
+}
+
+.table td, .table th{
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table th, i {
+    color: var(--green);
+}
+
+.table i {
+    margin-right: 7px;
+    font-size: 16px;
+}
+
+.table i:nth-child(2) {
+    border-bottom: 2px solid var(--green);
+}

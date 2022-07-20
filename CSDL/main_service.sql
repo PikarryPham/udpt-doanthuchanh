@@ -3,15 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2022 at 04:12 PM
+-- Generation Time: Jul 20, 2022 at 03:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-/* MN tạo tiếp bảng CATEGORIES_SUBSCRIBE và bảng CHECK_IN_CHECK_OUT như hướng dẫn t nhắn trên zalo nha */
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `main_service`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_subscribe`
+--
+
+CREATE TABLE `categories_subscribe` (
+  `SUBSCRIBE_ID` int(11) NOT NULL COMMENT 'trường này để lưu khóa tự tăng thể hiện mã của việc đăng ký',
+  `EMPLOYEE_ID` int(11) NOT NULL COMMENT 'trường này là khóa ngoại tham chiếu đến mã nhân viên',
+  `CATEGORIES_ID` int(11) NOT NULL COMMENT 'trường này là khóa ngoại tham chiếu đến mã thể loại',
+  `SUBSCRIBE_DATE` datetime NOT NULL COMMENT 'trường này là ngày mà nhân viên đăng ký thể loại',
+  `NOTIFICATION_FLAG` smallint(6) NOT NULL COMMENT 'trường này thể hiện nhân viên có muốn nhận thông báo khi có bài viết mới được đăng ký được đăng lên hệ thống không'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `categories_subscribe`
+--
+
+INSERT INTO `categories_subscribe` (`SUBSCRIBE_ID`, `EMPLOYEE_ID`, `CATEGORIES_ID`, `SUBSCRIBE_DATE`, `NOTIFICATION_FLAG`) VALUES
+(1, 1, 2, '2022-05-01 00:00:00', 0),
+(2, 2, 3, '2022-04-01 00:00:00', 0),
+(3, 4, 1, '2022-07-01 00:00:00', 0),
+(4, 7, 4, '2022-07-01 00:00:00', 1),
+(5, 10, 2, '2022-05-01 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -180,6 +203,13 @@ INSERT INTO `pa_feedback` (`PAFB_ID`, `EMPLOYEE_BEINGFEEDBACK_ID`, `EMPLOYEE_FEE
 --
 
 --
+-- Indexes for table `categories_subscribe`
+--
+ALTER TABLE `categories_subscribe`
+  ADD PRIMARY KEY (`SUBSCRIBE_ID`),
+  ADD KEY `FK_SUBCRIBE_EMPLOYEE` (`EMPLOYEE_ID`);
+
+--
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
@@ -223,6 +253,12 @@ ALTER TABLE `pa_feedback`
 --
 
 --
+-- AUTO_INCREMENT for table `categories_subscribe`
+--
+ALTER TABLE `categories_subscribe`
+  MODIFY `SUBSCRIBE_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'trường này để lưu khóa tự tăng thể hiện mã của việc đăng ký', AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -249,6 +285,12 @@ ALTER TABLE `pa_feedback`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `categories_subscribe`
+--
+ALTER TABLE `categories_subscribe`
+  ADD CONSTRAINT `FK_SUBCRIBE_EMPLOYEE` FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES `employee` (`EMPLOYEE_ID`);
 
 --
 -- Constraints for table `department`
