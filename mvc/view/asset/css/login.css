@@ -123,6 +123,7 @@ font-family: 'Rubik', sans-serif;
     color: var(--pink-light);
     font-size: 12px;
     padding: 6px 0;
+    visibility: hidden;
 }
 
 .flex-row-space-between {
