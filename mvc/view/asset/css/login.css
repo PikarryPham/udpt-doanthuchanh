@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Kaushan+Script&family=Merienda+One&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:wght@200;300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:wght@300;400;500;600&display=swap');
+/*
+font-family: 'Clicker Script', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Merienda One', cursive;
+font-family: 'Mulish', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Rubik', sans-serif;
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Mulish', sans-serif;
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+:root {
+    --primary-lighter: #CDEDE3;
+    --green-lighter: #1BDCA0;
+    --green-light: #68c690;
+    --green: #059669;
+    --green-dark: #026345;
+    --green-darker: #013F2C;
+    --dark-gray-30: #b3b3b3;
+    --dark-gray-50: #808080;
+    --dark-gray-60: #666666;
+    --dark-gray-80: #333333;
+    --black: #000;
+    --white: #fff;
+    --light-gray-8: #ebebeb;
+    --light-gray-16: #d6d6d6;
+    --light-gray-16: #656363;
+    --pink-light: #f18989;
+    --yellow-lemon: #f6d982;
+    --blue: #1C83C6;
+    --blue-light: #64748B;
+    --nav: #f5f8fa;
+}
+
+.content {
+    width: calc(100% - 228px);
+    height: 100vh;
+    background-color: var(--primary-lighter);
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    gap: 20px;
+    padding: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: var(--white);
+    height: fit-content;
+    padding: 24px 36px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(188, 188, 188, 0.25);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.title {
+    font-size: 34px;
+    color: var(--green-dark);
+}
+
+.sub-title {
+    color: var(--blue-light);
+    font-size: 16px;
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.input-label {
+    font-size: 12px;
+    color: var(--black);
+    opacity: 0.6;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container input {
+    border: none;
+    border-bottom: 1px solid var(--dark-gray-30);
+    padding: 6px 0;
+    font-size: 16px;
+    color: var(--black);
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.error-message {
+    color: var(--pink-light);
+    font-size: 12px;
+    padding: 6px 0;
+}
+
+.flex-row-space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: var(--blue);
+}
+
+.remember-checkbox {
+    display: flex;
+    gap: 8px;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+}
+
+.login-button button {
+    background-color: var(--green);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 48px;
+    font-size: 16px;
+    color: var(--white);
+    outline: none;
+}
+
+.login-button button:hover {
+    cursor: pointer;
+}
+
+.input-password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-gray-16);
+}
+
+.toggle-password:hover {
+    cursor: pointer;
+}
