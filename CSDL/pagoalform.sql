@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2022 at 04:16 PM
+-- Generation Time: Jul 28, 2022 at 06:43 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pa_goal`
+-- Database: `pagoalform`
 --
 
 -- --------------------------------------------------------
@@ -45,19 +45,19 @@ CREATE TABLE `pa_goal` (
 
 INSERT INTO `pa_goal` (`PAGOAL_ID`, `EMPLOYEECREATE_ID`, `MANAGER_ID`, `LASTUPDATE_DATE`, `STATUS`, `TOTAL_GOALS`, `UNSUBMIT_REASON`, `MANAGER_COMMENT`, `DEADLINE_PAGOAL`) VALUES
 (1, 8, 6, '2021-07-11 21:00:00', 'Approved', 3, NULL, NULL, '2021-07-30 23:00:00'),
-(2, 8, 6, '2022-07-17 16:45:23', 'Pending', 5, NULL, NULL, '2022-08-30 16:45:23'),
-(3, 15, 6, '2022-07-17 19:37:34', 'Cancelled', 1, 'Không có đủ thời gian để hoàn thành mục tiêu', NULL, '2022-07-31 23:02:00'),
+(2, 8, 6, '2022-07-28 22:23:34', 'Approved', 3, 'abc deft', 'abc1', '2022-08-30 16:45:23'),
+(3, 8, 6, '2023-09-17 19:37:34', 'Cancelled', 1, 'Không có đủ thời gian để hoàn thành mục tiêu', NULL, '2022-07-31 23:02:00'),
 (4, 15, 6, '2022-07-16 12:00:00', 'Draft', 1, NULL, NULL, '2022-07-31 23:00:00'),
-(5, 14, 6, '2022-07-14 19:44:33', 'Rejected', 1, NULL, 'Mục tiêu của PA này còn quá mơ hồ và quá rộng, chưa thực sự cụ thể', '2022-07-31 23:00:00'),
+(5, 14, 6, '2022-07-28 22:23:01', 'Rejected', 0, NULL, 'Mục tiêu của PA này còn quá mơ hồ và quá rộng, chưa thực sự cụ thể', '2022-07-31 23:00:00'),
 (6, 14, 6, '2022-07-17 19:51:58', 'Pending', 1, NULL, NULL, '2022-07-31 23:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pa_goal detail`
+-- Table structure for table `pa_goal_detail`
 --
 
-CREATE TABLE `pa_goal detail` (
+CREATE TABLE `pa_goal_detail` (
   `PAGOALDETAIL_ID` int(11) NOT NULL COMMENT 'ID của một chi tiết mục tiêu (goal). Một form PA có thể có nhiều thông tin chi tiết mục tiêu',
   `PAGOAL_ID` int(11) NOT NULL COMMENT 'ID của PA Form mà chi tiết mục tiêu thuộc về. Tham chiếu từ bảng pa goal',
   `GOAL_NAME` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL COMMENT 'Chứa thông tin về tên của mục tiêu',
@@ -69,10 +69,10 @@ CREATE TABLE `pa_goal detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci COMMENT='Bảng này cho biết thông tin của 1 CHI TIẾT goal của PA Form';
 
 --
--- Dumping data for table `pa_goal detail`
+-- Dumping data for table `pa_goal_detail`
 --
 
-INSERT INTO `pa_goal detail` (`PAGOALDETAIL_ID`, `PAGOAL_ID`, `GOAL_NAME`, `ACTION_STEP`, `DUE_DATE`, `COMPLETED_DATE`, `STATUS`, `COMMENT`) VALUES
+INSERT INTO `pa_goal_detail` (`PAGOALDETAIL_ID`, `PAGOAL_ID`, `GOAL_NAME`, `ACTION_STEP`, `DUE_DATE`, `COMPLETED_DATE`, `STATUS`, `COMMENT`) VALUES
 (1, 1, 'Kiếm thêm được nhiều dự án hơn', '1. Mở rộng mối quan hệ\r\n2. Thuyết phục khách hàng\r\n3. Kiếm được khách hàng\r\n4. Chốt dự án + giá cả', '2021-11-30 23:00:00', '2021-11-01 09:00:00', 'Completed', 'Cần hoàn thành nhanh nhất có thể'),
 (2, 1, 'Hoàn thành chứng chỉ Oracle Certified Associate (OCA) trong thời gian càng sớm càng tốt', '- Học và sử dụng Oracle cơ bản\r\n- Tham gia khóa học luyện chứng chỉ Oracle Certified Associate (OCA)', '2021-09-01 23:00:00', '2021-08-01 00:00:00', 'Completed', 'Không có comment'),
 (3, 1, 'Hoàn thành chứng chỉ Specialist cho Oracle Database 12c', '- Học và sử dụng Oracle cơ bản\r\n- Tham gia khóa học luyện chứng chỉ Specialist cho Oracle Database 12c', '2021-11-01 00:00:00', '2021-10-28 00:00:00', 'Completed', 'Có thể hoàn thành cuối cùng vì chứng chỉ này không bắt buộc'),
@@ -83,7 +83,6 @@ INSERT INTO `pa_goal detail` (`PAGOALDETAIL_ID`, `PAGOAL_ID`, `GOAL_NAME`, `ACTI
 (8, 2, 'Hoàn thành chứng chỉ \"AWS Certified Solutions Architect – Associate\"', '- Hoàn thành nhanh các công việc trên công ty\r\n- Học các kiến thức AWS cơ bản \r\n- Dành thời gian luyện đề mỗi ngày ít nhất 1 tiếng', '2022-12-31 00:00:00', '1970-01-01 00:00:00', 'Processing', 'Ưu tiên hoàn thành chứng chỉ này hơn các chứng chỉ khác'),
 (9, 3, 'Hoàn thành chứng chỉ \"Certified in the Governance of Enterprise IT – CGEIT\" trước giữa tháng 8', '- Dành nhiều thời gian hơn để học và ôn luyện thi mỗi ngày ít nhất 2 tiếng\r\n- Giảm bớt thời gian học và làm việc xuống', '2022-08-15 00:00:00', '1970-01-01 00:00:00', 'Processing', 'Là mục tiêu ưu tiên'),
 (10, 4, 'Hoàn thành chứng chỉ \"Data Science Council of America (DASCA) Principle Data Scientist (PDS)\" trước cuối tháng 12', 'Tập trung nhiều giờ hơn để ôn và luyện thi chứng chỉ', '2022-12-31 23:00:00', '1970-01-01 00:00:00', 'Processing', NULL),
-(11, 5, 'Hoàn thành các chứng chỉ liên quan đến AWS trong năm nay', 'Chỉ cần tập trung nhiều vào việc ôn thi chứng chỉ là được', '2022-12-31 23:00:00', '1970-01-01 00:00:00', 'Processing', NULL),
 (12, 6, 'Hoàn thành chứng chỉ AWS Certified Solutions Architect – Associate trước tháng 10 năm 2022', 'Dành thời gian ôn luyện ít nhất mỗi ngày 30 phút - 1 tiếng. Vào thứ 7, CN thì ôn nhiều hơn (>=2 tiếng)', '2022-09-30 23:59:00', '1970-01-01 00:00:00', 'Processing', NULL);
 
 --
@@ -99,9 +98,9 @@ ALTER TABLE `pa_goal`
   ADD KEY `FK_Employee_Manager` (`MANAGER_ID`);
 
 --
--- Indexes for table `pa_goal detail`
+-- Indexes for table `pa_goal_detail`
 --
-ALTER TABLE `pa_goal detail`
+ALTER TABLE `pa_goal_detail`
   ADD PRIMARY KEY (`PAGOALDETAIL_ID`,`PAGOAL_ID`),
   ADD KEY `FK_PAGoal_Related` (`PAGOAL_ID`);
 
@@ -116,19 +115,19 @@ ALTER TABLE `pa_goal`
   MODIFY `PAGOAL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một PA form. Mỗi PA Form sẽ có nhiều thông tin mục tiêu ', AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `pa_goal detail`
+-- AUTO_INCREMENT for table `pa_goal_detail`
 --
-ALTER TABLE `pa_goal detail`
-  MODIFY `PAGOALDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết mục tiêu (goal). Một form PA có thể có nhiều thông tin chi tiết mục tiêu', AUTO_INCREMENT=13;
+ALTER TABLE `pa_goal_detail`
+  MODIFY `PAGOALDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết mục tiêu (goal). Một form PA có thể có nhiều thông tin chi tiết mục tiêu', AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `pa_goal detail`
+-- Constraints for table `pa_goal_detail`
 --
-ALTER TABLE `pa_goal detail`
+ALTER TABLE `pa_goal_detail`
   ADD CONSTRAINT `FK_PAGoal_Related` FOREIGN KEY (`PAGOAL_ID`) REFERENCES `pa_goal` (`PAGOAL_ID`);
 COMMIT;
 
