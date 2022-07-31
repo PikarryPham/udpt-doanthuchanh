@@ -178,6 +178,7 @@ formRequest.addEventListener('submit', function (e) {
                             showNotification("Submit successfully", "Congratulations! You submit the OT request successfully. You can go back to main to see the request.");
                         }else{
                             edit_ot_request(response.data["ROT_ID"], "Draft");
+                            showNotification("save successfully", "Congratulations! You save the OT request successfully. You can go back to main to see the request.");
                         }
                     }
                 }
@@ -192,7 +193,10 @@ formRequest.addEventListener('submit', function (e) {
                 success: function (response) {
                     if (new_data.STATUS == "Draft"){
                         showNotification("Submit successfully", "Congratulations! You submit the OT request successfully. You can go back to main to see the request.");
+                    }else{
+                        showNotification("save successfully", "Congratulations! You save the OT request successfully. You can go back to main to see the request.");
                     }
+
                     edit_ot_request(new_data.ROT_ID, new_data.STATUS);
                     generate_data_from_request(false);
                 }

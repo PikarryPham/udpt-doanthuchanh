@@ -106,6 +106,7 @@ function reset_request_ot_detail(){
     table_ot.innerHTML = "";
     table_count = 1;
     edit_type = false;
+    edit_id   = 0;
     document.getElementById('title-modal').innerHTML = "create new OT request";
     document.getElementById('submit-btn-text').innerHTML = "Submit";
     document.getElementById('today-date').value = date_now();
@@ -188,6 +189,7 @@ function hoursActive(){
     update_hours();
     document.getElementById("submit-ot-request-detail").innerHTML = "Add OT details";
     edit_type = false;
+    edit_id   = 0;
 }
 
 function check_request_ot_details(hour_ot, date_ot){
@@ -197,8 +199,6 @@ function check_request_ot_details(hour_ot, date_ot){
         return false;
     }
     if (date_ot < today){
-        console.log(today)
-        console.log(date_ot)
         showError("you can't ask for the date in the past");
         return false;
     }
