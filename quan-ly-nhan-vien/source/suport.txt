@@ -1,0 +1,5 @@
+Đặc tả đồ án:       https://docs.google.com/document/d/1J1wUWQREZQ41HwjJjA5Z4gOtcbKJ4fiygrqXrYN9s2E/edit?fbclid=IwAR2ssDi9SeIKryCxrNUKW8Ukyl3__i6pyKNK6P1oeiPqxJXMp4RREk58hdI
+Đặc tả chức năng:   https://docs.google.com/document/d/1fqVzsXclEGePQFKYmb39G3VnrdEZ9kUW/edit
+Mô phỏng giao diện: https://www.figma.com/file/yv2rF4mAa9NDDHURjZ8b27/UDPT-Figma?node-id=79%3A175
+Đặc tả API:         https://docs.google.com/document/d/1JiCV6mGz1P8bJYkZHJFbvLU7D28JgaNck-5DZ0aAhxY/edit?fbclid=IwAR2ssDi9SeIKryCxrNUKW8Ukyl3__i6pyKNK6P1oeiPqxJXMp4RREk58hdI
+Cơ sở dữ liệu:      https://drive.google.com/drive/folders/1jladHK5Gmp0olPhpJllMLUfvB27gt_d9
