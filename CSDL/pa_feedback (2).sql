@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2022 at 03:44 PM
+-- Generation Time: Aug 05, 2022 at 02:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `main_service`
+-- Database: `pa_feedback`
 --
 
 -- --------------------------------------------------------
@@ -72,18 +72,6 @@ ALTER TABLE `pa_feedback`
 --
 ALTER TABLE `pa_feedback`
   MODIFY `PAFB_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một thông tin feedback, là trường tự tăng', AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `pa_feedback`
---
-ALTER TABLE `pa_feedback`
-  ADD CONSTRAINT `FK_Employee_Being_Feedback` FOREIGN KEY (`EMPLOYEE_BEINGFEEDBACK_ID`) REFERENCES `employee` (`EMPLOYEE_ID`),
-  ADD CONSTRAINT `FK_Employee_Feedback` FOREIGN KEY (`EMPLOYEE_FEEDBACK_ID`) REFERENCES `employee` (`EMPLOYEE_ID`),
-  ADD CONSTRAINT `FK_Feedback_Manager` FOREIGN KEY (`EMPLOYEE_MANAGER`) REFERENCES `employee` (`EMPLOYEE_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

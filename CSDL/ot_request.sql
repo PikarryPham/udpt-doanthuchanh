@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2022 at 04:19 PM
+-- Generation Time: Aug 05, 2022 at 02:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `request_ot`
+-- Database: `ot_request`
 --
 
 -- --------------------------------------------------------
@@ -48,11 +48,14 @@ CREATE TABLE `request ot` (
 --
 
 INSERT INTO `request ot` (`ROT_ID`, `EMPLOYEE_ID`, `MANAGER_ID`, `REASON`, `CREATE_DATE`, `UPDATE_DATE`, `STATUS`, `MANAGER_COMMENT`, `START_DATE`, `ESTIMATED_HOURS`, `END_DATE`, `UNSUBMIT_REASON`, `NOTIFICATION_FLAG`) VALUES
-(1, 8, 6, 'Dự án mới sắp ra cần hoàn thành gấp để giao vào đầu tháng 8', '2022-07-11 17:40:03', '2022-07-11 17:40:03', 'Draft', 'None', '2022-07-27', '8', '2022-07-31', 'None', 1),
+(1, 8, 6, 'Cần hoàn thành gấp', '2022-07-11 17:40:03', '2022-08-05 07:47:16', 'Pending', '', '2022-08-05', '4', '2022-08-31', '', 0),
 (2, 15, 6, 'Làm không kịp nên tăng ca để kịp tiến độ dự án mới', '2022-07-17 12:08:03', '2022-07-18 12:08:03', 'Pending', 'None', '2022-07-16', '4', '2022-07-16', 'None', 1),
 (3, 14, 6, 'Anh có việc gia đình cần nghỉ 1 tuần nên anh cần tăng ca để làm bù để kịp tiến độ dự án.', '2022-07-15 12:12:35', '2022-07-15 13:12:35', 'Approved', 'None', '2022-08-01', '6', '2022-08-03', 'None', 1),
-(4, 8, 6, 'Dự án Alola cần bàn giao cho khách hàng gấp vào cuối tháng 8 nên em cần OT để kịp tiến độ', '2022-07-17 12:14:54', '2022-07-17 12:25:54', 'Draft', 'None', '2022-07-25', '12', '2022-07-27', 'None', 1),
-(5, 8, 6, 'Em xin OT để tuần sau em nghỉ đi chơi với người yêu', '2022-07-16 12:14:54', '2022-07-17 15:25:54', 'Cancelled', 'None', '2022-08-15', '4', '2022-08-18', 'Lí do em ghi còn chưa thật sự hợp lí, em xin được thu hồi request để gửi lại request mới', 0);
+(5, 8, 6, 'Em xin OT để tuần sau em nghỉ đi chơi với người yêu', '2022-07-16 12:14:54', '2022-07-17 15:25:54', 'Canceled', 'None', '2022-08-15', '4', '2022-08-18', 'Lí do em ghi còn chưa thật sự hợp lí, em xin được thu hồi request để gửi lại request mới', 0),
+(6, 8, 6, 'Test OT request lần 2', '1970-01-01 00:00:00', '2022-08-05 07:48:40', 'Draft', '', '2022-08-05', '4', '2022-08-07', '', 0),
+(7, 8, 6, 'Test OT request lần 3 để có phân trang', '1970-01-01 00:00:00', '2022-08-05 07:49:33', 'Canceled', '', '2022-09-05', '6', '2022-10-07', 'Không thích oT nữa :)', 0),
+(8, 8, 6, 'Ê điền lí do vào', '1970-01-01 00:00:00', '2022-08-05 07:51:20', 'Draft', '', '2022-10-15', '5', '2022-10-17', '', 0),
+(9, 8, 6, 'TUI CẦN OT ĐỂ T9 NGHỈ 2 TUẦN', '1970-01-01 00:00:00', '2022-08-05 07:51:53', 'Pending', '', '2022-08-24', '8', '2022-08-25', '', 0);
 
 -- --------------------------------------------------------
 
@@ -72,11 +75,6 @@ CREATE TABLE `request ot detail` (
 --
 
 INSERT INTO `request ot detail` (`ROTDETAIL_ID`, `ROT_ID`, `DATE`, `HOUR`) VALUES
-(1, 1, '2022-07-27', '4'),
-(2, 1, '2022-07-31', '4'),
-(3, 4, '2022-07-25', '4'),
-(4, 4, '2022-07-26', '4'),
-(5, 4, '2022-07-27', '4'),
 (6, 5, '2022-08-15', '1'),
 (7, 5, '2022-08-16', '1'),
 (8, 5, '2022-08-17', '1'),
@@ -84,7 +82,18 @@ INSERT INTO `request ot detail` (`ROTDETAIL_ID`, `ROT_ID`, `DATE`, `HOUR`) VALUE
 (10, 2, '2022-07-16', '4'),
 (11, 3, '2022-08-01', '3'),
 (12, 3, '2022-08-02', '2'),
-(13, 3, '2022-08-03', '1');
+(13, 3, '2022-08-03', '1'),
+(18, 1, '2022-08-05', '3'),
+(19, 1, '2022-08-31', '1'),
+(20, 6, '2022-08-05', '1'),
+(21, 6, '2022-08-07', '3'),
+(25, 7, '2022-09-05', '1'),
+(26, 7, '2022-10-05', '1'),
+(27, 7, '2022-10-07', '4'),
+(28, 8, '2022-10-15', '1'),
+(29, 8, '2022-10-17', '4'),
+(32, 9, '2022-08-24', '4'),
+(33, 9, '2022-08-25', '4');
 
 --
 -- Indexes for dumped tables
@@ -113,13 +122,13 @@ ALTER TABLE `request ot detail`
 -- AUTO_INCREMENT for table `request ot`
 --
 ALTER TABLE `request ot`
-  MODIFY `ROT_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã của 1 request OT, là trường tự tăng', AUTO_INCREMENT=6;
+  MODIFY `ROT_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã của 1 request OT, là trường tự tăng', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `request ot detail`
 --
 ALTER TABLE `request ot detail`
-  MODIFY `ROTDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết request OT. Một request OT có thể có nhiều thông tin chi tiết', AUTO_INCREMENT=14;
+  MODIFY `ROTDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết request OT. Một request OT có thể có nhiều thông tin chi tiết', AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
