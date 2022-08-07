@@ -69,6 +69,7 @@
             $EMPLOYEE_ID        = $_POST['EMPLOYEE_ID'];
             $UNSUBMIT_REASON    = $_POST['UNSUBMIT_REASON'];
             $STATUS             = "Canceled";
+            $UPDATE_DATE        = date('Y-m-d h:i:s');
 
             if (isset($data[0])){
                 $id = $data[0];
@@ -77,7 +78,7 @@
                 exit();
             }
 
-            if ($model->Canceled_request_ot($id,$EMPLOYEE_ID, $UNSUBMIT_REASON, $STATUS)){
+            if ($model->Canceled_request_ot($id,$EMPLOYEE_ID, $UNSUBMIT_REASON, $STATUS, $UPDATE_DATE)){
                 echo $this->data_export(200,"Unsubmit Employee’s OT Information Successfully", $summary, null, true);
             }else{
                 echo $this->data_export(405,"Unable to update Employee’s request OT with id $id", $summary, null, false);

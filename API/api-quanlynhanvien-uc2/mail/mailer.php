@@ -50,4 +50,3 @@ function mail_send_as_content($email,$name,$title,$content){
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-

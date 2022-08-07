@@ -31,11 +31,11 @@ class ot_requestModel extends ConnectDB{
     }
 
     // Canceled request ot
-    public function Canceled_request_ot($id,$EMPLOYEE_ID, $UNSUBMIT_REASON, $status){        
+    public function Canceled_request_ot($id,$EMPLOYEE_ID, $UNSUBMIT_REASON, $status, $UPDATE_DATE){        
         if ($this->check_isset('request ot','ROT_ID',$id,'EMPLOYEE_ID',$EMPLOYEE_ID) == 0){
             return false;
         }else{
-            $sql = "UPDATE `request ot` SET `UNSUBMIT_REASON` = '$UNSUBMIT_REASON' , `STATUS` = '$status' WHERE `ROT_ID` = '$id' AND `EMPLOYEE_ID` = '$EMPLOYEE_ID'";
+            $sql = "UPDATE `request ot` SET `UNSUBMIT_REASON` = '$UNSUBMIT_REASON' ,`UPDATE_DATE`='$UPDATE_DATE', `STATUS` = '$status' WHERE `ROT_ID` = '$id' AND `EMPLOYEE_ID` = '$EMPLOYEE_ID'";
             mysqli_query($this->connection, $sql);
             return true;
         }
