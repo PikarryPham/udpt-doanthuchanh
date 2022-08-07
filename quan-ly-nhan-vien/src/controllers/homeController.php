@@ -1,7 +1,17 @@
 <?php
     class homeController extends Controllers{
         public function index(){
-            $this->view("home","form",[]);
+            $username = "";
+            $password = "";
+
+            if(isset($_COOKIE['username'])) {
+                $username=$_COOKIE['username'];
+            }
+            if(isset($_COOKIE['password'])) {
+                $password=$_COOKIE['password'];
+            }
+
+            $this->view("home","",[$username,$password]);
         }
         public function main_uc(){
             $this->middleware();
@@ -39,10 +49,16 @@
         public function sign_in(){
             $username = $_POST["username"];
             $password = $_POST["password"];
+            $rememberPass = $_POST["remember-me"];
+
             $model = $this->model('authModel');
             
             if ($model->login($username, $password)){
                 header("Location: " . $this->host_name . "/home/main_uc");
+                if ($rememberPass) {
+                    setcookie ("username", $username, time() + (86400 * 30), "/"); //save in 30 days
+                    setcookie ("password", $password, time() + (86400 * 30), "/");
+                }
             }else{
                 header("Location: " . $this->host_name);
             }

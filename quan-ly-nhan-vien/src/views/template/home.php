@@ -52,14 +52,18 @@
                 <div class="login-input">
                     <div class="input-container">
                         <label class="input-label" for="username">Username/EmployeeID</label>
-                        <input id="username" type="text" name="username" style="text-transform: none" placeholder="Enter your username">
+                        <?php
+                            echo "<input id='username' type='text' name='username' style='text-transform: none' placeholder='Enter your username' value='$data[0]'>"
+                        ?>
                     </div>
 
                     <div class="input-container">
                         <label class="input-label" for="password">Password</label>
                         <div class="input-password-container">
                             <i class="fa-solid fa-eye toggle-password"></i>
-                            <input id="password" type="password" name="password" style="text-transform: none" placeholder="Enter your password">
+                            <?php
+                                echo "<input id='password' type='password' name='password' style='text-transform: none' placeholder='Enter your password' value='$data[1]'>"
+                            ?>
                         </div>
                         <p class="error-message" style="text-transform: none">Empty</p>
                     </div>
