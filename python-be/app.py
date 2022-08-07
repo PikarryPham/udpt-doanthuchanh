@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_mysqldb import MySQL
+import mysql.connector
 from flask import jsonify
 from datetime import datetime, timedelta
 from flask_cors import CORS, cross_origin
@@ -13,17 +13,19 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-app.config['MYSQL_HOST'] = "localhost"
-app.config['MYSQL_PORT'] = 8889
-app.config['MYSQL_USER'] = "root"
-app.config['MYSQL_PASSWORD'] = "root"
-app.config['MYSQL_DB'] = "main_service"
-
 # Setup the Flask-JWT-Extended extension
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 
-mysql = MySQL(app)
+config = {
+  'user': 'root',
+  'password': 'root',
+  'host': '127.0.0.1',
+  'database': 'main_service',
+  'port': 8889
+}
+
+cnx = mysql.connector.connect(**config)
 
 @app.route('/')
 def index():
@@ -36,7 +38,7 @@ def login():
     password = request.form['PASSWORD']
 
     # QUERY TO GET EMPLOYEE ID AND ROLE FROM TABLE EMPLOYEE
-    cur = mysql.connection.cursor()
+    cur = cnx.cursor()
     cur.execute("SELECT EMPLOYEE_ID, ROLE FROM employee WHERE username = %s AND password = %s", (username, password))
     data = cur.fetchall()
     cur.close()

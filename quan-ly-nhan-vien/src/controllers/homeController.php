@@ -32,7 +32,7 @@
         }
 
         public function middleware(){
-            if (! isset($_SESSION['id'])){
+            if (!isset($_SESSION['id'])){
                 header("Location: " . $this->host_name);
             }
         }
