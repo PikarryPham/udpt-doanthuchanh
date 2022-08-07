@@ -1,48 +1,86 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Đăng nhập</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="<?= $host_name ?>/public/css/login.css" rel="stylesheet" type="text/css"/>
-        <style>
-            
-        </style>
-    </head>
-    <body >
-        <header>
-            <div class="container">
-                <h1> Wellcome to manager employee</h1>
-            </div>
-        </header>
-        <main>
-            <div class="container">
-            <div class="login-form">
-                <form action="<?= $host_name ?>/home/sign_in" method="post">
-                    <h1>Đăng nhập vào website</h1>
-                    <div class="message"></div>
-                    <div class="input-box">
-                        <i ></i>
-                        <input name="username" type="text" placeholder="Nhập username">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="public/css/loginThao.css">
+    <link rel="stylesheet" href="public/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/2937f4af7e.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <img src="public/img/icon/logo.png" width="29px" height="25px" alt="">
+        <img src="public/img/icon/heading_logo.png" height="25px" alt="">
+    </div>
+    <div class="user">
+        <img src="public/img/image/avatar-fb.png" width="120px" height="120px" alt="">
+        <p class="user-title">job title</p>
+        <p class="user-id">employee ID</p>
+    </div>
+    <div class="main-func">
+        <a href="index.html"><i class="fa-solid fa-house"></i>dash board</a>
+        <a href="#"><i class="fa-solid fa-circle-info"></i>information</a>
+        <a href="#"><i class="fa-solid fa-arrow-right-arrow-left"></i>transfer</a>
+        <a href="#"><i class="fa-solid fa-code-merge"></i>org, chart</a>
+        <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
+    </div>
+    <div class="login">
+        <a href="./login.html"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+    </div>
+</nav>
+<div class="content">
+    <div class="login-container">
+        <div class="logo">
+            <img src="public/img/icon/logo.png" width="55px" height="47.63px" alt="logo">
+            <img src="public/img/icon/heading_logo.png" width="210px" alt="heading-logo">
+        </div>
+
+        <div style="height: 20px"></div>
+
+        <p class="title">Login</p>
+        <p class="sub-title" style="text-transform: none">Welcome back. Enter your credentials to access your account</p>
+
+        <div style="height: 31px"></div>
+
+        <div class="login-form">
+            <form class="form" action="home/sign_in" method="POST">
+                <div class="login-input">
+                    <div class="input-container">
+                        <label class="input-label" for="username">Username/EmployeeID</label>
+                        <input id="username" type="text" name="username" style="text-transform: none" placeholder="Enter your username">
                     </div>
-                    <div class="input-box">
-                        <i ></i>
-                        <input name="password" type="password" placeholder="Nhập mật khẩu">
+
+                    <div class="input-container">
+                        <label class="input-label" for="password">Password</label>
+                        <div class="input-password-container">
+                            <i class="fa-solid fa-eye toggle-password"></i>
+                            <input id="password" type="password" name="password" style="text-transform: none" placeholder="Enter your password">
+                        </div>
+                        <p class="error-message" style="text-transform: none">Empty</p>
                     </div>
-                    <div class="btn-box">
-                        <button type="submit">
-                            Đăng nhập
-                        </button>
+                </div>
+                <div class="flex-row-space-between">
+                    <div class="remember-checkbox">
+                        <input type="checkbox" name="remember-me" id="remember-me">
+                        <label class="input-label" for="remember-me">Remember Username</label>
                     </div>
-                </form>
-            </div>
-            </div>
-        </main>
-        <footer>
-            <div class="container">
-            CÔNG TY MANAGER EMPLOYEE - Copyright © 2022 
-            </div>
-        </footer>
-    </body>
-</html>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+
+                <div style="height: 15px"></div>
+
+                <div class="login-button">
+                    <button class="login" type="submit" name="btnSubmit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="public/js/login.js"></script>
+</body>
