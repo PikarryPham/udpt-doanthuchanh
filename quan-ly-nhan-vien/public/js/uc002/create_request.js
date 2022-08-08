@@ -235,4 +235,88 @@ document.getElementById('submit-btn-text').addEventListener('click', function(e)
             document.getElementById('submit-btn-save').click();
         }
     }
-})
+});
+
+function get_content_ot_request(status){
+    var content = `
+        - manager name    : ${document.getElementById("MANAGER_NAME").value} <br>
+        - id request      : ${document.getElementById("OTRequest_ID").value} <br>
+        - status          : ${status} <br>
+        - department      : ${document.getElementById("EMPLOYEE_DEPART_NAME").value} <br>
+        - Created Date    : ${document.getElementById("today-date").value.split("T")[1]} ${formatDate(document.getElementById("today-date").value.split("T")[0])} <br>
+        - Total Estimated Hours : ${document.getElementById("estimated_hours").value} <br>
+        - manager email   : ${document.getElementById("MANAGER_EMAIL").value} <br>
+        - Reason OT       : ${document.getElementById("REASON_EMPLOYEE").value} <br>
+        - OT request details: <br>
+        <table>
+            <tbody>
+                <tr>
+                    <th>STT</th>
+                    <th>Date OT</th>
+                    <th>Hours</th>
+                </tr>
+            </tbody>
+            <tbody>
+    `;
+    var stt = 0;
+    for(var i = 1 ; i < table_count ; i++) {
+        var element1 = document.getElementById(`date-ot-${i}`);
+        if (element1){
+            stt++;
+            var element2 = document.getElementById(`hour-ot-${i}`);
+            content += `
+                <tr>
+                    <td>
+                        ${stt}
+                    </td>
+                    <td>
+                        ${formatDate(element1.value)}
+                    </td>
+                    <td>
+                        ${element2.value}
+                    </td>
+                </td>
+            `
+        }
+    }
+
+    content += `</tbody></table>`;
+    return content;
+}
+
+function send_mail_manager(id_employee, name_employee, name_manager, email_manager){
+    var url_post = `${api_uc002}/send_mail_manager`;
+
+    $.ajax({
+        type: "POST",
+        url: url_post,
+        data: {
+            "name_employee" : name_employee,
+            "name_manager"  : name_manager,
+            "id_employee"   : id_employee,
+            "email_manager" : email_manager
+        },
+        dataType: "html",
+        success: function (response) {
+        }
+    });
+}
+
+function send_mail_employee(id_employee, name_employee, email_employee, id_OTRequest, action, content){
+    var url_post = `${api_uc002}/send_mail_employee`;
+    $.ajax({
+        type: "POST",
+        url: url_post,
+        data: {
+            "id_employee"   : id_employee,
+            "name_employee" : name_employee,
+            "email_employee": email_employee,
+            "id_OTRequest"  : id_OTRequest,
+            "action"        : action,
+            "content"       : content,
+        },
+        dataType: "html",
+        success: function (response) {
+        }
+    });
+}

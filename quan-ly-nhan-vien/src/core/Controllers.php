@@ -2,8 +2,6 @@
     class Controllers{
         public $host_name = "http://localhost/quan-ly-nhan-vien";
         public $api_uc002 = "http://localhost/API/api-quanlynhanvien-uc2/api_uc002";
-        public $api_uc010 = "";
-        public $api_uc013temp = "";
         
         protected function model($model){
             require_once "./src/models/". $model .".php";
