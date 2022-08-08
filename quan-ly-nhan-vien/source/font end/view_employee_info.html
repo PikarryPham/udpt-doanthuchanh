@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./asset/css/view_personal_info.css">
+    <link rel="stylesheet" href="./asset/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>View Employee Information</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="./asset/img/icon/logo.png" width="29px" height="25px" alt="">
+            <img src="./asset/img/icon/heading_logo.png" height="25px" alt="">
+        </div>  
+        <div class="user">
+            <img src="./asset/img/image/user.png" width="120px" height="120px" alt="">
+            <p class="user-title">job title</p>
+            <p class="user-id">employee ID</p>
+        </div>
+        <div class="main-func">
+            <a href="index.html"><i class="fa-solid fa-house"></i>dash board</a>
+            <a href="#"><i class="fa-solid fa-circle-info"></i>information</a>
+            <a href="#"><i class="fa-solid fa-arrow-right-arrow-left"></i>transfer</a>
+            <a href="#"><i class="fa-solid fa-code-merge"></i>org, chart</a>
+            <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
+        </div>
+        <div class="login">
+            <a href="#"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+        </div>
+    </nav>
+    <div class="modal-new-rq"> 
+        <div class="modal-contain">
+            <div class="modal__heading">
+                <h1>View Personal Information</h1>
+                <div class="button">
+                    <button class="btn">save</button>
+                    <button class="btn cancel">cancel</button>
+                </div>
+            </div>
+            <div class="modal__body">
+                <div class="employ_info">
+                    <h3>Employee's Information</h3>
+                    <div class="form flex_start">
+                        <div class="employeeID">
+                            <p>employee ID</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="fullName">
+                            <p>full name</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="gender">
+                            <p>gender</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="date">
+                            <p>birthday date</p>
+                            <input type="date" name="" id="" />
+                        </div>
+                        <div class="phone">
+                            <p>Phone Number</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="cmnd">
+                            <p>CMND/CCCD</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="employ_info">
+                    <div class="form flex_start">
+                        <div class="jobTitle">
+                            <p>Job Title</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="role">
+                            <p>role</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="department">
+                            <p>department</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        
+                        <div class="empStatus">
+                            <p>Employee Status </p>
+                            <select name="status" id="">
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="seasonal">Seasonal</option>
+                                <option value="temp">Temporary</option>
+                            </select>
+                        </div>
+                        <div class="department">
+                            <p>department</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="manager">
+                            <p>manager</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="employ_info">
+                    <div class="form flex_start">
+                        <div class="startDate">
+                            <p>Time Enter Company</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="endDate">
+                            <p>Time Leave Company</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="address">
+                            <p>address</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                        <div class="date">
+                            <p>DOB</p>
+                            <input type="date" name="" id="" />
+                        </div>
+                        <div class="email">
+                            <p>email work</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="header-page">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <span>1/1</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <table class="table text-align">
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Project Manager</th>
+                        <th>Start Date</th>
+                        <th>Intend End Date</th>
+                        <th>% Complete</th>
+                        
+                    </tr>
+                    <tr>
+                        <td>P10005</td>
+                        <td>Shipping and Distribution Demand Forecasting</td>
+                        <td>Uses historical demand data to forecast demand</td>
+                        <td>Tran Chi Dung</td>
+                        <td>14/01/2022</td>
+                        <td>14/07/2022</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>P10005</td>
+                        <td>Shipping and Distribution Demand Forecasting</td>
+                        <td>Uses historical demand data to forecast demand</td>
+                        <td>Tran Chi Dung</td>
+                        <td>14/01/2022</td>
+                        <td>14/07/2022</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>P10005</td>
+                        <td>Shipping and Distribution Demand Forecasting</td>
+                        <td>Uses historical demand data to forecast demand</td>
+                        <td>Tran Chi Dung</td>
+                        <td>14/01/2022</td>
+                        <td>14/07/2022</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>P10005</td>
+                        <td>Shipping and Distribution Demand Forecasting</td>
+                        <td>Uses historical demand data to forecast demand</td>
+                        <td>Tran Chi Dung</td>
+                        <td>14/01/2022</td>
+                        <td>14/07/2022</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>P10005</td>
+                        <td>Shipping and Distribution Demand Forecasting</td>
+                        <td>Uses historical demand data to forecast demand</td>
+                        <td>Tran Chi Dung</td>
+                        <td>14/01/2022</td>
+                        <td>14/07/2022</td>
+                        <td>30%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

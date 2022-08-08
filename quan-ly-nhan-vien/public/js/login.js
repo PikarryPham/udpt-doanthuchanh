@@ -1,6 +1,7 @@
 // Selector
 const passwordToggle = document.querySelector('.toggle-password')
-const passwordInput =  document.querySelector('#password')
+const passwordInput = document.querySelector('#password')
+const usernameInput = document.querySelector('#username')
 const errorMessage = document.querySelector('.error-message')
 const loginForm = document.querySelector('.form')
 
@@ -18,15 +19,19 @@ function togglePassword() {
     }
 }
 
-function onLogin(event) {
+async function onLogin(event) {
     event.preventDefault();
 
-    if (passwordInput.value.length < 8) {
-        errorMessage.innerHTML = 'The password must have at least 8 characters'
+    if (passwordInput.value.length < 4) {
+        errorMessage.innerHTML = 'The password must have at least 4 characters'
+        errorMessage.style.visibility = 'visible'
+    } else if (usernameInput.value.length == 0) {
+        errorMessage.innerHTML = 'The username is required'
         errorMessage.style.visibility = 'visible'
     } else {
         errorMessage.style.visibility = 'hidden'
         errorMessage.innerHTML = 'Empty'
+
         event.target.submit()
     }
-} 
+}

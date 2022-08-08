@@ -120,7 +120,14 @@ function edit_ot_request(id, status){
 
 function delete_an_request_ot(id){
     var url_get = `${api_uc002}/destroy_request_ot/${id}`;
-    console.log(url_get);
+    if (document.getElementById("NOTIFICATION_FLAG").value == "1"){
+        var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+        var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+        var email_employee  = document.getElementById('EMPLOYEE_EMAIL').value;
+        var id_OTRequest    = id;
+        var action2         = "Xóa";
+        send_mail_employee(id_employee, name_employee, email_employee, id_OTRequest, action2, "Không thể cung cấp nội dung khi đã xóa");
+    }
     $.ajax({
         type: "GET",
         url: url_get,
@@ -176,9 +183,23 @@ formRequest.addEventListener('submit', function (e) {
                         if (status == "Pending"){
                             edit_ot_request(response.data["ROT_ID"], "Pending");
                             showNotification("Submit successfully", "Congratulations! You submit the OT request successfully. You can go back to main to see the request.");
+                            var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+                            var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+                            var name_manager    = document.getElementById('MANAGER_NAME').value;
+                            var email_manager   = document.getElementById('MANAGER_EMAIL').value;
+                            send_mail_manager(id_employee, name_employee, name_manager, email_manager);
                         }else{
                             edit_ot_request(response.data["ROT_ID"], "Draft");
                             showNotification("save successfully", "Congratulations! You save the OT request successfully. You can go back to main to see the request.");
+                        }
+                        if (document.getElementById("NOTIFICATION_FLAG").value == "1"){
+                            var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+                            var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+                            var email_employee  = document.getElementById('EMPLOYEE_EMAIL').value;
+                            var id_OTRequest    = document.getElementById('OTRequest_ID').value;
+                            var action1         = document.getElementById('STATUS_REQUEST').value;
+                            var action2         = "Tạo mới"
+                            send_mail_employee(id_employee, name_employee, email_employee, response.data["ROT_ID"], action2, get_content_ot_request(action1));
                         }
                     }
                 }
@@ -192,10 +213,25 @@ formRequest.addEventListener('submit', function (e) {
                 dataType: "json",
                 success: function (response) {
                     if (new_data.STATUS == "Draft"){
+                        var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+                        var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+                        var name_manager    = document.getElementById('MANAGER_NAME').value;
+                        var email_manager   = document.getElementById('MANAGER_EMAIL').value;
+                        send_mail_manager(id_employee, name_employee, name_manager, email_manager);
                         showNotification("Submit successfully", "Congratulations! You submit the OT request successfully. You can go back to main to see the request.");
                     }else{
                         showNotification("save successfully", "Congratulations! You save the OT request successfully. You can go back to main to see the request.");
                     }
+
+                    var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+                    var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+                    var email_employee  = document.getElementById('EMPLOYEE_EMAIL').value;
+                    var id_OTRequest    = document.getElementById('OTRequest_ID').value;
+                    var action1         = document.getElementById('STATUS_REQUEST').value;
+                    var action2         = "Chỉnh sửa"
+                    var OTRequest_ID    = document.getElementById('OTRequest_ID').value;
+
+                    send_mail_employee(id_employee, name_employee, email_employee, OTRequest_ID, action2, get_content_ot_request(action1));
 
                     edit_ot_request(new_data.ROT_ID, new_data.STATUS);
                     generate_data_from_request(false);
@@ -225,4 +261,13 @@ document.getElementById('model-unsubmit-request').addEventListener('submit', fun
             showNotification("Unsubmit successfully", "Congratulations! You have unsubmit request successfully. We have emailed to your appraiser about your unsubmission.")
         }
     });
+    if (document.getElementById("NOTIFICATION_FLAG").value == "1"){
+        var id_employee     = document.getElementById('EMPLOYEE_ID').value;
+        var name_employee   = document.getElementById('EMPLOYEE_NAME').value;
+        var email_employee  = document.getElementById('EMPLOYEE_EMAIL').value;
+        var id_OTRequest    = document.getElementById('OTRequest_ID').value;
+        var action1         = 'Canceled';
+        var action2         = "Hủy đăng kí";
+        send_mail_employee(id_employee, name_employee, email_employee, id_OTRequest, action2, get_content_ot_request(action1));
+    }
 })
