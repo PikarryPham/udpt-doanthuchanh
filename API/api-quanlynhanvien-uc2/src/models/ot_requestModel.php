@@ -35,7 +35,7 @@ class ot_requestModel extends ConnectDB{
         if ($this->check_isset('request ot','ROT_ID',$id,'EMPLOYEE_ID',$EMPLOYEE_ID) == 0){
             return false;
         }else{
-            $sql = "UPDATE `request ot` SET `UNSUBMIT_REASON` = '$UNSUBMIT_REASON' ,`UPDATE_DATE`='$UPDATE_DATE', `STATUS` = '$status' WHERE `ROT_ID` = '$id' AND `EMPLOYEE_ID` = '$EMPLOYEE_ID'";
+            $sql = "UPDATE `request ot` SET `UNSUBMIT_REASON` = '$UNSUBMIT_REASON' , `UPDATE_DATE`='$UPDATE_DATE', `STATUS` = '$status' WHERE `ROT_ID` = '$id' AND `EMPLOYEE_ID` = '$EMPLOYEE_ID'";
             mysqli_query($this->connection, $sql);
             return true;
         }

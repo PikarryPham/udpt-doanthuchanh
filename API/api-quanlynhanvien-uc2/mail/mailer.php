@@ -29,15 +29,15 @@ function mail_send_as_content($email,$name,$title,$content){
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'changpham1026@gmail.com';                     //SMTP username
-        $mail->Password   = 'bwechddwbnxuedqz';                          //SMTP password
+        $mail->Username   = 'nhanvienquanly007@gmail.com';                     //SMTP username
+        $mail->Password   = 'jnbkivlkznklgphc';                          //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = "tls";
         $mail->CharSet = "UTF-8";
 
         //Recipients
-        $mail->setFrom('pngttrang@gmail.com', 'Trang Phạm');
+        $mail->setFrom('nhanvienquanly007@gmail.com', 'Quan ly nhan vien');
         $mail->addAddress($email, $name);     //Add a recipient
 
         //Content
@@ -50,3 +50,4 @@ function mail_send_as_content($email,$name,$title,$content){
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
