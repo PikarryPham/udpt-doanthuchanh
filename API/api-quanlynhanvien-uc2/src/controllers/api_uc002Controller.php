@@ -301,8 +301,27 @@
             }
         }
         // Gửi mail
-        public function send_mail(){
+        public function send_mail_manager(){
+            $name_employee  = $_POST["name_employee"];
+            $name_manager    = $_POST["name_manager"];
+            $id_employee    = $_POST["id_employee"];
+            $email_manager  = $_POST["email_manager"];
+            $title          = "Xác nhận phê duyệt nhân viên $name_employee";
+            $content        = "Nhân viên $name_employee với ID là: $id_employee đã tạo thành công 1 OT Request và vẫn đang chờ bạn phê duyệt";
             include "./mail/mailer.php";
-            mail_send_as_content("cong.pttc@gmail.com","cong","hello deom", "content nef");
+            mail_send_as_content($email_manager,$name_manager, $title, $content);
+        }
+        // Gửi mail
+        public function send_mail_employee(){
+            $name_employee  = $_POST["name_employee"];
+            $email_employee = $_POST["email_employee"];
+            $id_employee    = $_POST["id_employee"];
+            $id_OTRequest   = $_POST["id_OTRequest"];
+            $action         = $_POST["action"];
+            $content_ot_req = $_POST["content"];
+            $title          = "Nhân viên $name_employee với ID là: $id_employee đã $action 1 OT Request với ID là: $id_OTRequest";
+            $content        = "Chào $name_employee, bạn đã $action 1 OT Request với ID là: $id_OTRequest <br> Nội dung OT Request là: <br> $content_ot_req";
+            include "./mail/mailer.php";
+            mail_send_as_content($email_employee, $name_employee, $title, $content);
         }
     }
