@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2022 at 06:14 PM
+-- Generation Time: Aug 10, 2022 at 05:02 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -129,19 +129,20 @@ CREATE TABLE `leave type history` (
   `LEAVE_TYPEID` int(11) NOT NULL COMMENT 'Chứa ID của loại nghỉ phép. Tham chiếu từ bảng Leave Type',
   `USED_DAY` int(11) NOT NULL DEFAULT 0 COMMENT 'Tổng số ngày nghỉ mà nhân viên đó đã sử dụng cho loại nghỉ phép đó',
   `REMAINING_DAY` int(11) NOT NULL DEFAULT 16 COMMENT 'Tổng số ngày nghỉ mà nhân viên còn của loại nghỉ phép đó',
-  `COMMENT` varchar(5000) COLLATE utf8mb4_vietnamese_ci NOT NULL COMMENT 'Bình luận của nhân viên'
+  `COMMENT` varchar(5000) COLLATE utf8mb4_vietnamese_ci NOT NULL COMMENT 'Bình luận của nhân viên',
+  `CREATE_DATE` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Thời gian của một thông tin nghỉ phép tương ứng vs 1 loại nghỉ phép của 1 nhân viên. Cột này được dùng để lọc số ngày nghỉ phép còn lại và đã sử dụng cho từng loại leave type của từng nhân viên theo năm'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Dumping data for table `leave type history`
 --
 
-INSERT INTO `leave type history` (`EMPLOYEE_ID`, `LEAVE_TYPEID`, `USED_DAY`, `REMAINING_DAY`, `COMMENT`) VALUES
-(9, 4, 4, 26, 'Nghỉ vì bị bệnh phải nhập viện'),
-(14, 1, 2, 14, ''),
-(14, 3, 1, 7, ''),
-(14, 4, 1, 29, ''),
-(15, 2, 2, 4, '');
+INSERT INTO `leave type history` (`EMPLOYEE_ID`, `LEAVE_TYPEID`, `USED_DAY`, `REMAINING_DAY`, `COMMENT`, `CREATE_DATE`) VALUES
+(9, 4, 4, 26, 'Nghỉ vì bị bệnh phải nhập viện', '2022-08-10 09:50:01'),
+(14, 1, 2, 14, '', '2022-08-10 09:50:01'),
+(14, 3, 1, 7, '', '2022-08-10 09:50:01'),
+(14, 4, 1, 29, '', '2022-08-10 09:50:01'),
+(15, 2, 2, 4, '', '2022-08-10 09:50:01');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,7 @@ ALTER TABLE `employee`
 -- Indexes for table `leave type history`
 --
 ALTER TABLE `leave type history`
-  ADD PRIMARY KEY (`EMPLOYEE_ID`,`LEAVE_TYPEID`),
+  ADD PRIMARY KEY (`EMPLOYEE_ID`,`LEAVE_TYPEID`,`CREATE_DATE`) USING BTREE,
   ADD KEY `FK_Leave_Type_Ref` (`LEAVE_TYPEID`);
 
 --
