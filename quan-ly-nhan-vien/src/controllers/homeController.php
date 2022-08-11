@@ -10,10 +10,27 @@
         public function pa_manage(){
             $this->middleware();
             $this->view("main","main/pa_manage",[]);
+
         }public function leave_manage(){
             $this->middleware();
             $this->view("main","main/leave_manage",[]);
         }
+
+        public function check_in_check_out(){
+            $this->middleware();
+            $this->view("main","UC001/index",[]);
+        }
+
+        public function document(){
+            // $uc16 = new uc016Controller();
+            // $uc16->getDocument();
+            // $uc16->index();
+            $model = $this->model('document');
+            $data = $model->getAllDocument();
+            //$this->middleware();
+            $this->view("main","UC016/index",$data);
+        }
+
         public function middleware(){
             if (! isset($_SESSION['id'])){
                 header("Location: " . $this->host_name);

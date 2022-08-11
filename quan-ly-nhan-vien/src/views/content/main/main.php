@@ -3,7 +3,7 @@
 <div class="content">
     <a href="#" class="js-wfh-manage js-wfh-manage-er">WFH management</a>
     <a href="<?= $host_name ?>/home/pa_manage">PA management</a>
-    <a href="#">time-Sheet</a>
+    <a href="<?= $host_name ?>/home/document">time-Sheet</a>
     <a href="<?= $host_name ?>/uc002/index">oT management</a>
     <a href="<?= $host_name ?>/home/leave_manage">leave management</a>
     <a href="#">CV management</a>
@@ -12,7 +12,7 @@
     <a href="#">company news</a>
     <a href="#">company documents</a>
     <a href="#">employee management</a>
-    <a href="#">checkIn/CheckOut</a>
+    <a href="<?= $host_name ?>/home/check_in_check_out">checkIn/CheckOut</a>
 </div>
 
 <div class="modal js-modal">
