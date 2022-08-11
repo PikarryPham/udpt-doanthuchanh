@@ -56,17 +56,26 @@ def getDetailOneDocument(document_id):
 @app.route('/insert-document', methods=['POST'])
 def insertDocument():
   #passing HTML form data into python variable
-  categories = request.form['categories']
-  content = request.form['content']
-  manager_id = request.form['manager_id']
-  title = request.form['title']
+  # categories = request.form['categories']
+  # content = request.form['content']
+  # manager_id = request.form['manager_id']
+  # title = request.form['title']
+
+  title = request.form.get('title')
+  categories= request.form.get('categories')
+  content= request.form.get('content')
+  manager_id= request.form.get('managerid')
   date = str(datetime.now())
 
   cur = mysql.connection.cursor()
 
   cur.execute('SELECT max(document_id) from document_post');
 
-  document_id = cur.fetchone()
+  if (cur.fetchone()[0] is not None):
+    document_id = cur.fetchone()[0] + 1
+    print(document_id)
+  else:
+    document_id = 1
 
   cur.execute('INSERT INTO document_post VALUES (% s, % s, % s, % s,% s,% s, % s)', 
   (document_id, manager_id, title, content, date, date, categories))
@@ -103,13 +112,19 @@ def insertMediaDocument():
 
   return 'Insert Media Data Successfully!!!'
 
-@app.route('/delete-document/<document_id>', methods=['POST'])
+@app.route('/delete-document/<document_id>', methods=['GET'])
 def deleteDocument(document_id):
+
   cur = mysql.connection.cursor()
 
-  cur.execute('''Delete from media_related_contents where document_id = %s''',(document_id))
+  query = 'Delete from media_related_contents where document_id = ' + document_id
+  print(query)
 
-  cur.execute('''Delete from document_post where document_id = %s''',(document_id))
+  cur.execute(query)
+
+  query = 'Delete from document_post where document_id = ' + document_id
+
+  cur.execute(query)
 
   mysql.connection.commit()
 
@@ -142,50 +157,6 @@ def updateDocument():
   cur.close()
 
   return 'Update Data Successfully!!!'
-# @app.route('/insert-timesheet', methods=['GET', 'POST'])
-
-# def insertTimeSheet():
-#     if request.method == "POST":
-#   cursor = mysql.connection.cursor()
-  
-#         cursor.execute (''' INSERT INTO info_table VALUES(%s,%s)''',(name,age))
-
-#         mysql.connection.commit()
-
-#         cursor.close()
-
-#         return f”Done!!!”
-
-# @app.route('/update-timesheet', methods=['POST'])
-
-# def updateTimeSheet():
-#     if request.method == "POST":
-#   cursor = mysql.connection.cursor()
-  
-#        cursor.execute("UPDATE accounts SET Q001 = %s, Q002 = %s WHERE id = %s",(Q001, Q002, session['id'],))
-
-
-#         mysql.connection.commit()
-
-#         cursor.close()
-
-#         return f”Done!!!”
-
-# @app.route('/delete-timesheet', methods=['GET', 'POST'])
-
-# def insertTimeSheet():
-#     if request.method == "POST":
-#   cursor = mysql.connection.cursor()
-      
-#        cursor.execute("DELETE FROM %s WHERE id = %s", (table, id))
-
-
-#         mysql.connection.commit()
-
-#         cursor.close()
-
-#         return f”Done!!!”
-
 
 if __name__ == '__main__':
     app.run()
