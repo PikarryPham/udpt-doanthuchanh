@@ -3,7 +3,7 @@
 <div class="content">
     <a href="#" class="js-wfh-manage js-wfh-manage-er">WFH management</a>
     <a href="<?= $host_name ?>/home/pa_manage">PA management</a>
-    <a href="<?= $host_name ?>/home/document">time-Sheet</a>
+    <a href="<?= $host_name ?>/home/document">Document</a>
     <a href="<?= $host_name ?>/uc002/index">oT management</a>
     <a href="<?= $host_name ?>/home/leave_manage">leave management</a>
     <a href="#">CV management</a>
