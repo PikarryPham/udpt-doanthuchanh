@@ -4,7 +4,7 @@
         private $hostname = 'localhost';
         private $user = 'root';
         private $password = '';
-        private $nameDB = 'qlnv';
+        private $nameDB = 'main_service';
         
         // kết nối với DB
         function __construct(){
