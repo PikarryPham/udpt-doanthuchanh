@@ -108,11 +108,13 @@ font-family: 'Rubik', sans-serif;
 }
 
 .content img {
-    margin: 0 150px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .content .overdue {
-    margin: 0 130px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .modal-error {

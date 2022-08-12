@@ -487,67 +487,6 @@ font-family: 'Rubik', sans-serif;
     font-size: 23px;
 }
 
-/* Edit error */
-.modal-edit-error {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 228px;
-    background: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.modal-edit-error .modal-contain {
-    background-color: var(--white);
-    width: 400px;
-    height: 170px;
-    position: relative;
-    max-width: calc(100% - 32px);
-    animation: modalFaceIn ease .5s;
-    border-radius: 10px;
-}
-
-.modal-edit-error.open {
-    display: flex;
-}
-
-.modal-edit-error .modal-content {
-    padding: 12px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.modal-edit-error .modal-content i{
-    margin-top: 50px;
-    margin-bottom: 15px;
-    font-size: 30px;
-    color: red;
-}
-
-.modal-edit-error .modal-content p{
-    color: var(--dark-gray-80);
-}
-.modal-close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 16px;
-    cursor: pointer;
-    color: var(--dark-gray-50);
-}
-
-.modal-close i{
-    font-size: 24px;
-}
-
-.modal-close:hover {
-    color: var(--black);
-}
-
 /* Notification */
 .modal-unsubmit-success,
 .modal-delete-co-all,
@@ -755,4 +694,65 @@ font-family: 'Rubik', sans-serif;
     color: var(--white);
     transition: ease .2s;
     cursor: pointer;
+}
+
+/* Edit error */
+.modal-edit-error {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 228px;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-edit-error .modal-contain {
+    background-color: var(--white);
+    width: 400px;
+    height: 170px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalFaceIn ease .5s;
+    border-radius: 10px;
+}
+
+.modal-edit-error.open {
+    display: flex;
+}
+
+.modal-edit-error .modal-content {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.modal-edit-error .modal-content i{
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    color: red;
+}
+
+.modal-edit-error .modal-content p{
+    color: var(--dark-gray-80);
+}
+.modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 16px;
+    cursor: pointer;
+    color: var(--dark-gray-50);
+}
+
+.modal-close i{
+    font-size: 24px;
+}
+
+.modal-close:hover {
+    color: var(--black);
 }
