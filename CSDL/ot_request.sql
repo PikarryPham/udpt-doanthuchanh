@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2022 at 02:52 PM
+-- Generation Time: Aug 12, 2022 at 06:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,8 +32,8 @@ CREATE TABLE `request ot` (
   `EMPLOYEE_ID` int(11) NOT NULL COMMENT 'Chứa ID của nhân viên tạo ra request OT',
   `MANAGER_ID` int(11) NOT NULL COMMENT 'Chứa ID của nhân viên quản lý cấp 1 của nhân viên tạo ra request',
   `REASON` varchar(5000) COLLATE utf8mb4_vietnamese_ci NOT NULL COMMENT 'Lý do nhân viên muốn làm việc OT',
-  `CREATE_DATE` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT 'Thời gian tạo request OT',
-  `UPDATE_DATE` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT 'Thời gian cập nhật thông tin của request OT gần nhất. Mặc định là 1970-01-01 00:00:00, khi được cập nhật lại, thời gian này phải >= CREATE_DATE',
+  `CREATE_DATE` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Thời gian tạo request OT',
+  `UPDATE_DATE` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Thời gian cập nhật thông tin của request OT gần nhất. Mặc định là 1970-01-01 00:00:00, khi được cập nhật lại, thời gian này phải >= CREATE_DATE',
   `STATUS` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT 'Draft' COMMENT 'Trạng thái xử lý của request OT. Gồm 1 trong 5 trạng thái: Draft, Pending, Approved, Rejected, Cancelled. Được điền tự động bởi hệ thống, nhân viên không thể sửa.',
   `MANAGER_COMMENT` varchar(5000) COLLATE utf8mb4_vietnamese_ci DEFAULT 'None' COMMENT 'Ghi lí do quản lý cấp 1 từ chối request OT. Nếu trường này có thông tin, trạng thái của request phải là "Rejected", mặc định là None',
   `START_DATE` date NOT NULL DEFAULT '1970-01-01' COMMENT 'Ngày bắt đầu dự kiến làm việc OT',
@@ -48,14 +48,32 @@ CREATE TABLE `request ot` (
 --
 
 INSERT INTO `request ot` (`ROT_ID`, `EMPLOYEE_ID`, `MANAGER_ID`, `REASON`, `CREATE_DATE`, `UPDATE_DATE`, `STATUS`, `MANAGER_COMMENT`, `START_DATE`, `ESTIMATED_HOURS`, `END_DATE`, `UNSUBMIT_REASON`, `NOTIFICATION_FLAG`) VALUES
-(1, 8, 6, 'Cần hoàn thành gấp', '2022-07-11 17:40:03', '2022-08-05 07:47:16', 'Pending', '', '2022-08-05', '4', '2022-08-31', '', 0),
-(2, 15, 6, 'Làm không kịp nên tăng ca để kịp tiến độ dự án mới', '2022-07-17 12:08:03', '2022-07-18 12:08:03', 'Pending', 'None', '2022-07-16', '4', '2022-07-16', 'None', 1),
-(3, 14, 6, 'Anh có việc gia đình cần nghỉ 1 tuần nên anh cần tăng ca để làm bù để kịp tiến độ dự án.', '2022-07-15 12:12:35', '2022-07-15 13:12:35', 'Approved', 'None', '2022-08-01', '6', '2022-08-03', 'None', 1),
-(5, 8, 6, 'Em xin OT để tuần sau em nghỉ đi chơi với người yêu', '2022-07-16 12:14:54', '2022-07-17 15:25:54', 'Canceled', 'None', '2022-08-15', '4', '2022-08-18', 'Lí do em ghi còn chưa thật sự hợp lí, em xin được thu hồi request để gửi lại request mới', 0),
-(6, 8, 6, 'Test OT request lần 2', '1970-01-01 00:00:00', '2022-08-05 07:48:40', 'Draft', '', '2022-08-05', '4', '2022-08-07', '', 0),
-(7, 8, 6, 'Test OT request lần 3 để có phân trang', '1970-01-01 00:00:00', '2022-08-05 07:49:33', 'Canceled', '', '2022-09-05', '6', '2022-10-07', 'Không thích oT nữa :)', 0),
-(8, 8, 6, 'Ê điền lí do vào', '1970-01-01 00:00:00', '2022-08-05 07:51:20', 'Draft', '', '2022-10-15', '5', '2022-10-17', '', 0),
-(9, 8, 6, 'TUI CẦN OT ĐỂ T9 NGHỈ 2 TUẦN', '1970-01-01 00:00:00', '2022-08-05 07:51:53', 'Pending', '', '2022-08-24', '8', '2022-08-25', '', 0);
+(2, 15, 6, 'Làm không kịp nên tăng ca để kịp tiến độ dự án mới', '2022-07-17 05:08:03', '2022-07-18 05:08:03', 'Pending', 'None', '2022-07-16', '4', '2022-07-16', 'None', 1),
+(3, 14, 6, 'Anh có việc gia đình cần nghỉ 1 tuần nên anh cần tăng ca để làm bù để kịp tiến độ dự án.', '2022-07-15 05:12:35', '2022-07-15 06:12:35', 'Approved', 'None', '2022-08-01', '6', '2022-08-03', 'None', 1),
+(4, 8, 6, 'Dự án Alola cần bàn giao cho khách hàng gấp vào cuối tháng 8 nên em cần OT để kịp tiến độ', '2022-07-17 05:14:54', '2029-07-22 05:50:04', 'Canceled', '', '2022-07-23', '13', '2022-07-27', 'em Chịu rồi anh', 1),
+(22, 8, 6, 'bản vip', '2022-07-29 01:32:02', '2029-07-21 18:32:02', 'Canceled', '', '2022-07-29', '0', '2022-07-29', 'ádasdasd', 0),
+(23, 8, 6, 'demo post', '2022-07-29 01:33:09', '2029-07-21 18:33:09', 'Canceled', '', '2022-07-29', '2', '2022-07-29', 'chịu thôi anh zai', 0),
+(26, 8, 6, 'game gì đó', '2022-07-29 01:41:59', '2029-07-21 18:41:59', 'Canceled', '', '2022-07-29', '2', '2022-07-29', 'trở về nè', 0),
+(27, 8, 6, 'một con bọ cute', '2022-07-29 01:45:23', '2029-07-21 18:50:19', 'Canceled', '', '2022-07-29', '2', '2022-07-29', 'sadasdas', 0),
+(29, 8, 6, 'gi ddos ', '2022-07-29 02:21:41', '2029-07-21 19:21:41', 'Pending', '', '2022-07-29', '2', '2022-07-29', '', 0),
+(30, 8, 6, 'gi ddos ', '2022-07-29 02:21:49', '2029-07-21 19:21:49', 'Pending', '', '2022-07-29', '2', '2022-07-29', '', 0),
+(31, 8, 6, 'asdasdasdas', '2022-07-29 02:24:41', '2029-07-21 19:24:48', 'Pending', '', '2022-07-29', '2', '2022-07-29', '', 0),
+(32, 8, 6, 'asdasdasd', '2022-07-29 02:24:56', '2029-07-21 19:24:57', 'Pending', '', '2022-07-29', '0', '2022-07-29', '', 0),
+(33, 8, 6, 'demo ?', '2022-07-29 02:25:08', '2029-07-21 19:25:08', 'Pending', '', '2022-07-29', '2', '2022-07-29', '', 0),
+(34, 8, 6, 'demo nao', '2022-07-29 02:25:30', '2029-07-21 19:25:30', 'Pending', '', '2022-07-29', '2', '2022-07-29', '', 0),
+(35, 8, 6, 'demo nhe', '2022-07-29 02:27:39', '2029-07-21 19:27:39', 'Draft', '', '2022-07-29', '0', '2022-07-29', '', 0),
+(36, 8, 6, 'demo cai nhe', '2022-07-29 02:28:00', '2029-07-21 19:28:00', 'Draft', '', '2022-07-29', '0', '2022-07-29', '', 0),
+(37, 8, 6, 'demo cai nhe', '2022-07-29 02:28:02', '2029-07-21 19:28:02', 'Pending', '', '2022-07-29', '0', '2022-07-29', '', 0),
+(38, 8, 6, 'aHIHI AHIHI', '2022-07-29 02:28:36', '2022-08-08 00:42:37', 'Pending', '', '2022-08-08', '6', '2022-08-17', '', 1),
+(39, 8, 6, 'Hehehebehehehehehe', '2022-07-29 02:33:03', '2022-08-07 01:20:50', 'Canceled', '', '2022-07-31', '3', '2022-12-31', 'Không muốn làm nữa thì nghỉ', 0),
+(41, 8, 6, 'mình sửa lại xíu thôi', '2022-07-29 02:34:36', '2029-07-21 20:36:48', 'Canceled', '', '2022-07-28', '5', '2022-08-11', 'Không muốn OT nữa cực quá', 0),
+(42, 8, 6, 'day là bản rác ?\r\nkhông phải', '2022-07-29 02:36:59', '2029-07-21 19:37:09', 'Canceled', '', '2022-07-29', '3', '2022-07-29', 'sorry em nhầm', 0),
+(44, 8, 6, 'Chay deadline dis sml ', '2022-07-29 13:48:21', '2022-07-30 04:09:40', 'Canceled', '', '2022-08-10', '3', '2022-08-11', 'Không thích làm nữa', 0),
+(45, 8, 6, 'mhu mhu', '2022-07-30 16:11:41', '2022-08-06 18:10:11', 'Pending', '', '2022-07-31', '4', '2022-08-07', '', 1),
+(46, 6, 4, 'OT THÊM MỘT NGÀY ĐỂ MỐT ĐI CHƠI', '2022-07-30 16:21:30', '2022-07-30 04:22:39', 'Pending', '', '2022-07-31', '1', '2022-07-31', '', 0),
+(47, 8, 6, 'Tui muốn OT để kiếm thêm tiền', '2022-07-31 09:49:05', '2022-07-30 23:37:24', 'Canceled', '', '2022-08-01', '4', '2022-08-02', 'Chán r k muốn làm nữa', 1),
+(48, 8, 6, 'Muốn OT vào tháng 12', '2022-07-31 11:40:22', '2022-07-30 23:40:41', 'Canceled', '', '2022-12-12', '4', '2022-12-13', 'Không muốn làm nữa thì nghỉ thôi', 1),
+(49, 8, 6, 'Tạo mới để test mail', '2022-08-08 00:39:35', '2022-08-07 19:45:18', 'Canceled', '', '2022-08-08', '7', '2022-08-10', 'Méo muốn làm nữa', 1);
 
 -- --------------------------------------------------------
 
@@ -75,25 +93,54 @@ CREATE TABLE `request ot detail` (
 --
 
 INSERT INTO `request ot detail` (`ROTDETAIL_ID`, `ROT_ID`, `DATE`, `HOUR`) VALUES
-(6, 5, '2022-08-15', '1'),
-(7, 5, '2022-08-16', '1'),
-(8, 5, '2022-08-17', '1'),
-(9, 5, '2022-08-18', '1'),
 (10, 2, '2022-07-16', '4'),
 (11, 3, '2022-08-01', '3'),
 (12, 3, '2022-08-02', '2'),
 (13, 3, '2022-08-03', '1'),
-(18, 1, '2022-08-05', '3'),
-(19, 1, '2022-08-31', '1'),
-(20, 6, '2022-08-05', '1'),
-(21, 6, '2022-08-07', '3'),
-(25, 7, '2022-09-05', '1'),
-(26, 7, '2022-10-05', '1'),
-(27, 7, '2022-10-07', '4'),
-(28, 8, '2022-10-15', '1'),
-(29, 8, '2022-10-17', '4'),
-(32, 9, '2022-08-24', '4'),
-(33, 9, '2022-08-25', '4');
+(23, 4, '2022-07-25', '4'),
+(24, 4, '2022-07-26', '4'),
+(25, 4, '2022-07-27', '4'),
+(26, 4, '2022-07-23', '1'),
+(56, 23, '2022-07-29', '1'),
+(57, 23, '2022-07-29', '1'),
+(58, 26, '2022-07-29', '1'),
+(59, 26, '2022-07-29', '1'),
+(60, 27, '2022-07-29', '1'),
+(61, 27, '2022-07-29', '1'),
+(65, 29, '2022-07-29', '1'),
+(66, 29, '2022-07-29', '1'),
+(67, 30, '2022-07-29', '1'),
+(68, 30, '2022-07-29', '1'),
+(73, 31, '2022-07-29', '1'),
+(74, 31, '2022-07-29', '1'),
+(75, 33, '2022-07-29', '1'),
+(76, 33, '2022-07-29', '1'),
+(77, 34, '2022-07-29', '1'),
+(78, 34, '2022-07-29', '1'),
+(100, 42, '2022-07-29', '1'),
+(101, 42, '2022-07-29', '1'),
+(102, 42, '2022-07-29', '1'),
+(165, 41, '2022-07-28', '1'),
+(166, 41, '2022-07-31', '1'),
+(167, 41, '2022-08-11', '3'),
+(370, 44, '2022-08-10', '1'),
+(371, 44, '2022-08-11', '2'),
+(401, 46, '2022-07-31', '1'),
+(410, 47, '2022-08-01', '3'),
+(411, 47, '2022-08-02', '1'),
+(416, 48, '2022-12-12', '3'),
+(417, 48, '2022-12-13', '1'),
+(418, 45, '2022-07-31', '2'),
+(419, 45, '2022-08-02', '1'),
+(420, 45, '2022-08-07', '1'),
+(421, 39, '2022-07-31', '1'),
+(422, 39, '2022-12-31', '1'),
+(423, 39, '2022-08-07', '1'),
+(433, 38, '2022-08-08', '1'),
+(434, 38, '2022-08-15', '1'),
+(435, 38, '2022-08-17', '4'),
+(436, 49, '2022-08-08', '4'),
+(437, 49, '2022-08-10', '3');
 
 --
 -- Indexes for dumped tables
@@ -122,13 +169,13 @@ ALTER TABLE `request ot detail`
 -- AUTO_INCREMENT for table `request ot`
 --
 ALTER TABLE `request ot`
-  MODIFY `ROT_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã của 1 request OT, là trường tự tăng', AUTO_INCREMENT=10;
+  MODIFY `ROT_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Mã của 1 request OT, là trường tự tăng', AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `request ot detail`
 --
 ALTER TABLE `request ot detail`
-  MODIFY `ROTDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết request OT. Một request OT có thể có nhiều thông tin chi tiết', AUTO_INCREMENT=34;
+  MODIFY `ROTDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết request OT. Một request OT có thể có nhiều thông tin chi tiết', AUTO_INCREMENT=438;
 
 --
 -- Constraints for dumped tables

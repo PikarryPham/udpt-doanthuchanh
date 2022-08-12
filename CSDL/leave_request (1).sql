@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2022 at 02:50 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: Aug 12, 2022 at 06:21 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,11 +48,13 @@ CREATE TABLE `request_leave` (
 --
 
 INSERT INTO `request_leave` (`RLEAVE_ID`, `EMPLOYEE_ID`, `MANAGER_ID`, `NUMBER_DAYS`, `LEAVE_TYPE`, `REASON`, `LEAVE_FROM`, `LEAVE_TO`, `CREATE_DATE`, `UPDATE_DATE`, `STATUS`, `MANAGER_COMMENT`, `UNSUBMIT_REASON`) VALUES
-(1, 1, 5, 2, 1, 'Sốt cao 40 độ', '2022-05-10 00:00:00', '2022-05-12 00:00:00', '2022-05-10 00:00:00', NULL, 'Approved', NULL, NULL),
-(2, 2, 5, 3, 1, 'Sốt cao 40 độ', '2022-06-10 00:00:00', '2022-06-13 00:00:00', '2022-06-09 00:00:00', NULL, 'Approved', NULL, NULL),
-(3, 3, 5, 1, 2, 'Đám cưới họ hàng', '2022-07-14 00:00:00', '2022-07-15 00:00:00', '2022-07-10 00:00:00', NULL, 'Approved', NULL, NULL),
-(4, 4, 5, 2, 1, 'Chăm sóc người nhà sốt cao 40 độ', '2022-04-04 00:00:00', '2022-04-06 00:00:00', '2022-04-04 00:00:00', NULL, 'Approved', NULL, NULL),
-(5, 7, 6, 5, 1, 'Sốt cao 38 độ', '2022-05-20 00:00:00', '2022-05-25 00:00:00', '2022-05-20 00:00:00', NULL, 'Rejected', 'Xạo', NULL);
+(1, 1, 5, 2, 1, 'Sốt cao 40 độ', '2022-05-10 00:00:00', '2022-05-12 00:00:00', '2022-08-10 11:49:06', '2022-08-10 11:51:06', 'Approved', NULL, NULL),
+(2, 2, 5, 3, 1, 'Sốt cao 40 độ', '2022-06-10 00:00:00', '2022-06-13 00:00:00', '2022-08-10 11:59:06', '2022-08-10 11:59:06', 'Approved', NULL, NULL),
+(5, 7, 6, 5, 1, 'Sốt cao 38 độ', '2022-05-20 00:00:00', '2022-05-25 00:00:00', '2022-08-10 11:59:06', '2022-08-10 11:59:06', 'Rejected', 'Xạo', NULL),
+(8, 8, 6, 1, 1, 'Nghỉ vì cần đi học thôi', '2021-07-15 00:00:00', '2021-07-15 00:00:00', '2021-07-10 12:00:00', NULL, 'Rejected', 'Đi học làm gì, đi làm đi!!!', NULL),
+(9, 8, 6, 2, 8, 'Nghỉ vì đám cưới với vợ 2 ngày 1 đêm ở LA', '2021-12-15 00:00:00', '2021-12-16 00:00:00', '2021-12-12 12:00:00', '2021-12-14 12:00:00', 'Accepted', NULL, NULL),
+(10, 8, 6, 2, 3, 'Nghỉ vì con sinh, là con gái ', '2022-08-11 20:00:00', '2022-08-12 23:55:00', '2022-08-11 21:01:00', '2022-08-11 21:30:00', 'Accepted', NULL, NULL),
+(11, 8, 6, 1, 2, 'Nghỉ vì đi du lịch cần giờ vs bạn gái', '2021-11-12 09:01:00', '2021-11-12 23:01:00', '2021-11-10 12:01:00', '2021-11-10 15:01:00', 'Cancelled', NULL, 'Chia tay rồi nên không đi chơi nữa');
 
 -- --------------------------------------------------------
 
@@ -77,14 +79,17 @@ INSERT INTO `request_leave_detail` (`RLEAVEDETAIL_ID`, `RLEAVE_ID`, `DATE`, `LEA
 (1, 2, '2022-06-10 00:00:00', 'All day'),
 (2, 2, '2022-06-11 00:00:00', 'All day'),
 (3, 2, '2022-06-12 00:00:00', 'All day'),
-(1, 3, '2022-07-14 00:00:00', 'Afternoon'),
-(1, 4, '2022-04-04 00:00:00', 'All day'),
-(2, 4, '2022-04-05 00:00:00', 'Morning'),
 (1, 5, '2022-05-20 00:00:00', 'All day'),
 (2, 5, '2022-05-21 00:00:00', 'All day'),
 (3, 5, '2022-05-22 00:00:00', 'All day'),
 (4, 5, '2022-05-23 00:00:00', 'All day'),
-(5, 5, '2022-05-24 00:00:00', 'All day');
+(5, 5, '2022-05-24 00:00:00', 'All day'),
+(1, 8, '2021-07-15 00:00:00', 'All day'),
+(1, 9, '2021-12-15 00:00:00', 'All day'),
+(2, 9, '2021-12-16 00:00:00', 'Morning'),
+(1, 10, '2022-08-11 20:00:00', 'All day'),
+(2, 10, '2022-08-12 23:55:00', 'All day'),
+(1, 11, '2021-11-12 09:01:00', 'All day');
 
 --
 -- Indexes for dumped tables
@@ -110,7 +115,7 @@ ALTER TABLE `request_leave_detail`
 -- AUTO_INCREMENT for table `request_leave`
 --
 ALTER TABLE `request_leave`
-  MODIFY `RLEAVE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `RLEAVE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

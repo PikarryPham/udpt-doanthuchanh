@@ -13,14 +13,14 @@ app = Flask(__name__)
 # MySQL configurations
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'pagoalform'
+app.config['MYSQL_DB'] = 'my_pa_goal'
 app.config['MYSQL_HOST'] = 'localhost'
 
-# Example call API: http://127.0.0.1:5000/api/uc0131_132/get-pa-goals
+#Example call API: http://127.0.0.1:5000/api/uc0131_132/get-pa-goals
 
 mysql.init_app(app)
-CORS(app)
 
+CORS(app)
 
 @app.route('/api/uc0131_132/get-pa-goals', methods=['POST', 'GET'])
 def get_pa_goals():
@@ -92,56 +92,53 @@ def get_pa_goals():
         status[i] = f"'{status[i]}'"
 
     # get the record
-    # print(len(status))
+    #print(len(status))
     print(deadline)
     print(last_update)
     try:
-        # neu truyen vao ca deadline vs last_update
+    # neu truyen vao ca deadline vs last_update
         if(len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
             query_string = "SELECT * FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC LIMIT {offset},{limit}"
-            # print(query_string)
+            #print(query_string)
         # neu chi truyen vao last_update
         elif (len(status) != 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
             query_string = "SELECT * FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + f" AND DEADLINE_PAGOAL >= {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC LIMIT {offset},{limit}"
-            # print(query_string)
-        # neu chi truyen vao deadline
-        elif (len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
+            #print(query_string)
+        elif (len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):  # neu chi truyen vao deadline
             query_string = "SELECT * FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC LIMIT {offset},{limit}"
-            # print(query_string)
+            #print(query_string)
         elif (len(status) != 0 and deadline == "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
             query_string = "SELECT * FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + f" AND DEADLINE_PAGOAL >= {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC LIMIT {offset},{limit}"
-            # print(query_string)
+            #print(query_string)
         elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
             # neu truyen vao ca deadline vs last_update và không truyền vào status (tức status == all)
             query_string = "SELECT * FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
-                f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC" + \
-                f" LIMIT {offset},{limit}"
-        # neu chi truyen vao last_update
-        elif (len(status) == 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
-            query_string = "SELECT * FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
-                f" AND DEADLINE_PAGOAL >= {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC" + \
-                f" LIMIT {offset},{limit}"
-        # neu chi truyen vao deadline
-        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
-            query_string = "SELECT * FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
-                f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC" + \
-                f" LIMIT {offset},{limit}"
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
+                    f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC" + \
+                    f" LIMIT {offset},{limit}"
+        elif (len(status) == 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):  # neu chi truyen vao last_update
+                query_string = "SELECT * FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
+                    f" AND DEADLINE_PAGOAL >= {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC" + \
+                    f" LIMIT {offset},{limit}"
+        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):  # neu chi truyen vao deadline
+                query_string = "SELECT * FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
+                    f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC" + \
+                    f" LIMIT {offset},{limit}"
         else:
-            query_string = "SELECT * FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
-                f" AND DEADLINE_PAGOAL >= {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC" + \
-                f" LIMIT {offset},{limit}"
+                query_string = "SELECT * FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
+                    f" AND DEADLINE_PAGOAL >= {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC" + \
+                    f" LIMIT {offset},{limit}"
     except:
         return "Status is not the array", 500
 
@@ -160,44 +157,40 @@ def get_pa_goals():
         if(len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
             query_string = "SELECT COUNT(*) FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC"
-            # print(query_string)
+            #print(query_string)
         # neu chi truyen vao last_update
         elif (len(status) != 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
             query_string = "SELECT COUNT(*) FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + f" AND DEADLINE_PAGOAL >= {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC"
-            # print(query_string)
-        # neu chi truyen vao deadline
-        elif (len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
+            #print(query_string)
+        elif (len(status) != 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):  # neu chi truyen vao deadline
             query_string = "SELECT COUNT(*) FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC"
-            # print(query_string)
-        elif (len(status) != 0 and deadline == "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
+            #print(query_string)
+        elif (len(status) != 0 and deadline == "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):  
             # nếu không truyền vào cả deadline và last_update
             query_string = "SELECT COUNT(*) FROM pa_goal "+" WHERE STATUS IN (" + ",".join(
                 status) + ")" + f" AND EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + f" AND DEADLINE_PAGOAL >= {deadline}" + f" ORDER BY LASTUPDATE_DATE DESC"
-        # neu truyen vao ca deadline vs last_update và không truyền vào status (tức status == all)
-        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
-            query_string = "SELECT COUNT(*) FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
-                f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC"
-        # neu chi truyen vao last_update
-        elif (len(status) == 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):
-            query_string = "SELECT COUNT(*) FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
-                f" AND DEADLINE_PAGOAL >= {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC"
-        # neu chi truyen vao deadline
-        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):
-            query_string = "SELECT COUNT(*) FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
-                f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC"
+        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"): # neu truyen vao ca deadline vs last_update và không truyền vào status (tức status == all)
+                query_string = "SELECT COUNT(*) FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
+                    f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC"
+        elif (len(status) == 0 and deadline == "'1970-01-01 00:00:00'" and last_update != "'1970-01-01 00:00:00'"):  # neu chi truyen vao last_update
+                query_string = "SELECT COUNT(*) FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND YEAR(LASTUPDATE_DATE) = {last_update}" + \
+                    f" AND DEADLINE_PAGOAL >= {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC"
+        elif (len(status) == 0 and deadline != "'1970-01-01 00:00:00'" and last_update == "'1970-01-01 00:00:00'"):  # neu chi truyen vao deadline
+                query_string = "SELECT COUNT(*) FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
+                    f" AND YEAR(DEADLINE_PAGOAL) = {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC"
         else:
-            query_string = "SELECT COUNT(*) FROM pa_goal " + \
-                f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
-                f" AND DEADLINE_PAGOAL >= {deadline}" + \
-                f" ORDER BY LASTUPDATE_DATE DESC"
+                query_string = "SELECT COUNT(*) FROM pa_goal " + \
+                    f" WHERE EMPLOYEECREATE_ID = {employee_id}" + f" AND LASTUPDATE_DATE >= {last_update}" + \
+                    f" AND DEADLINE_PAGOAL >= {deadline}" + \
+                    f" ORDER BY LASTUPDATE_DATE DESC"
     except:
         return "System error", 500
 
@@ -245,7 +238,7 @@ def unsubmit():
         pa_goal_id = body_request["pa_goal_id"]
     except:
         return "pa goal id not found", 400
-
+    
     try:
         cursor.execute('UPDATE pa_goal SET LASTUPDATE_DATE = %s, UNSUBMIT_REASON = %s, STATUS = %s  WHERE PAGOAL_ID = %s',
                        (date, reason, "Cancelled", pa_goal_id))
@@ -435,7 +428,7 @@ def add_goal():
     data = cursor.fetchall()
     dl_pagoal = data[0][0]
     print(dl_pagoal)
-
+    
     query_string_status = "SELECT STATUS FROM pa_goal " + \
         f" WHERE PAGOAL_ID = {pa_goal_id}"
     cursor.execute(query_string_status)
@@ -535,7 +528,7 @@ def edit_goal():
     data = cursor.fetchall()
     dl_pagoal = data[0][0]
     print(dl_pagoal)
-
+    
     query_string_status = "SELECT STATUS FROM pa_goal " + \
         f" WHERE PAGOAL_ID = {pa_goal_id}"
     cursor.execute(query_string_status)
@@ -601,7 +594,7 @@ def delete_goal():
     data = cursor.fetchall()
     dl_pagoal = data[0][0]
     print(dl_pagoal)
-
+    
     query_string_status = "SELECT STATUS FROM pa_goal " + \
         f" WHERE PAGOAL_ID = {pa_goal_id}"
     cursor.execute(query_string_status)

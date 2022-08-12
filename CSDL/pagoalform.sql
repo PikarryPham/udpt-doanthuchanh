@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2022 at 06:43 PM
+-- Generation Time: Aug 12, 2022 at 06:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,11 +45,15 @@ CREATE TABLE `pa_goal` (
 
 INSERT INTO `pa_goal` (`PAGOAL_ID`, `EMPLOYEECREATE_ID`, `MANAGER_ID`, `LASTUPDATE_DATE`, `STATUS`, `TOTAL_GOALS`, `UNSUBMIT_REASON`, `MANAGER_COMMENT`, `DEADLINE_PAGOAL`) VALUES
 (1, 8, 6, '2021-07-11 21:00:00', 'Approved', 3, NULL, NULL, '2021-07-30 23:00:00'),
-(2, 8, 6, '2022-07-28 22:23:34', 'Approved', 3, 'abc deft', 'abc1', '2022-08-30 16:45:23'),
-(3, 8, 6, '2023-09-17 19:37:34', 'Cancelled', 1, 'Không có đủ thời gian để hoàn thành mục tiêu', NULL, '2022-07-31 23:02:00'),
+(2, 8, 6, '2022-08-08 10:37:20', 'Pending', 1, '', '', '2022-08-10 16:45:23'),
+(3, 8, 6, '2019-09-17 19:37:34', 'Pending', 1, '', NULL, '2019-07-31 23:02:00'),
 (4, 15, 6, '2022-07-16 12:00:00', 'Draft', 1, NULL, NULL, '2022-07-31 23:00:00'),
 (5, 14, 6, '2022-07-28 22:23:01', 'Rejected', 0, NULL, 'Mục tiêu của PA này còn quá mơ hồ và quá rộng, chưa thực sự cụ thể', '2022-07-31 23:00:00'),
-(6, 14, 6, '2022-07-17 19:51:58', 'Pending', 1, NULL, NULL, '2022-07-31 23:00:00');
+(6, 14, 6, '2022-07-29 14:58:44', 'Rejected', 1, NULL, 'Khoong phu hop de lam', '2022-07-31 23:00:00'),
+(7, 8, 6, '2016-08-31 21:00:00', 'Pending', 2, NULL, NULL, '2016-08-31 23:00:00'),
+(9, 8, 6, '2020-09-02 08:45:20', 'Rejected', 1, NULL, 'Không hợp lệ', '2020-09-30 08:45:20'),
+(10, 8, 6, '2017-09-02 15:45:20', 'Approved', 1, NULL, '', '2017-09-30 23:45:20'),
+(11, 8, 6, '2018-07-25 17:55:00', 'Pending', 1, NULL, NULL, '2018-07-31 23:55:55');
 
 -- --------------------------------------------------------
 
@@ -76,14 +80,13 @@ INSERT INTO `pa_goal_detail` (`PAGOALDETAIL_ID`, `PAGOAL_ID`, `GOAL_NAME`, `ACTI
 (1, 1, 'Kiếm thêm được nhiều dự án hơn', '1. Mở rộng mối quan hệ\r\n2. Thuyết phục khách hàng\r\n3. Kiếm được khách hàng\r\n4. Chốt dự án + giá cả', '2021-11-30 23:00:00', '2021-11-01 09:00:00', 'Completed', 'Cần hoàn thành nhanh nhất có thể'),
 (2, 1, 'Hoàn thành chứng chỉ Oracle Certified Associate (OCA) trong thời gian càng sớm càng tốt', '- Học và sử dụng Oracle cơ bản\r\n- Tham gia khóa học luyện chứng chỉ Oracle Certified Associate (OCA)', '2021-09-01 23:00:00', '2021-08-01 00:00:00', 'Completed', 'Không có comment'),
 (3, 1, 'Hoàn thành chứng chỉ Specialist cho Oracle Database 12c', '- Học và sử dụng Oracle cơ bản\r\n- Tham gia khóa học luyện chứng chỉ Specialist cho Oracle Database 12c', '2021-11-01 00:00:00', '2021-10-28 00:00:00', 'Completed', 'Có thể hoàn thành cuối cùng vì chứng chỉ này không bắt buộc'),
-(4, 2, 'Hoàn thành dự án Alola trước đầu tháng 10 năm nay', '- Tập trung nhiều giờ hơn để hoàn thành dự án Alola\r\n- Có thể OT thêm vài ngày để thúc đẩy tiến độ dự án, mỗi ngày OT tầm 3-4 tiếng.', '2022-09-30 23:21:27', '1970-01-01 00:00:00', 'Processing', 'Ưu tiên mục tiêu này trước các mục tiêu khác'),
-(5, 2, 'Đạt được trình độ Tiếng Anh đầu ra ít nhất: IELTS 6.5 với kĩ năng Speaking >= 5.0 trước tháng 12/2022. Có thể quy đổi ra các chứng chỉ tương đương khác như TOEFL, TOEIC', '- Lập kế hoạch ôn luyện tiếng anh mỗi ngày ít nhất 30 phút\r\n- Luyện nói ở trung tâm VUS vào thứ 7 và CN ít nhất 1 tiếng rưỡi', '2022-11-30 23:00:00', '1970-01-01 00:00:00', 'Processing', 'Không được trễ tiến độ khi hoàn thành mục tiêu này'),
-(6, 2, 'Tham gia chương trình Tình nguyện mùa hè xanh vào tháng 8 chung với công ty để đạt KPI', 'Hoàn thành nhanh các công việc trên công ty', '2022-08-30 23:00:00', '1970-01-01 00:00:00', 'Processing', NULL),
-(7, 2, 'Hoàn thành chứng chỉ \"Chứng nhận trong quản trị doanh nghiệp CNTT\" ( Certified in the Governance of Enterprise IT – CGEIT)', 'Dành thời gian ôn luyện ít nhất mỗi ngày 30 phút - 1 tiếng. Vào thứ 7, CN thì ôn nhiều hơn (>=2 tiếng)', '2022-11-01 23:00:00', '1970-01-01 00:00:00', 'Processing', NULL),
-(8, 2, 'Hoàn thành chứng chỉ \"AWS Certified Solutions Architect – Associate\"', '- Hoàn thành nhanh các công việc trên công ty\r\n- Học các kiến thức AWS cơ bản \r\n- Dành thời gian luyện đề mỗi ngày ít nhất 1 tiếng', '2022-12-31 00:00:00', '1970-01-01 00:00:00', 'Processing', 'Ưu tiên hoàn thành chứng chỉ này hơn các chứng chỉ khác'),
 (9, 3, 'Hoàn thành chứng chỉ \"Certified in the Governance of Enterprise IT – CGEIT\" trước giữa tháng 8', '- Dành nhiều thời gian hơn để học và ôn luyện thi mỗi ngày ít nhất 2 tiếng\r\n- Giảm bớt thời gian học và làm việc xuống', '2022-08-15 00:00:00', '1970-01-01 00:00:00', 'Processing', 'Là mục tiêu ưu tiên'),
 (10, 4, 'Hoàn thành chứng chỉ \"Data Science Council of America (DASCA) Principle Data Scientist (PDS)\" trước cuối tháng 12', 'Tập trung nhiều giờ hơn để ôn và luyện thi chứng chỉ', '2022-12-31 23:00:00', '1970-01-01 00:00:00', 'Processing', NULL),
-(12, 6, 'Hoàn thành chứng chỉ AWS Certified Solutions Architect – Associate trước tháng 10 năm 2022', 'Dành thời gian ôn luyện ít nhất mỗi ngày 30 phút - 1 tiếng. Vào thứ 7, CN thì ôn nhiều hơn (>=2 tiếng)', '2022-09-30 23:59:00', '1970-01-01 00:00:00', 'Processing', NULL);
+(12, 6, 'Hoàn thành chứng chỉ AWS Certified Solutions Architect – Associate trước tháng 10 năm 2022', 'Dành thời gian ôn luyện ít nhất mỗi ngày 30 phút - 1 tiếng. Vào thứ 7, CN thì ôn nhiều hơn (>=2 tiếng)', '2022-09-30 23:59:00', '1970-01-01 00:00:00', 'Processing', NULL),
+(16, 7, 'Kiếm thêm được nhiều tiền', '1. Mở rộng mối quan hệ\r\n2. Thuyết phục khách hàng\r\n3. Kiếm được khách hang trả thêm tiền\r\n5. Nhận tiên hihi', '2016-11-21 21:00:00', '2016-10-31 21:00:00', 'Completed', 'Cần hoàn thành nhanh nhất có thể'),
+(17, 7, 'Mở quán ăn nhỏ gần trường', '1. Mở rộng mối quan hệ\r\n2. Thuyết phục khách hàng\r\n3. Kiếm được khách hang trả thêm tiền\r\n5. Nhận tiền hoa hồng hihi', '2016-11-21 21:00:00', '2016-10-31 21:00:00', 'Completed', 'Không có mức độ ưu tiên quá cao'),
+(18, 9, 'Học tiếng nhật đủ target', '1. Đặt mục tiêu đạt N3\r\n2. Đến trung tâm học 3 ngày/tuần\r\n3. Tự ôn ở nhà 5h/ngày', '2020-12-31 21:00:00', '2020-11-29 21:00:00', 'Completed', 'Có mức độ ưu tiên cao vì công ty cần'),
+(36, 2, 'Gì v mấy má ui', 'kHÔNG CÓ GÌ', '2022-08-30 00:00:00', '2022-08-01 00:00:00', 'Completed', 'KHUM CÓ GÌ');
 
 --
 -- Indexes for dumped tables
@@ -112,13 +115,13 @@ ALTER TABLE `pa_goal_detail`
 -- AUTO_INCREMENT for table `pa_goal`
 --
 ALTER TABLE `pa_goal`
-  MODIFY `PAGOAL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một PA form. Mỗi PA Form sẽ có nhiều thông tin mục tiêu ', AUTO_INCREMENT=7;
+  MODIFY `PAGOAL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một PA form. Mỗi PA Form sẽ có nhiều thông tin mục tiêu ', AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pa_goal_detail`
 --
 ALTER TABLE `pa_goal_detail`
-  MODIFY `PAGOALDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết mục tiêu (goal). Một form PA có thể có nhiều thông tin chi tiết mục tiêu', AUTO_INCREMENT=15;
+  MODIFY `PAGOALDETAIL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID của một chi tiết mục tiêu (goal). Một form PA có thể có nhiều thông tin chi tiết mục tiêu', AUTO_INCREMENT=37;
 
 --
 -- Constraints for dumped tables
