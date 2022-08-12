@@ -53,19 +53,19 @@ font-family: 'Rubik', sans-serif;
     --red: #EB5757;
 }
 
-.pending {
+.Pending {
     color: var(--dark-gray-60) !important;
 }
 
-.rejected {
+.Rejected {
     color: rgba(235, 87, 87, 0.7) !important;
 }
 
-.accepted {
+.Approved {
     color: #1C83C6 !important;
 }
 
-.draft {
+.Draft {
     color: var(--black) !important;
 }
 
