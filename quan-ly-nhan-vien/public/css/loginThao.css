@@ -85,6 +85,7 @@ font-family: 'Rubik', sans-serif;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 450px;
 }
 .input-label {
     font-size: 12px;
@@ -109,7 +110,7 @@ font-family: 'Rubik', sans-serif;
     color: var(--pink-light);
     font-size: 12px;
     padding: 6px 0;
-    visibility: hidden;
+    display: none;
 }
 
 .flex-row-space-between {

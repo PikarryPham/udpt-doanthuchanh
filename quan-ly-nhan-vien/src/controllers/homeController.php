@@ -3,15 +3,19 @@
         public function index(){
             $username = "";
             $password = "";
+            $isCorrectPassword = "empty";
 
-            if(isset($_COOKIE['username'])) {
-                $username=$_COOKIE['username'];
+            if (isset($_COOKIE['username'])) {
+                $username = $_COOKIE['username'];
             }
-            if(isset($_COOKIE['password'])) {
-                $password=$_COOKIE['password'];
+            if (isset($_COOKIE['password'])) {
+                $password = $_COOKIE['password'];
+            }
+            if (isset($_SESSION["isCorrectPassword"])) {
+                $isCorrectPassword = $_SESSION["isCorrectPassword"];
             }
 
-            $this->view("home","",[$username,$password]);
+            $this->view("home","UC006/login",[$username,$password,$isCorrectPassword]);
         }
         public function main_uc(){
             $this->middleware();
@@ -19,9 +23,22 @@
         }
         public function pa_manage(){
             $this->middleware();
+<<<<<<< HEAD
             $this->view("main","main/pa_manage",[]);
 
         }public function leave_manage(){
+=======
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/pa_manage",[]);
+            } 
+            
+        }
+        public function manage_request(){
+            $this->middleware();
+            $this->view("main","main/UC007/index",[]);
+        }
+        public function leave_manage(){
+>>>>>>> fad1cde (Complete login flow)
             $this->middleware();
             $this->view("main","main/leave_manage",[]);
         }
@@ -47,9 +64,18 @@
             }
         }
         public function sign_in(){
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            $rememberPass = $_POST["remember-me"];
+            $username = "";
+            $password = "";
+            $rememberPass = false;
+            if (isset($_POST["username"])) {
+                $username = $_POST["username"];
+            }
+            if (isset($_POST["password"])) {
+                $password = $_POST["password"];
+            }
+            if (isset($_POST["remember-me"])) {
+                $rememberPass = $_POST["remember-me"];
+            }
 
             $model = $this->model('authModel');
             
@@ -59,7 +85,8 @@
                     setcookie ("username", $username, time() + (86400 * 30), "/"); //save in 30 days
                     setcookie ("password", $password, time() + (86400 * 30), "/");
                 }
-            }else{
+            } else {
+                $_SESSION["isCorrectPassword"] = "wrongusernameorpassword";
                 header("Location: " . $this->host_name);
             }
         }

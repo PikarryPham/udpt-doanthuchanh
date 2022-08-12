@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="public/css/loginThao.css">
-    <link rel="stylesheet" href="public/css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://kit.fontawesome.com/2937f4af7e.js" crossorigin="anonymous"></script>
-    <title>Login</title>
+    <link rel="stylesheet" href="<?= $host_name ?>/public/css/loginThao.css">
+    <link rel="stylesheet" href="<?= $host_name ?>/public/css/navbar.css">
+    <title>Authorization</title>
 </head>
 <body>
 <nav>
     <div class="logo">
-        <img src="public/img/icon/logo.png" width="29px" height="25px" alt="">
-        <img src="public/img/icon/heading_logo.png" height="25px" alt="">
+        <img src="<?= $host_name ?>/public/img/icon/logo.png" width="29px" height="25px" alt="">
+        <img src="<?= $host_name ?>/public/img/icon/heading_logo.png" height="25px" alt="">
     </div>
     <div class="user">
-        <img src="public/img/image/avatar-fb.png" width="120px" height="120px" alt="">
+        <img src="<?= $host_name ?>/public/img/image/avatar-fb.png" width="120px" height="120px" alt="">
         <p class="user-title">job title</p>
         <p class="user-id">employee ID</p>
     </div>
@@ -30,61 +30,12 @@
         <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
     </div>
     <div class="login">
-        <a href="./login.html"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+        <a href="<?= $host_name ?>"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
     </div>
 </nav>
-<div class="content">
-    <div class="login-container">
-        <div class="logo">
-            <img src="public/img/icon/logo.png" width="55px" height="47.63px" alt="logo">
-            <img src="public/img/icon/heading_logo.png" width="210px" alt="heading-logo">
-        </div>
 
-        <div style="height: 20px"></div>
+<?php 
+    require_once "./src/views/content/" . $view . ".php"
+?>
 
-        <p class="title">Login</p>
-        <p class="sub-title" style="text-transform: none">Welcome back. Enter your credentials to access your account</p>
-
-        <div style="height: 31px"></div>
-
-        <div class="login-form">
-            <form class="form" action="home/sign_in" method="POST">
-                <div class="login-input">
-                    <div class="input-container">
-                        <label class="input-label" for="username">Username/EmployeeID</label>
-                        <?php
-                            echo "<input id='username' type='text' name='username' style='text-transform: none' placeholder='Enter your username' value='$data[0]'>"
-                        ?>
-                    </div>
-
-                    <div class="input-container">
-                        <label class="input-label" for="password">Password</label>
-                        <div class="input-password-container">
-                            <i class="fa-solid fa-eye toggle-password"></i>
-                            <?php
-                                echo "<input id='password' type='password' name='password' style='text-transform: none' placeholder='Enter your password' value='$data[1]'>"
-                            ?>
-                        </div>
-                        <p class="error-message" style="text-transform: none">Empty</p>
-                    </div>
-                </div>
-                <div class="flex-row-space-between">
-                    <div class="remember-checkbox">
-                        <input type="checkbox" name="remember-me" id="remember-me">
-                        <label class="input-label" for="remember-me">Remember Username</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot Password</a>
-                </div>
-
-                <div style="height: 15px"></div>
-
-                <div class="login-button">
-                    <button class="login" type="submit" name="btnSubmit">Login</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script src="public/js/login.js"></script>
 </body>
