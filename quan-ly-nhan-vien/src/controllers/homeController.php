@@ -23,24 +23,19 @@
         }
         public function pa_manage(){
             $this->middleware();
-<<<<<<< HEAD
             $this->view("main","main/pa_manage",[]);
 
-        }public function leave_manage(){
-=======
+        }
+        
+        public function leave_manage(){
             if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
                 $this->view("main","main/pa_manage",[]);
             } 
-            
         }
-        public function manage_request(){
+
+        public function manage_request() {
             $this->middleware();
             $this->view("main","main/UC007/index",[]);
-        }
-        public function leave_manage(){
->>>>>>> fad1cde (Complete login flow)
-            $this->middleware();
-            $this->view("main","main/leave_manage",[]);
         }
 
         public function check_in_check_out(){
