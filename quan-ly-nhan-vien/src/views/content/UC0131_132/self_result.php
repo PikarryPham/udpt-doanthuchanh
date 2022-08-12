@@ -12,9 +12,7 @@
             <a href="#" class="export">export PDF</a>
         </div>
         <div class="user-info">
-            <p class="dark-60"><?= $_SESSION['name'] ?> - id: <?= $_SESSION['id'] ?></p>
-            <p class="dark-60">software engineer - data department</p>
-            <p class="green">Appraiser: john willy</p>
+            <p class="dark-60">Fullname: <?= $_SESSION['name'] ?> - Employee ID: <?= $_SESSION['id'] ?></p>
         </div>
         <div class="button">
             <button id="submit-btn" class="btn btn-submit">submit</button>
