@@ -8,7 +8,7 @@
     <a href="<?= $host_name ?>/home/leave_manage">leave management</a>
     <a href="#">CV management</a>
     <a href="#">equipment/Account management</a>
-    <a href="#">requests management</a>
+    <a href="<?= $host_name ?>/uc007/index">requests management</a>
     <a href="#">company news</a>
     <a href="#">company documents</a>
     <a href="#">employee management</a>

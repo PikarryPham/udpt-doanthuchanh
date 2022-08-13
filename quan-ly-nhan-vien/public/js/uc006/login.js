@@ -24,10 +24,10 @@ async function onLogin(event) {
 
     if (passwordInput.value.length < 4) {
         errorMessage.innerHTML = 'The password must have at least 4 characters'
-        errorMessage.style.visibility = 'visible'
+        errorMessage.style.display = 'block'
     } else if (usernameInput.value.length == 0) {
         errorMessage.innerHTML = 'The username is required'
-        errorMessage.style.visibility = 'visible'
+        errorMessage.style.display = 'block'
     } else {
         errorMessage.style.visibility = 'hidden'
         errorMessage.innerHTML = 'Empty'

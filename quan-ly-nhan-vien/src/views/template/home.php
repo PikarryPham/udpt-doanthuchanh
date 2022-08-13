@@ -1,48 +1,41 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Đăng nhập</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="<?= $host_name ?>/public/css/login.css" rel="stylesheet" type="text/css"/>
-        <style>
-            
-        </style>
-    </head>
-    <body >
-        <header>
-            <div class="container">
-                <h1> Wellcome to manager employee</h1>
-            </div>
-        </header>
-        <main>
-            <div class="container">
-            <div class="login-form">
-                <form action="<?= $host_name ?>/home/sign_in" method="post">
-                    <h1>Đăng nhập vào website</h1>
-                    <div class="message"></div>
-                    <div class="input-box">
-                        <i ></i>
-                        <input name="username" type="text" placeholder="Nhập username">
-                    </div>
-                    <div class="input-box">
-                        <i ></i>
-                        <input name="password" type="password" placeholder="Nhập mật khẩu">
-                    </div>
-                    <div class="btn-box">
-                        <button type="submit">
-                            Đăng nhập
-                        </button>
-                    </div>
-                </form>
-            </div>
-            </div>
-        </main>
-        <footer>
-            <div class="container">
-            CÔNG TY MANAGER EMPLOYEE - Copyright © 2022 
-            </div>
-        </footer>
-    </body>
-</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./asset/img/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/2937f4af7e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?= $host_name ?>/public/css/loginThao.css">
+    <link rel="stylesheet" href="<?= $host_name ?>/public/css/navbar.css">
+    <title>Authorization</title>
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <img src="<?= $host_name ?>/public/img/icon/logo.png" width="29px" height="25px" alt="">
+        <img src="<?= $host_name ?>/public/img/icon/heading_logo.png" height="25px" alt="">
+    </div>
+    <div class="user">
+        <img src="<?= $host_name ?>/public/img/image/avatar-fb.png" width="120px" height="120px" alt="">
+        <p class="user-title">job title</p>
+        <p class="user-id">employee ID</p>
+    </div>
+    <div class="main-func">
+        <a href="index.html"><i class="fa-solid fa-house"></i>dash board</a>
+        <a href="#"><i class="fa-solid fa-circle-info"></i>information</a>
+        <a href="#"><i class="fa-solid fa-arrow-right-arrow-left"></i>transfer</a>
+        <a href="#"><i class="fa-solid fa-code-merge"></i>org, chart</a>
+        <a href="#"><i class="fa-solid fa-circle-user"></i>account settings</a>
+    </div>
+    <div class="login">
+        <a href="<?= $host_name ?>"><i class="fa-solid fa-right-to-bracket"></i><span>login</span></a>
+    </div>
+</nav>
+
+<?php 
+    require_once "./src/views/content/" . $view . ".php"
+?>
+
+</body>

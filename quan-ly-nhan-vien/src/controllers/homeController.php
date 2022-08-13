@@ -1,7 +1,21 @@
 <?php
     class homeController extends Controllers{
         public function index(){
-            $this->view("home","form",[]);
+            $username = "";
+            $password = "";
+            $isCorrectPassword = "empty";
+
+            if (isset($_COOKIE['username'])) {
+                $username = $_COOKIE['username'];
+            }
+            if (isset($_COOKIE['password'])) {
+                $password = $_COOKIE['password'];
+            }
+            if (isset($_SESSION["isCorrectPassword"])) {
+                $isCorrectPassword = $_SESSION["isCorrectPassword"];
+            }
+
+            $this->view("home","UC006/login",[$username,$password,$isCorrectPassword]);
         }
         public function main_uc(){
             $this->middleware();
@@ -11,9 +25,17 @@
             $this->middleware();
             $this->view("main","main/pa_manage",[]);
 
-        }public function leave_manage(){
+        }
+        
+        public function leave_manage(){
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/pa_manage",[]);
+            } 
+        }
+
+        public function manage_request() {
             $this->middleware();
-            $this->view("main","main/leave_manage",[]);
+            $this->view("main","main/UC007/index",[]);
         }
 
         public function check_in_check_out(){
@@ -32,18 +54,34 @@
         }
 
         public function middleware(){
-            if (! isset($_SESSION['id'])){
+            if (!isset($_SESSION['id'])){
                 header("Location: " . $this->host_name);
             }
         }
         public function sign_in(){
-            $username = $_POST["username"];
-            $password = $_POST["password"];
+            $username = "";
+            $password = "";
+            $rememberPass = false;
+            if (isset($_POST["username"])) {
+                $username = $_POST["username"];
+            }
+            if (isset($_POST["password"])) {
+                $password = $_POST["password"];
+            }
+            if (isset($_POST["remember-me"])) {
+                $rememberPass = $_POST["remember-me"];
+            }
+
             $model = $this->model('authModel');
             
             if ($model->login($username, $password)){
                 header("Location: " . $this->host_name . "/home/main_uc");
-            }else{
+                if ($rememberPass) {
+                    setcookie ("username", $username, time() + (86400 * 30), "/"); //save in 30 days
+                    setcookie ("password", $password, time() + (86400 * 30), "/");
+                }
+            } else {
+                $_SESSION["isCorrectPassword"] = "wrongusernameorpassword";
                 header("Location: " . $this->host_name);
             }
         }
