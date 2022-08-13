@@ -63,6 +63,7 @@
         
         // API 2: Sửa một thông tin request OT Canceled
         public function canceled_request_ot($data = []){
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $model   = $this->model('ot_requestModel');
             $summary = "Unsubmit Employee’s Request OT Information";
 
