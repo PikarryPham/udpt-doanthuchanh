@@ -85,7 +85,7 @@ modalContainer.addEventListener('click', function(even){
 // })
 
 // Js for Delete request 
-const js_open = document.querySelectorAll('.js-open')
+
 const js_del_res = document.querySelectorAll('.js-del-re')
 const js_del_cos = document.querySelectorAll('.js-confirm')
 const modal_del_re = document.querySelector('.js-modal-del-re')

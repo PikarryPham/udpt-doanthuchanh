@@ -247,6 +247,7 @@ font-family: 'Rubik', sans-serif;
     outline: 1.5px solid var(--green);
     border-radius: 4px;
     background-color: var(--nav);
+    cursor: pointer;
 }
 
 .content-body .func-button .btn:hover{

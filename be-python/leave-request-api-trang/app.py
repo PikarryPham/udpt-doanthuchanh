@@ -235,6 +235,8 @@ def delete_leavereq():
     if (type(rleave_id).__name__ != 'str'):
         print("Leave request ID is not a string")
 
+    print(rleave_id)
+
     if rleave_id != '':
         try:
             query_string = f"SELECT * FROM request_leave where RLEAVE_ID = {rleave_id}"
@@ -242,13 +244,15 @@ def delete_leavereq():
             cursor.execute(query_string)
 
             data = cursor.fetchall()[0]
+            print(data)
 
             if (len(data) > 0):
-                cursor.execute('DELETE FROM request_leave_detail WHERE RLEAVE_ID = %s',
-                               (rleave_id))
+                query_string1 = f"DELETE FROM request_leave_detail where RLEAVE_ID = {rleave_id}"
+                cursor.execute(query_string1)
 
-                cursor.execute('DELETE FROM request_leave WHERE RLEAVE_ID = %s',
-                               (rleave_id))
+                query_string2 = f"DELETE FROM request_leave where RLEAVE_ID = {rleave_id}"
+
+                cursor.execute(query_string2)
 
                 conn.commit()
                 cursor.close()
@@ -257,15 +261,17 @@ def delete_leavereq():
                     "success": 1,
                     "data": data
                 })
-
-            return jsonify({
-                "success": 0,
-                "data": []
-            })
+            else:
+                return jsonify({
+                    "success": 0,
+                    "data": []
+                })
         except Exception as e:
             print(e)
+            return 'Something errors', 500
     else:
         print('Leave request ID is empty')
+        return 'Please enter the Leave request ID', 500
 
 
 @app.after_request

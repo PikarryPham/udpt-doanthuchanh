@@ -44,6 +44,9 @@
         const uc0131_132    = "<?= $uc0131_132 ?>";
         const host_name     = "<?= $host_name ?>";
         const name_employee = "<?= $_SESSION['name'] ?>";
+        const api_uc010 = "<?= $api_uc010 ?>";
+        const api_uc010_summary = "<?= $api_uc010_summary ?>";
+        const api_uc010_update_history = "<?= $api_uc010_update_history ?>";
     </script>
 
     <?php 

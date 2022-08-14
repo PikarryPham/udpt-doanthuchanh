@@ -28,9 +28,11 @@
         }
         
         public function leave_manage(){
-            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
-                $this->view("main","main/pa_manage",[]);
-            } 
+            // if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+            //     $this->view("main","main/leave_manage",[]);
+            // }
+            $this->middleware();
+            $this->view("main","main/leave_manage",[]);
         }
 
         public function manage_request() {
