@@ -32,7 +32,8 @@ class uc006Controller extends Controllers{
         if (isset($_REQUEST["newpassword"])) {
             $newPassword = $_REQUEST["newpassword"];
             $post = ['EMAIL' => $email, 'NEWPASSWORD' => $newPassword];
-            $ch = curl_init('http://localhost:8888/udpt-doanthuchanh/API/api-quanlynhanvien-uc6/api_uc006/recover_pass');
+            #$ch = curl_init('http://localhost:8888/udpt-doanthuchanh/API/api-quanlynhanvien-uc6/api_uc006/recover_pass');
+            $ch = curl_init('http://localhost/API/api-quanlynhanvien-uc6/api_uc006/recover_pass');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
             $response = curl_exec($ch);
@@ -60,7 +61,8 @@ class uc006Controller extends Controllers{
         if($model->checkEmailExist($email)) {
             $post = ['EMAIL' => $email,];
             //change to  correct api path
-            $ch = curl_init('http://localhost:8888/udpt-doanthuchanh/API/api-quanlynhanvien-uc6/api_uc006/send_otp');
+            #$ch = curl_init('http://localhost:8888/udpt-doanthuchanh/API/api-quanlynhanvien-uc6/api_uc006/send_otp');
+            $ch = curl_init('http://localhost/API/api-quanlynhanvien-uc6/api_uc006/send_otp');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
             $response = curl_exec($ch);
