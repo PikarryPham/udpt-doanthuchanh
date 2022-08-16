@@ -17,8 +17,10 @@
         }
 
         public function check_in_check_out(){
+            $model = $this->model('CICO');
+            $data = $model->getAllCICO();
             $this->middleware();
-            $this->view("main","UC001/index",[]);
+            $this->view("main","UC001/index",$data);
         }
 
         public function document(){
@@ -27,7 +29,7 @@
             // $uc16->index();
             $model = $this->model('document');
             $data = $model->getAllDocument();
-            //$this->middleware();
+            $this->middleware();
             $this->view("main","UC016/index",$data);
         }
 

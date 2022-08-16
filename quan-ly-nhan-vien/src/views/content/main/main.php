@@ -12,7 +12,7 @@
     <a href="#">company news</a>
     <a href="#">company documents</a>
     <a href="#">employee management</a>
-    <a href="<?= $host_name ?>/home/check_in_check_out">checkIn/CheckOut</a>
+    <a href="<?= $host_name ?>/uc001/index">checkIn/CheckOut</a>
 </div>
 
 <div class="modal js-modal">
