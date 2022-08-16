@@ -1,0 +1,52 @@
+.title
+{
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 43px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #026345;
+}
+
+.button
+{
+	margin-left:650px;
+	width: 162px;
+	height: 42px;
+	background: #059669;
+	border-radius: 3px;
+}
+
+.flex-container {
+	display: flex;
+	background-color: #CDEDE3;
+	justify-content: space-between;
+	padding: 0;
+}
+
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content-list
+{
+  width: 893px;
+  height: 219px;
+  background-color: #E5F4F0;
+  border: 1px solid #000000;
+}
+
+.comment-box
+{
+	width: 259px;
+	height: 109px;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+}
