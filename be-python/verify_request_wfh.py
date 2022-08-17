@@ -57,7 +57,7 @@ class Request_Verify:
   def listall_wfh_request_with_manager(manager_id):
     conn = mysql.connect()
     cursor = conn.cursor()
-    sqlQuery=('SELECT * FROM `request wfh` WHERE MANAGER_ID=%(_manager_id)s')
+    sqlQuery=('SELECT * FROM `request wfh` WHERE MANAGER_ID=%(_manager_id)s AND STATUS <>"Draft" AND STATUS <>"Cancelled"')
     data_select = {
     '_manager_id' : manager_id
     }
