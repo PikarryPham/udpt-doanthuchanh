@@ -60,6 +60,149 @@
                 header("Location: " . $this->host_name);
             }
         }
+		
+		public function request_management(){
+            $this->middleware();
+            $this->view("main","UC07/index",[]);
+        }
+        public function verify_request_leave(){
+            $this->middleware();
+            $model=$this->model("uc07model");
+            $data=$model->listAll_leave();
+            $this->view("main","UC07/leave_page_1",$data);
+        }
+
+        public function verify_request_leave_reject_page(){
+            $this->middleware();
+            $_SESSION['cur_leave_request_id']=$_POST["request_id"];
+            $this->view("main","UC07/leave_page_2",[]);
+        }
+
+        public function verify_request_leave_accept(){
+            $this->middleware();
+            $request_id=$_POST['request_id'];
+            $model=$this->model("uc07model");
+            $model->accept_request_leave($request_id);
+            $data=$model->listAll_leave();
+            $this->view("main","UC07/leave_page_1",$data);
+        }
+
+        public function verify_request_leave_reject(){
+            $this->middleware();
+            $request_id=$_SESSION['cur_leave_request_id'];
+            $comment=$_POST['reject_reason'];
+            $model=$this->model("uc07model");
+            $model->reject_request_leave($request_id,$comment);
+            $data=$model->listAll_leave();
+            $this->view("main","UC07/leave_page_1",$data);
+        }
+
+        public function verify_request_leave_submit(){
+            $this->middleware();
+            $request_id=$_POST['request_id'];
+            $manager_id=7;#trong trường hợp này sẽ set mặc định vì không thể chạy nhiều api nhwung thực tế sẽ dùng api để tìm ra manager của $_SESSION['id']
+            $model=$this->model("uc07model");
+            $model->submit_request_leave($request_id,$manager_id);
+            $data=$model->listAll_leave();
+            $this->view("main","UC07/leave_page_1",$data);
+        }
+
+        public function verify_request_wfh(){
+            $this->middleware();
+            $model=$this->model("uc07model");
+            $data=$model->listAll_wfh();
+            $this->view("main","UC07/wfh_page_1",$data);
+        }
+
+        public function verify_request_wfh_reject_page(){
+            $this->middleware();
+            $_SESSION['cur_wfh_request_id']=$_POST["request_id"];
+            $this->view("main","UC07/wfh_page_2",[]);
+        }
+
+        public function verify_request_wfh_accept(){
+            $this->middleware();
+            $request_id=$_POST['request_id'];
+            $model=$this->model("uc07model");
+            $model->accept_request_wfh($request_id);
+            $data=$model->listAll_wfh();
+            $this->view("main","UC07/wfh_page_1",$data);
+        }
+
+        public function verify_request_wfh_reject(){
+            $this->middleware();
+            $request_id=$_SESSION['cur_wfh_request_id'];
+            $comment=$_POST['reject_reason'];
+            $model=$this->model("uc07model");
+            $model->reject_request_wfh($request_id,$comment);
+            $data=$model->listAll_wfh();
+            $this->view("main","UC07/wfh_page_1",$data);
+        }
+
+        public function verify_request_ot(){
+            $this->middleware();
+            $model=$this->model("uc07model");
+            $data=$model->listAll_ot();
+            $this->view("main","UC07/ot_page_1",$data);
+        }
+
+        public function verify_request_ot_reject_page(){
+            $this->middleware();
+            $_SESSION['cur_ot_request_id']=$_POST["request_id"];
+            $this->view("main","UC07/ot_page_2",[]);
+        }
+
+        public function verify_request_ot_accept(){
+            $this->middleware();
+            $request_id=$_POST['request_id'];
+            $model=$this->model("uc07model");
+            $model->accept_request_ot($request_id);
+            $data=$model->listAll_ot();
+            $this->view("main","UC07/ot_page_1",$data);
+        }
+
+        public function verify_request_ot_reject(){
+            $this->middleware();
+            $request_id=$_SESSION['cur_ot_request_id'];
+            $comment=$_POST['reject_reason'];
+            $model=$this->model("uc07model");
+            $model->reject_request_ot($request_id,$comment);
+            $data=$model->listAll_ot();
+            $this->view("main","UC07/ot_page_1",$data);
+        }
+
+        public function verify_request_goal(){
+            $this->middleware();
+            $model=$this->model("uc07model");
+            $data=$model->listAll_goal();
+            $this->view("main","UC07/goal_page_1",$data);
+        }
+
+        public function verify_request_goal_reject_page(){
+            $this->middleware();
+            $_SESSION['cur_goal_request_id']=$_POST["request_id"];
+            $this->view("main","UC07/goal_page_2",[]);
+        }
+
+        public function verify_request_goal_accept(){
+            $this->middleware();
+            $request_id=$_POST['request_id'];
+            $model=$this->model("uc07model");
+            $model->accept_request_goal($request_id);
+            $data=$model->listAll_goal();
+            $this->view("main","UC07/goal_page_1",$data);
+        }
+
+        public function verify_request_goal_reject(){
+            $this->middleware();
+            $request_id=$_SESSION['cur_goal_request_id'];
+            $comment=$_POST['reject_reason'];
+            $model=$this->model("uc07model");
+            $model->reject_request_goal($request_id,$comment);
+            $data=$model->listAll_goal();
+            $this->view("main","UC07/goal_page_1",$data);
+        }
+		
         public function sign_in(){
             $username = "";
             $password = "";
