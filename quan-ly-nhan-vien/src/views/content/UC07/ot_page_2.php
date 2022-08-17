@@ -15,7 +15,7 @@
     <div style="width:75%; margin-left:20px;">
     <div class="title">
         <b>Reject OT Request</b>
-        <form method="post" action="<?= $host_name ?>/home/verify_request_leave">
+        <form method="post" action="<?= $host_name ?>/home/verify_request_ot">
 		    <button type="submit" class="button" style="float:right;">Return</button>
 	    </form>
     </div>
