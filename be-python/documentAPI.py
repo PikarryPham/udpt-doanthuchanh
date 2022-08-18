@@ -56,29 +56,25 @@ def getDetailOneDocument(document_id):
 @app.route('/insert-document', methods=['POST'])
 def insertDocument():
   #passing HTML form data into python variable
-  # categories = request.form['categories']
-  # content = request.form['content']
-  # manager_id = request.form['manager_id']
-  # title = request.form['title']
+  body_request = request.get_json()
 
-  title = request.form.get('title')
-  categories= request.form.get('categories')
-  content= request.form.get('content')
-  manager_id= request.form.get('managerid')
-  date = str(datetime.now())
+  categories = body_request["categories"]
+  content = body_request["content"]
+  manager_id = body_request["managerid"]
+  title = body_request["title"]
+
+  # title = request.form.get('title')
+  # categories= request.form.get('categories')
+  # content= request.form.get('content')
+  # manager_id= request.form.get('managerid')
+  # date = str(datetime.now())
 
   cur = mysql.connection.cursor()
 
   cur.execute('SELECT max(document_id) from document_post');
 
-  if (cur.fetchone()[0] is not None):
-    document_id = cur.fetchone()[0] + 1
-    print(document_id)
-  else:
-    document_id = 1
-
   cur.execute('INSERT INTO document_post VALUES (% s, % s, % s, % s,% s,% s, % s)', 
-  (document_id, manager_id, title, content, date, date, categories))
+  ('', manager_id, title, content, date, date, categories))
 
   mysql.connection.commit()
 
@@ -86,41 +82,10 @@ def insertDocument():
 
   return 'Insert Data Successfully!!!'
 
-@app.route('/insert-media-document', methods=['POST'])
-def insertMediaDocument():
-  #passing HTML form data into python variable
-  url = request.form['url']
-  title = request.form['title']
-  date = str(datetime.now())
-
-  cur = mysql.connection.cursor()
-
-  cur.execute('SELECT max(document_id) from media_related_contents')
-
-  document_id = cur.fetchone()
-
-  cur.execute('SELECT max(media_contentid) from media_related_contents')
-
-  media_contentid = cur.fetchone()
-
-  cur.execute('INSERT INTO media_related_contents VALUES (% s, % s, % s, % s,% s,% s)', 
-  (document_id, media_contentid, title, url, date, date))
-
-  mysql.connection.commit()
-
-  cur.close()
-
-  return 'Insert Media Data Successfully!!!'
-
 @app.route('/delete-document/<document_id>', methods=['GET'])
 def deleteDocument(document_id):
 
   cur = mysql.connection.cursor()
-
-  query = 'Delete from media_related_contents where document_id = ' + document_id
-  print(query)
-
-  cur.execute(query)
 
   query = 'Delete from document_post where document_id = ' + document_id
 
@@ -135,26 +100,19 @@ def deleteDocument(document_id):
 @app.route('/update-document', methods=['POST'])
 def updateDocument():
   #passing HTML form data into python variable
-  categories = request.form['categories']
   content = request.form['content']
-  manager_id = request.form['manager_id']
-  title = request.form['title']
   document_id = request.form['document_id']
-  date = str(datetime.now())
-
   cur = mysql.connection.cursor()
 
-  cur.execute('''update document_post set 
-  document_id = %s, 
-  manager_id = %s, 
-  title = %s, 
-  content = %s, 
-  update_date = %s, 
-  categories = %s''',(document_id, manager_id, title, content, date, categories))
+  query = 'update document_post set content = ' + '\'' + content + '\'' + ' where document_id = ' + document_id
 
-  mysql.connection.commit()
+  print(query)
 
-  cur.close()
+  # cur.execute(query)
+
+  # mysql.connection.commit()
+
+  # cur.close()
 
   return 'Update Data Successfully!!!'
 

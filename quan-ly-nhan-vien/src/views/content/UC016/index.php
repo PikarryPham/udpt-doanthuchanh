@@ -82,7 +82,6 @@
         });
     }
 
-
     function uploadFile() {
         location.href="http://localhost/quan-ly-nhan-vien/uc016/uploadDocument";
     }
