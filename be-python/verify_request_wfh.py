@@ -13,7 +13,7 @@ from pymysql.cursors import DictCursor
 mysql = MySQL(cursorclass=DictCursor)
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'qlnv'
+app.config['MYSQL_DATABASE_DB'] = 'wfh'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 

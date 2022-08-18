@@ -80,7 +80,7 @@ class Request_Verify:
     conn.close()
     return None
 
-import requests
+#import requests
 from sqlalchemy import null
 from flask import jsonify
 from flask import flash, request
