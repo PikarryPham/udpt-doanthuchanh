@@ -6,9 +6,9 @@
     <a href="#">time-Sheet</a>
     <a href="<?= $host_name ?>/uc002/index">oT management</a>
     <a href="<?= $host_name ?>/home/leave_manage">leave management</a>
-    <a href="#">CV management</a>
+    <a href="<?= $host_name ?>/home/recruitment">CV management</a>
     <a href="#">equipment/Account management</a>
-    <a href="<?= $host_name ?>/uc007/index">requests management</a>
+    <a href="<?= $host_name ?>/home/request_management">requests management</a>
     <a href="#">company news</a>
     <a href="#">company documents</a>
     <a href="#">employee management</a>
