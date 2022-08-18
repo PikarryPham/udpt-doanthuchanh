@@ -60,7 +60,6 @@
                 header("Location: " . $this->host_name);
             }
         }
-
         public function request_management(){
             $this->middleware();
             $this->view("main","UC07/index",[]);
