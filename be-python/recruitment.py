@@ -139,7 +139,6 @@ class CV:
 from sqlalchemy import null
 from flask import jsonify
 from flask import flash, request
-from model import CV
 from datetime import date
 
 @app.route('/create', methods=['POST'])
