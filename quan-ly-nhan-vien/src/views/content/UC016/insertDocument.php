@@ -5,7 +5,7 @@
     Title : <input type="text" name="title"><br>
     Category : <input type="text" name="categories"><br>
     Content : <input type="text" name="content"><br>
-    Manager ID : <input type="text" name="managerid"><br>
+    Manager ID : <input type="text" name="managerid" value=1 readonly><br>
     <input type="submit" value="submit">
   </form>
 </div>
