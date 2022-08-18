@@ -60,8 +60,7 @@
                 header("Location: " . $this->host_name);
             }
         }
-		
-		public function request_management(){
+        public function request_management(){
             $this->middleware();
             $this->view("main","UC07/index",[]);
         }
@@ -201,6 +200,45 @@
             $model->reject_request_goal($request_id,$comment);
             $data=$model->listAll_goal();
             $this->view("main","UC07/goal_page_1",$data);
+        }
+        
+		public function recruitment(){
+            $this->middleware();
+            $model=$this->model("uc14model");
+            $data=$model->listAll();
+            $this->view("main","UC14/index",$data);
+        }
+        public function recruitment_detail(){
+            $this->middleware();
+            //$link = $_SERVER["REQUEST_URI"];
+            //$cv_id=basename($link);
+            //$cv_id=6;
+            $cv_id=$_POST["CV_ID"];
+            $model=$this->model("uc14model");
+            $data=$model->viewdetail($cv_id);
+            $this->view("main","UC14/detail",$data);
+        }
+
+        public function recruitment_update_status(){
+            $this->middleware();
+            $cv_id=$_POST["CV_ID"];
+            $cur_status=$_POST["STATUS"];
+            $comment=$_POST["COMMENT"];
+            $model=$this->model("uc14model");
+            $model->update_status($cv_id,$cur_status,$comment);
+            $data=$model->viewdetail($cv_id);
+            $this->view("main","UC14/detail",$data);
+        }
+
+        public function recruitment_update_status_archived(){
+            $this->middleware();
+            $cv_id=$_POST["CV_ID"];
+            $cur_status=$_POST["STATUS"];
+            $comment=$_POST["COMMENT"];
+            $model=$this->model("uc14model");
+            $model->update_status_archived($cv_id,$cur_status,$comment);
+            $data=$model->viewdetail($cv_id);
+            $this->view("main","UC14/detail",$data);
         }
 		
         public function sign_in(){
