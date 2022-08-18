@@ -48,5 +48,7 @@
 	width: 259px;
 	height: 109px;
 	background: #FFFFFF;
-	border: 1px solid #000000;
+	border: 0px solid #000000;
+  word-wrap: break-word;
+  overflow-x: scroll;
 }

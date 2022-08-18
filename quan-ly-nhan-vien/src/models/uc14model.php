@@ -14,12 +14,12 @@ class uc14model extends ConnectDB{
     public $status;
 
     public function listAll(){
-        $listAll_api="http://127.0.0.1:5014/listall";
-        $request=array();
+        $listAll_api="http://127.0.0.1:5014/listall_manager";
+        $request=array("manager_id"=>$_SESSION['id']);
         $options = array(
             'http' => array(
               'method'  => 'GET',
-              //'content' => json_encode($request),
+              'content' => json_encode($request),
               'header'=>  "Content-Type: application/json\r\n" .
                           "Accept: application/json\r\n"
               )
@@ -28,7 +28,6 @@ class uc14model extends ConnectDB{
         $context  = stream_context_create( $options );
         $result = file_get_contents( $listAll_api, false, $context );
         $data = json_decode($result);
-        
         //$data=file_get_contents($listAll_api);
         return $data;
     }

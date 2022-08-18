@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?= $host_name ?>/public/css/verify_request.css">
     <!--<link rel="stylesheet" href="verify_request.css">-->
+    <script src="popup.js"></script>
     <style>
     table, td, th {
     border: 1px solid;

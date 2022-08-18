@@ -5,7 +5,7 @@ class uc07model extends ConnectDB{
 
     public function listAll_leave(){
         $listAll_leave_api="http://127.0.0.1:5007/listall";
-        $request=array("manager_id"=>5);
+        $request=array("manager_id"=>$_SESSION['id']);
         $options = array(
             'http' => array(
               'method'  => 'GET',
@@ -85,7 +85,7 @@ class uc07model extends ConnectDB{
 #########################################################################
     public function listAll_goal(){
         $listAll_leave_api="http://127.0.0.1:5072/listall_manager";
-        $request=array("manager_id"=>6);
+        $request=array("manager_id"=>$_SESSION['id']); #$_SESSION['id']
         $options = array(
             'http' => array(
               'method'  => 'GET',
@@ -143,7 +143,7 @@ class uc07model extends ConnectDB{
 #####################################################################################
     public function listAll_ot(){
         $listAll_leave_api="http://127.0.0.1:5071/listall_manager";
-        $request=array("manager_id"=>6);
+        $request=array("manager_id"=>$_SESSION['id']);
         $options = array(
             'http' => array(
               'method'  => 'GET',
@@ -202,7 +202,7 @@ class uc07model extends ConnectDB{
 #####################################################################################
     public function listAll_wfh(){
         $listAll_leave_api="http://127.0.0.1:5073/listall_manager";
-        $request=array("manager_id"=>4);
+        $request=array("manager_id"=>$_SESSION['id']);
         $options = array(
             'http' => array(
               'method'  => 'GET',

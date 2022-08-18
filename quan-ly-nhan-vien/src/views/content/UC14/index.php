@@ -65,6 +65,7 @@
 			
 			<div style="margin:20px">
 				<u><b> Status: </b></u>
+				<br>
 				<b> <?php echo $item->STATUS ?> </b>
 			</div>
 			
