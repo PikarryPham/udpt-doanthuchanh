@@ -40,7 +40,7 @@
   width: 893px;
   height: 219px;
   background-color: #E5F4F0;
-  border: 1px solid #000000;
+  border: 0px solid #000000;
 }
 
 .comment-box
@@ -48,7 +48,7 @@
 	width: 259px;
 	height: 109px;
 	background: #FFFFFF;
-	border: 1px solid #000000;
+	border: 0px solid #000000;
 }
 
 .modal {

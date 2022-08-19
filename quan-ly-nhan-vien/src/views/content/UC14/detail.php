@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="<?= $host_name ?>/public/css/recruitment.css">
     <title>CV Detail</title>
-
+    <script src="popup.js"></script> 
 </head>
 <body>
 <div style="width:80%">
@@ -50,27 +50,29 @@
                 <div style="margin:20px">
                     <u><b> Comment: </b></u>
                     <br>
-                    <div class="comment-box"> <?php echo $item->COMMENT ?> </div>
+                    <div class="comment-box" id="commentbox"> <?php echo $item->COMMENT ?> </div> 
+                    
+                    
 			    </div>
             </div>
             <div style="margin:20px">
                 <u><b> Status: </b></u>
                 <br>
-                <div style="height: 30px; width: 100px ;background: rgba(0, 0, 0, 0.3);"> <?php echo $item->STATUS ?> </div>
+                <div style="height: 30px; width: 100px ;background: rgba(0, 0, 0, 0.3);"> <b><?php echo $item->STATUS ?><b> </div>
             </div>
             <div>
                 <form method="post" action="<?= $host_name ?>/home/recruitment_update_status">
 					<input type="hidden" name="CV_ID" value=<?= $item->CV_ID ?>>
                     <input type="hidden" name="STATUS" value=<?= $item->STATUS ?>>
-                    <input type="hidden" name="COMMENT" value=<?= $item->COMMENT ?>>
-					<input type="submit" id="Next" class="button" style="margin-left:250px;margin-top:20px" value="Next">
+                    <input type="hidden" name="COMMENT" value=<?=$item->COMMENT ?>>
+					<input type="submit" id="Next" class="button" style="margin-left:250px;margin-top:20px" value="Next Step" onclick="pop.open('Thông báo', 'Cập nhật status thành công')">
 				</form>
                 
                 <form method="post" action="<?= $host_name ?>/home/recruitment_update_status_archived">
 					<input type="hidden" name="CV_ID" value=<?= $item->CV_ID ?>>
                     <input type="hidden" name="STATUS" value=<?= $item->STATUS ?>>
                     <input type="hidden" name="COMMENT" value=<?= $item->COMMENT ?>>
-					<input type="submit" id="Archived" class="button" style="background:#EB5757B2;color:white;margin-left:250px; margin-top:20px" value="Archived">
+					<input type="submit" id="Archived" class="button" style="background:#EB5757B2;color:white;margin-left:250px; margin-top:20px" value="Archived" onclick="pop.open('Thông báo', 'Bạn đã chuyển CV vào Archived')">
 				</form>
                 
             </div>

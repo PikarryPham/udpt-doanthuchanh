@@ -93,6 +93,20 @@ class CV:
     conn.close()
     return listcv
 
+  def listall_manager(manager_id):
+    print("a")
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    sqlQuery=('SELECT * FROM cv WHERE MANAGER_ID=%(_manager_id)s')
+    data_select={
+      '_manager_id':manager_id
+    }
+    cursor.execute(sqlQuery,data_select)
+    listcv = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return listcv
+
 
   def viewdetail(cv_id):
     conn = mysql.connect()
@@ -173,6 +187,19 @@ def create_cv():
 def listall_cv():
     try:
         listcv=CV.listall()
+        respone = jsonify(listcv)
+        respone.status_code = 200
+        return respone
+    except Exception as e:
+        return("oh no")
+
+
+@app.route('/listall_manager', methods=['GET'])
+def listall_manager_cv():
+    try:
+        _json = request.json
+        _manager_id = _json['manager_id']
+        listcv=CV.listall_manager(_manager_id)
         respone = jsonify(listcv)
         respone.status_code = 200
         return respone

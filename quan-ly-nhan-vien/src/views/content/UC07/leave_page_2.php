@@ -24,7 +24,7 @@
         <form method="post" action="<?= $host_name ?>/home/verify_request_leave_reject">
             <label> Comment Reason for Rejecting Request: </label>
             <br>
-            <input type="text" style="border:2px;" id="reject_reason_id" name="reject_reason">
+            <input type="text" style="border: 1px solid #000000; width:500px;" id="reject_reason_id" name="reject_reason" placeholer="Không hợp lý">
             <input type="hidden" name="request_id" value=<?php $_SESSION['cur_leave_request_id'] ?>>
             <input type="submit" class="button" name="btn_reject" style="margin-left:0px;background:#EB5757B2;color:white;" value="Reject">
         </form>
