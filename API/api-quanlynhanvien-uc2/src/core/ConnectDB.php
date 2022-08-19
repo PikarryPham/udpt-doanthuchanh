@@ -1,9 +1,9 @@
 <?php
     class ConnectDB{
         protected $connection;
-        private $hostname = 'localhost';
-        private $user = 'root';
-        private $password = '';
+        private $hostname = 'ot-request.cizg8kaur6ll.ap-south-1.rds.amazonaws.com';
+        private $user = 'admin';
+        private $password = 'admin123456';
         private $nameDB = 'ot_request';
         
         // kết nối với DB
