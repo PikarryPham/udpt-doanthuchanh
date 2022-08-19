@@ -13,10 +13,12 @@ app = Flask(__name__)
 # MySQL configurations
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'my_pa_goal'
+app.config['MYSQL_DB'] = 'pagoalform'
 app.config['MYSQL_HOST'] = 'localhost'
+#Run command: python -m flask run -h localhost -p 3132
 
-#Example call API: http://127.0.0.1:3131/api/uc0131_132/get-pa-goals
+
+#Example call API: http://127.0.0.1:3132/api/uc0131_132/get-pa-goals
 
 mysql.init_app(app)
 

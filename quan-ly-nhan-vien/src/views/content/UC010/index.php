@@ -47,7 +47,7 @@
                     <p>show leave with status</p>
                     <div class="squarecheck">
                         <label for="squarecheck2">approved</label>
-                        <input type="checkbox" name="leave_status" value="Accepted" id="squarecheck2">
+                        <input type="checkbox" name="leave_status" value="Approved" id="squarecheck2">
                     </div>
                     <div class="squarecheck">
                         <label for="squarecheck3">rejected</label>
