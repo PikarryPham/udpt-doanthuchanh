@@ -53,7 +53,7 @@ class uc004Controller extends Controllers{
         $_SESSION["wfhRequestTotalPage"] = $totalPages;
         $value = json_decode(json_encode($value), true);
 
-        if (count($value) > 0) {
+        if (count((array)$value) > 0) {
             $this->view("main", "UC004/index", [$value, $totalPages, $currentPage]);
         } else {
             $this->view("main", "UC004/empty-wfh-request", []);

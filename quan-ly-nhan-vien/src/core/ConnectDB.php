@@ -1,12 +1,11 @@
 <?php
     class ConnectDB{
         protected $connection;
-        private $hostname = 'localhost';
-        private $user = 'root';
-        private $password = '';
+        private $hostname = 'main-service.cizg8kaur6ll.ap-south-1.rds.amazonaws.com';
+        private $user = 'admin';
+        private $password = 'admin123456';
         // private $password = 'root';
         private $nameDB = 'main_service';
-        
         // kết nối với DB
         function __construct(){
             $this->connection = mysqli_connect("$this->hostname","$this->user","$this->password","$this->nameDB");

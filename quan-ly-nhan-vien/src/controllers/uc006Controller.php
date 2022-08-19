@@ -47,6 +47,7 @@ class uc006Controller extends Controllers{
             } else {
                 $this->view("home","UC006/recoverpass",[$email,'errorpass']);
             }
+            
         }
         $this->view("home","UC006/recoverpass",[$email,'empty']);
     }

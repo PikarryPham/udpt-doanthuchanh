@@ -1,10 +1,10 @@
 <?php
     class ConnectDB{
         protected $connection;
-        private $hostname = 'localhost';
-        private $user = 'root';
-        private $password = '';
-        #private $password = 'root';
+        private $hostname = 'main-service.cizg8kaur6ll.ap-south-1.rds.amazonaws.com';
+        private $user = 'admin';
+        // private $password = '';
+        private $password = 'admin123456';
         private $nameDB = 'main_service';
         
         // kết nối với DB

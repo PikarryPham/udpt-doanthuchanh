@@ -44,22 +44,22 @@
             {
             ?>
         <tr>
-            <td><?php echo $item->rwfh_id ?></td>
-            <td><?php echo $item->employecreate_id ?></td>
-            <td><?php echo $item->create_date ?></td>
-            <td><?php echo $item->reason ?></td>
-            <td><?php echo $item->from_date ?></td>
-            <td><?php echo $item->to_date ?></td>
-            <td><?php echo $item->status ?></td>
+            <td><?php echo $item->RWFH_ID ?></td>
+            <td><?php echo $item->EMPLOYEE_ID ?></td>
+            <td><?php echo $item->CREATE_DATE ?></td>
+            <td><?php echo $item->REASON ?></td>
+            <td><?php echo $item->FROM_DATE ?></td>
+            <td><?php echo $item->TO_DATE ?></td>
+            <td><?php echo $item->STATUS ?></td>
             <td>
                 
                 <form action="<?= $host_name ?>/home/verify_request_wfh_accept" method="post">
-                    <input type="hidden" id="request_id_id" name="request_id" value="<?php echo $item->rwfh_id  ?>">
+                    <input type="hidden" id="request_id_id" name="request_id" value="<?php echo $item->RWFH_ID  ?>">
                     <input type="submit" class="button" style="margin-left:0px;" id="accept_request_button" value="Accept" style="color:white; background:green;"/>
                 </form>
                 
                 <form action="<?= $host_name ?>/home/verify_request_wfh_reject_page" method="post">
-                    <input type="hidden" id="request_id_id" name="request_id" value="<?php echo $item->rwfh_id ?>">
+                    <input type="hidden" id="request_id_id" name="request_id" value="<?php echo $item->RWFH_ID ?>">
                     <input type="submit" class="button" style="margin-left:0px;background:#EB5757B2;color:white;" id="reject_request_button" value="Reject" style="color:white; background:red;"/>
                 </form>
                 &nbsp;

@@ -11,10 +11,10 @@ from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
 mysql = MySQL(cursorclass=DictCursor)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_USER'] = 'admin'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'admin123456'
 app.config['MYSQL_DATABASE_DB'] = 'wfh'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = 'wfh-real.cizg8kaur6ll.ap-south-1.rds.amazonaws.com'
 mysql.init_app(app)
 
 
@@ -27,7 +27,7 @@ class Request_Verify:
   def update_status_approved(request_id,status):
     conn = mysql.connect()
     cursor = conn.cursor()
-    sqlQuery=('UPDATE `request wfh` SET status=%(_status)s, MANAGER_COMMENT=Null WHERE rwfh_id=%(_request_id)s')
+    sqlQuery=('UPDATE `request wfh` SET STATUS=%(_status)s, MANAGER_COMMENT = null WHERE RWFH_ID=%(_request_id)s')
     data_update = {
     '_status' : status,
     '_request_id' : request_id
@@ -41,7 +41,7 @@ class Request_Verify:
   def update_status_rejected(request_id,status,comment):
     conn = mysql.connect()
     cursor = conn.cursor()
-    sqlQuery=('UPDATE `request wfh` SET status=%(_status)s, manager_comment=%(_comment)s WHERE rwfh_id=%(_request_id)s')
+    sqlQuery=('UPDATE `request wfh` SET STATUS=%(_status)s, MANAGER_COMMENT=%(_comment)s WHERE RWFH_ID=%(_request_id)s')
     data_update = {
     '_status' : status,
     '_comment' : comment,
