@@ -27,7 +27,7 @@ class Request_Verify:
   def update_status_approved(request_id,status):
     conn = mysql.connect()
     cursor = conn.cursor()
-    sqlQuery=('UPDATE request_leave SET STATUS=%(_status)s WHERE RLEAVE_ID=%(_request_id)s')
+    sqlQuery=('UPDATE request_leave SET STATUS=%(_status)s , MANAGER_COMMENT=Null WHERE RLEAVE_ID=%(_request_id)s')
     data_update = {
     '_status' : status,
     '_request_id' : request_id
