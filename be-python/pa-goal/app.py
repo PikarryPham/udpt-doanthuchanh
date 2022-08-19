@@ -15,10 +15,10 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pagoalform'
 app.config['MYSQL_HOST'] = 'localhost'
-#Run command: python -m flask run -h localhost -p 3132
+#Run command: python -m flask run -h localhost -p 5000
 
 
-#Example call API: http://127.0.0.1:3132/api/uc0131_132/get-pa-goals
+#Example call API: http://127.0.0.1:5000/api/uc0131_132/get-pa-goals
 
 mysql.init_app(app)
 
@@ -712,3 +712,6 @@ def view_goal():
             })
         except:
             return "System error", 500
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)

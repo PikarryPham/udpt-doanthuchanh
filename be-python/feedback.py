@@ -298,3 +298,6 @@ def get_a_feedback():
     return jsonify({
         "data": json_data,
     })
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)
