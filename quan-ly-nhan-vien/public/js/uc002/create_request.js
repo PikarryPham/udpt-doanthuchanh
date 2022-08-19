@@ -133,7 +133,8 @@ function insert_request_ot_detail(data){
         table_count++;
     }
     document.getElementById('number-ot').value = table_count;
-    update_hours();
+    update_
+    s();
 }
 
 function editAnValue(id){
