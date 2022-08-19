@@ -8,10 +8,10 @@ app = Flask(__name__)
 #Run command: python -m flask run -h localhost -p 3000
 
 # MySQL configurations
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_USER'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'admin123456'
 app.config['MYSQL_DB'] = 'leave_request'
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'leave-request.cizg8kaur6ll.ap-south-1.rds.amazonaws.com'
 
 mysql.init_app(app)
 

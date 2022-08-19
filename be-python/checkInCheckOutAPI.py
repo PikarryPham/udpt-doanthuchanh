@@ -4,9 +4,9 @@ from flask import jsonify
 from datetime import datetime as datetime
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = "localhost"
-app.config['MYSQL_USER'] = "root"
-app.config['MYSQL_PASSWORD'] = ""
+app.config['MYSQL_HOST'] = "qlnv.cizg8kaur6ll.ap-south-1.rds.amazonaws.com"
+app.config['MYSQL_USER'] = "admin"
+app.config['MYSQL_PASSWORD'] = "admin123456"
 app.config['MYSQL_DB'] = "qlnv"
 
 mysql = MySQL(app)
@@ -77,7 +77,8 @@ def updateCICOTime():
   date = request.form.get('DATE')
 
   cur = mysql.connection.cursor()
-  query = "UPDATE `check_in_check_out` SET `TIME_IN`='" + time_in + "',`DURATION`='" + duration + "', `TIME_OUT`='" + time_out + "' WHERE `EMPLOYEE_ID`='" + employee_id + "' and `DATE`='" + date + "'";
+  query = "UPDATE `check_in_check_out` SET `TIME_IN`='" + time_in + "',`DURATION`='" + duration + "', `TIME_OUT`='" + time_out + "' WHERE `EMPLOYEE_ID`='" + employee_id + "' and `DATE`='" + date + "'"
+  print(query)
   cur.execute(query)
   mysql.connection.commit()
   cur.close()

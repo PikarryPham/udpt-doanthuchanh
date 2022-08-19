@@ -52,14 +52,14 @@ def createRequestWFH():
     # QUERY TO GET EMPLOYEE ID AND ROLE FROM TABLE EMPLOYEE
     cur = cnx.cursor()
 
-    cur.execute('INSERT INTO `request wfh` VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
+    cur.execute('INSERT INTO `request_wfh` VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', 
     (rwfhID, employeeID, managerID, reason, createDate, updateDate, status, managerComment,fromDate, toDate, unsubmitReason, notificationFlag))
     cnx.commit()
     cur.close()
 
     #query to select max rwfhid
     cur = cnx.cursor()
-    cur.execute('SELECT MAX(RWFH_ID) FROM `request wfh`'),
+    cur.execute('SELECT MAX(RWFH_ID) FROM `request_wfh`'),
     total = cur.fetchall()
     cur.close()
 
@@ -84,7 +84,7 @@ def addDetailRequestWFH(rwfhID):
 
     # try:
     cur = cnx.cursor()
-    cur.execute('INSERT INTO `request wfh detail` VALUES (%s, %s, %s)', (rwfhDetail_ID, rwfhID, date))
+    cur.execute('INSERT INTO `request_wfh_detail` VALUES (%s, %s, %s)', (rwfhDetail_ID, rwfhID, date))
     cnx.commit()
     cur.close()
 
@@ -107,7 +107,7 @@ def deleteDetailRequestWFH(rwfhID,rwfhDetail_ID):
     # try:
     cur = cnx.cursor()
 
-    cur.execute('''DELETE FROM `request wfh detail` WHERE RWFHDETAIL_ID= %s AND RWFH_ID = %s''', 
+    cur.execute('''DELETE FROM `request_wfh_detail` WHERE RWFHDETAIL_ID= %s AND RWFH_ID = %s''', 
     (rwfhDetail_ID, rwfhID))
 
     # mysql.connection.commit()
@@ -140,7 +140,7 @@ def updateRequestWFH():
     try:
         cur = cnx.cursor()
 
-        cur.execute('''UPDATE `request wfh` SET REASON = %s, FROM_DATE = %s, TO_DATE = %s, NOTIFICATION_FLAG = %s, UPDATE_DATE = %s WHERE RWFH_ID = %s''', 
+        cur.execute('''UPDATE `request_wfh` SET REASON = %s, FROM_DATE = %s, TO_DATE = %s, NOTIFICATION_FLAG = %s, UPDATE_DATE = %s WHERE RWFH_ID = %s''', 
         (reason, fromDate, toDate, notificationFlag, updateDate, rwfhID))
 
         # mysql.connection.commit()
@@ -167,7 +167,7 @@ def submitRequestWFH():
 
     try:
         cur = cnx.cursor()
-        cur.execute('''UPDATE `request wfh` SET STATUS = 'Pending', UPDATE_DATE = %s WHERE RWFH_ID = %s''', 
+        cur.execute('''UPDATE `request_wfh` SET STATUS = 'Pending', UPDATE_DATE = %s WHERE RWFH_ID = %s''', 
         (updateDate, rwfhID))
         cnx.commit()
         cur.close()
@@ -193,12 +193,12 @@ def deleteRequestWFH():
     try:
         # Delete detail wfh
         cur = cnx.cursor()
-        cur.execute('DELETE FROM `request wfh detail` WHERE RWFH_ID = %s', (rwfhID,))
+        cur.execute('DELETE FROM `request_wfh_detail` WHERE RWFH_ID = %s', (rwfhID,))
         cnx.commit()
         cur.close()
 
         cur = cnx.cursor()
-        cur.execute('DELETE FROM `request wfh` WHERE RWFH_ID = %s', (rwfhID,))
+        cur.execute('DELETE FROM `request_wfh` WHERE RWFH_ID = %s', (rwfhID,))
         cnx.commit()
         cur.close()
 
@@ -224,7 +224,7 @@ def getListRequestWFH():
     
     try:
         cur = cnx.cursor()
-        cur.execute('SELECT COUNT(*) FROM `request wfh` WHERE EMPLOYEE_ID = %s',(employee_id,))
+        cur.execute('SELECT COUNT(*) FROM `request_wfh` WHERE EMPLOYEE_ID = %s',(employee_id,))
         total = cur.fetchall()
         cur.close()
 
@@ -232,7 +232,7 @@ def getListRequestWFH():
         start = (int(current_page)-1) * pagesize; 
             
         cur = cnx.cursor()
-        cur.execute('SELECT * FROM `request wfh` WHERE EMPLOYEE_ID = %s LIMIT %s, %s', (employee_id, start, pagesize))
+        cur.execute('SELECT * FROM `request_wfh` WHERE EMPLOYEE_ID = %s LIMIT %s, %s', (employee_id, start, pagesize))
         data = cur.fetchall()
         cur.close()
 
@@ -286,7 +286,7 @@ def getListDetailRequestWFH(rwfhID):
         pagesize = 3
         start = (int(current_page)-1) * pagesize; 
         cur = cnx.cursor()
-        cur.execute('SELECT * FROM `request wfh detail` WHERE RWFH_ID = %s LIMIT %s, %s', (rwfhID ,start, pagesize))
+        cur.execute('SELECT * FROM `request_wfh_detail` WHERE RWFH_ID = %s LIMIT %s, %s', (rwfhID ,start, pagesize))
         data = cur.fetchall()
         cur.close()
 
@@ -387,7 +387,7 @@ def getDetailRequestWFH():
 
     try:
         cur = cnx.cursor()
-        cur.execute('SELECT * FROM `request wfh` WHERE RWFH_ID = %s', (rWfhID,))
+        cur.execute('SELECT * FROM `request_wfh` WHERE RWFH_ID = %s', (rWfhID,))
         data = cur.fetchall()
         cur.close()
         value = []
@@ -408,7 +408,7 @@ def getDetailRequestWFH():
                 "NOTIFICATION_FLAG": item[11],
             })
         cur = cnx.cursor()
-        cur.execute('SELECT * FROM `request wfh detail` WHERE RWFH_ID = %s', (rWfhID,))
+        cur.execute('SELECT * FROM `request_wfh_detail` WHERE RWFH_ID = %s', (rWfhID,))
         data = cur.fetchall()
         cur.close()
         listDetail = []
@@ -448,7 +448,7 @@ def deleteAllDetailRequestWFH(rwfhID):
     # try:
     cur = cnx.cursor()
 
-    cur.execute('''DELETE FROM `request wfh detail` WHERE RWFH_ID = %s''', 
+    cur.execute('''DELETE FROM `request_wfh_detail` WHERE RWFH_ID = %s''', 
     (rwfhID,))
 
     cnx.commit()

@@ -11,10 +11,14 @@ mysql = MySQL()
 app = Flask(__name__)
 
 # MySQL configurations
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'pagoalform'
+# app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'admin123456'
 app.config['MYSQL_DB'] = 'pagoalform'
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'pa-goal-test.cizg8kaur6ll.ap-south-1.rds.amazonaws.com'
 #Run command: python -m flask run -h localhost -p 5000
 
 

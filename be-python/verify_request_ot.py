@@ -11,10 +11,10 @@ from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
 mysql = MySQL(cursorclass=DictCursor)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_USER'] = 'admin'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'admin123456'
 app.config['MYSQL_DATABASE_DB'] = 'ot_request'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = 'ot-request.cizg8kaur6ll.ap-south-1.rds.amazonaws.com'
 mysql.init_app(app)
 
 
