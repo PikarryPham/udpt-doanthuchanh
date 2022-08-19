@@ -5,7 +5,7 @@ from flask_mysqldb import MySQL
 mysql = MySQL()
 app = Flask(__name__)
 
-#python -m flask run -h localhost -p 3000
+#Run command: python -m flask run -h localhost -p 3000
 
 # MySQL configurations
 app.config['MYSQL_USER'] = 'root'

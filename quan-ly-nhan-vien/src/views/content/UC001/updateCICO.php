@@ -13,16 +13,3 @@
     <input type="submit" value="submit">
   </form>
 </div>
-
-
-<!-- <!-- <?php 
-  if (isset($_POST['title'])) {
-    header("Location: http://localhost/quan-ly-nhan-vien/uc001/index");
-  }
-?> -->
-<script type="text/javascript">
-    document.getElementById("form").addEventListener("submit",(e) => {
-        //e.preventDefault()
-        window.location = "http://localhost/quan-ly-nhan-vien/uc001/index";
-});
-</script> -->

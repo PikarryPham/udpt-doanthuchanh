@@ -16,7 +16,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'my_pa_goal'
 app.config['MYSQL_HOST'] = 'localhost'
 
-#Example call API: http://127.0.0.1:5000/api/uc0131_132/get-pa-goals
+#Example call API: http://127.0.0.1:3131/api/uc0131_132/get-pa-goals
 
 mysql.init_app(app)
 

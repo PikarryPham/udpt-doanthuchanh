@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = "localhost"
 app.config['MYSQL_USER'] = "root"
 app.config['MYSQL_PASSWORD'] = ""
-app.config['MYSQL_DB'] = "qlnv"
+app.config['MYSQL_DB'] = "document_post"
 
 mysql = MySQL(app)
 
@@ -56,18 +56,18 @@ def getDetailOneDocument(document_id):
 @app.route('/insert-document', methods=['POST'])
 def insertDocument():
   #passing HTML form data into python variable
-  body_request = request.get_json()
+  # body_request = request.get_json()
 
-  categories = body_request["categories"]
-  content = body_request["content"]
-  manager_id = body_request["managerid"]
-  title = body_request["title"]
+  # categories = body_request["categories"]
+  # content = body_request["content"]
+  # manager_id = body_request["managerid"]
+  # title = body_request["title"]
 
-  # title = request.form.get('title')
-  # categories= request.form.get('categories')
-  # content= request.form.get('content')
-  # manager_id= request.form.get('managerid')
-  # date = str(datetime.now())
+  title = request.form.get('title')
+  categories= request.form.get('categories')
+  content= request.form.get('content')
+  manager_id= request.form.get('managerid')
+  date = str(datetime.now())
 
   cur = mysql.connection.cursor()
 
@@ -116,5 +116,5 @@ def updateDocument():
 
   return 'Update Data Successfully!!!'
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True, port=5016)
