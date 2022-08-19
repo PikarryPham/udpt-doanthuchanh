@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?= $host_name ?>/public/css/index.css">
 
 <div class="content">
-    <a href="#" class="js-wfh-manage js-wfh-manage-er">WFH management</a>
+    <a href="<?= $host_name ?>/uc004/index">WFH management</a>
     <a href="<?= $host_name ?>/home/pa_manage">PA management</a>
     <a href="<?= $host_name ?>/home/document">Document</a>
     <a href="<?= $host_name ?>/uc002/index">oT management</a>
