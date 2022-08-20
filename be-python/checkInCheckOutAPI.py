@@ -11,6 +11,27 @@ app.config['MYSQL_DB'] = "qlnv"
 
 mysql = MySQL(app)
 
+@app.route('/get-all-cico-admin')
+def getAllCheckInCheckOutAdmin():
+  cur = mysql.connection.cursor()
+  cur.execute('SELECT * FROM check_in_check_out')
+  mysql.connection.commit()
+  myresult = cur.fetchall()
+  columns = [desc[0] for desc in cur.description]
+  result = []
+
+  for row in myresult:
+    row = dict(zip(columns, row))
+    result.append(row)
+  row = {"columns": columns,"rows":myresult,"results":result}
+
+  cur.close()
+
+  #cur_date = str(datetime.now().date())
+  #new_date = cur_date[8:] + "-" + cur_date[5:7] + "-" + cur_date[:4]
+
+  return jsonify(data=result)
+
 @app.route('/get-all-check-in-check-out-time/<employee_id>')
 def getAllCheckInCheckOutTime(employee_id):
   cur = mysql.connection.cursor()

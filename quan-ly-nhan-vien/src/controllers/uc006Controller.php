@@ -37,6 +37,7 @@ class uc006Controller extends Controllers{
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
             $response = curl_exec($ch);
+            echo $response;
             curl_close($ch);
 
             $res = json_decode($response);

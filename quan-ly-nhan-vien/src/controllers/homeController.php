@@ -40,11 +40,27 @@
             $this->view("main","main/UC007/index",[]);
         }
 
+        // public function check_in_check_out(){
+        //     $model = $this->model('CICO');
+        //     $data = $model->getAllCICO();
+        //     $this->middleware();
+        //     $this->view("main","UC001/index",$data);
+        // }
         public function check_in_check_out(){
             $model = $this->model('CICO');
-            $data = $model->getAllCICO();
-            $this->middleware();
-            $this->view("main","UC001/index",$data);
+            // //$data = $model->getAllCICO();
+            // $this->middleware();
+            // //$this->view("main","UC001/index",$data);
+            // $data = $model->getAllCICOAdmin();
+            // $this->view("main","UC001/viewAdminCICO",$data);
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $data = $model->getAllCICO();
+                $this->view("main","UC001/index",$data);
+            }
+            else {
+                $data = $model->getAllCICOAdmin();
+                $this->view("main","UC001/viewAdminCICO",$data);
+            }
         }
 
         public function document(){
@@ -63,14 +79,33 @@
             }
         }
         public function request_management(){
+            // $this->middleware();
+            // $this->view("main","UC07/index",[]);
             $this->middleware();
-            $this->view("main","UC07/index",[]);
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/authorization_error");
+            }
+            else {
+                $this->middleware();
+                $this->view("main","UC07/index",[]);
+            }
         }
         public function verify_request_leave(){
             $this->middleware();
             $model=$this->model("uc07model");
             $data=$model->listAll_leave();
             $this->view("main","UC07/leave_page_1",$data);
+        }
+
+        #khucnaythemNUA, NHO UNCOMMENT MIDDLE WARE TRONG CONTROLLER
+        public function manage_employee(){
+            $this->middleware();
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/authorization_error");
+            }
+            else {
+                //rendermanhinhemployee
+            }
         }
 
         public function verify_request_leave_reject_page(){
@@ -205,10 +240,19 @@
         }
         
 		public function recruitment(){
+            // $this->middleware();
+            // $model=$this->model("uc14model");
+            // $data=$model->listAll();
+            // $this->view("main","UC14/index",$data);
             $this->middleware();
-            $model=$this->model("uc14model");
-            $data=$model->listAll();
-            $this->view("main","UC14/index",$data);
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/authorization_error");
+            }
+            else {
+                $model=$this->model("uc14model");
+                $data=$model->listAll();
+                $this->view("main","UC14/index",$data);
+            }
         }
         public function recruitment_detail(){
             $this->middleware();

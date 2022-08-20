@@ -11,8 +11,8 @@
     <a href="<?= $host_name ?>/home/request_management">requests management</a>
     <a href="#">company news</a>
     <a href="#">company documents</a>
-    <a href="#">employee management</a>
-    <a href="<?= $host_name ?>/uc001/index">checkIn/CheckOut</a>
+    <a href="<?= $host_name ?>/home/manage_employee">employee management</a>
+    <a href="<?= $host_name ?>/home/check_in_check_out">checkIn/CheckOut</a>
 </div>
 
 <div class="modal js-modal">
@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<!-- <div class="modal-error js-modal-error">
+<div class="modal-error js-modal-error">
         <div class="modal-contain js-modal-contain-er">
                 <div class="modal-close-er js-modal-close-er">
                     <i class="fa-solid fa-xmark"></i>
@@ -40,6 +40,6 @@
                 <p>you need to login to use this feature</p>
             </div>
         </div>
-    </div> -->
+    </div>
 
 <script src="<?= $host_name ?>/public/js/main.js"></script>

@@ -10,11 +10,11 @@
         <div class="js-modal-contain">
 
         <div class="func-button">
-        <form action='http://localhost/quan-ly-nhan-vien/uc001/viewCICOAdmin' method='GET'>
+        <!-- <form action='http://localhost/quan-ly-nhan-vien/uc001/viewCICOAdmin' method='GET'>
             <label for="date">Birthday:</label>
             <input type="string" id="date" name="bin">
             <input type="submit">
-        </form>
+        </form> -->
         </div>
             <div class="history">
                 <div class="header">
@@ -30,13 +30,13 @@
                         <th>Duration</th>
                     </tr>
                     <?php   
-                        print_r($_GET);
-                        if (isset($_GET['bin'])) {
-                            echo $_GET['bin'];
-                        }
-                        else {
-                            echo "hi";
-                        }
+                        //print_r($_GET);
+                        // if (isset($_GET['bin'])) {
+                        //     echo $_GET['bin'];
+                        // }
+                        // else {
+                        //     echo "hi";
+                        // }
                         if (!is_null($data)) {
                             foreach ($data as &$value) {
                                 $date = $value["DATE"];

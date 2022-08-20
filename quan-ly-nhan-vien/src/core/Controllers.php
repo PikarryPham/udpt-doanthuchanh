@@ -36,10 +36,10 @@ class Controllers
 
         require_once "./src/views/template/" . $template . ".php";
     }
-    // protected function getMiddleware($middleware) {
-    //     require_once "./src/middlewares/". $middleware .".php";
-    //     return new $middleware;
-    // }
+    protected function getMiddleware($middleware) {
+        require_once "./src/middlewares/". $middleware .".php";
+        return new $middleware;
+    }
 }
 
 ?>

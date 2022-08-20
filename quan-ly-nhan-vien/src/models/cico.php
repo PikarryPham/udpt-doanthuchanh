@@ -19,17 +19,17 @@
         }
 
         public function filterCICO(){
-            if ($_GET['date_search']) {
+            if ($_POST['date']) {
                 // $source = '2012-07-31';
                 // $date = new DateTime($source);
                 // echo $date->format('d.m.Y'); // 31.07.2012
                 // echo $date->format('d-m-Y'); // 31-07-2012
-                echo $_GET['date_search'];
-                // $cico_api = "http://127.0.0.1:5000/get-all-check-in-check-out-time/".$_GET['date_search'];
-                // $data = [];
-                // $data = file_get_contents($cico_api);
-                // $new_res = json_decode($data,true);
-                // return $new_res["data"];
+
+                $cico_api = "http://127.0.0.1:5000/filter-all-cico/".$_POST['date'];
+                $data = [];
+                $data = file_get_contents($cico_api);
+                $new_res = json_decode($data,true);
+                return $new_res["data"];
             }
         }
     }
