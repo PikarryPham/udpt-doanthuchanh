@@ -11,10 +11,10 @@
     <a href="<?= $host_name ?>/home/request_management">requests management</a>
     <a href="#">company news</a>
     <a href="#">company documents</a>
-    <a href="#">employee management</a>
+    <a href="<?= $host_name ?>/home/manage_employee">employee management</a> 
     <a href="<?= $host_name ?>/uc001/index">checkIn/CheckOut</a>
 </div>
-
+<div></div>
 <div class="modal js-modal">
     <div class="modal-contain js-modal-contain">
         <div class="modal-header js-modal-header">

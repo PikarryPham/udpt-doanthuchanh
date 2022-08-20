@@ -36,15 +36,21 @@
         }
 
         public function manage_request() {
-            $this->middleware();
+            $this->middleware(); 
             $this->view("main","main/UC007/index",[]);
         }
 
         public function check_in_check_out(){
-            $model = $this->model('CICO');
-            $data = $model->getAllCICO();
             $this->middleware();
-            $this->view("main","UC001/index",$data);
+            $this->middleware();
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","UC001/index",$data); // KIEM TRA LAI VIEW DUNG DUONG DAN CHUA
+            }
+            else {
+              //THEM  MAN HINH HIEN THI CHO ADMIN
+            }
+            // $model = $this->model('CICO');
+            // $data = $model->getAllCICO();
         }
 
         public function document(){
@@ -203,12 +209,17 @@
             $data=$model->listAll_goal();
             $this->view("main","UC07/goal_page_1",$data);
         }
-        
+        //khuc nay them ne
 		public function recruitment(){
             $this->middleware();
-            $model=$this->model("uc14model");
-            $data=$model->listAll();
-            $this->view("main","UC14/index",$data);
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/authorization_error");
+            }
+            else {
+                $model=$this->model("uc14model");
+                $data=$model->listAll();
+                $this->view("main","UC14/index",$data);
+            }
         }
         public function recruitment_detail(){
             $this->middleware();
@@ -219,6 +230,16 @@
             $model=$this->model("uc14model");
             $data=$model->viewdetail($cv_id);
             $this->view("main","UC14/detail",$data);
+        }
+        #khucnaythemNUA, NHO UNCOMMENT MIDDLE WARE TRONG CONTROLLER
+        public function manage_employee(){
+            $this->middleware();
+            if($this->getMiddleware('AuthMiddlewares')->isEmployee()) { 
+                $this->view("main","main/authorization_error");
+            }
+            else {
+                //rendermanhinhemployee
+            }
         }
 
         public function recruitment_update_status(){
