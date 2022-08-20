@@ -100,7 +100,7 @@ function setting_ajax(){
     var my_url = `${uc0131_132}/get-pa-goals`;
     var settings
     settings = {
-        url: "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+        url: "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
         method: "POST",
         timeout: 0,
         headers: {
@@ -117,7 +117,7 @@ function setting_ajax(){
     var date_deadline = document.getElementById("date_deadline").value;
     if (date_update != ''){
         settings = {
-            url: "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+            url: "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
             method: "POST",
             timeout: 0,
             headers: {
@@ -134,7 +134,7 @@ function setting_ajax(){
     }
     if (date_deadline != 0){
         settings = {
-            url: "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+            url: "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
             method: "POST",
             timeout: 0,
             headers: {
@@ -151,7 +151,7 @@ function setting_ajax(){
     }
     if (date_deadline != '' && date_update != ''){
         settings = {
-            url: "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+            url: "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
             method: "POST",
             timeout: 0,
             headers: {

@@ -14,7 +14,7 @@ class uc14model extends ConnectDB{
     public $status;
 
     public function listAll(){
-        $listAll_api="http://127.0.0.1:5014/listall_manager";
+        $listAll_api="https://still-reef-91064.herokuapp.com/listall_manager";
         $request=array("manager_id"=>$_SESSION['id']);
         $options = array(
             'http' => array(
@@ -33,7 +33,7 @@ class uc14model extends ConnectDB{
     }
 
     public function viewdetail($cv_id){
-        $detail_api="http://127.0.0.1:5014/viewdetail";
+        $detail_api="https://still-reef-91064.herokuapp.com/viewdetail";
         $request=array("cv_id"=>$cv_id);
         
         $options = array(
@@ -54,7 +54,7 @@ class uc14model extends ConnectDB{
     }
 
     public function update_status($cv_id,$cur_status,$comment){
-        $update_api="http://127.0.0.1:5014/updatestatus";
+        $update_api="https://still-reef-91064.herokuapp.com/updatestatus";
         if ($cur_status=="Pending"){
             $status="Screening";
         }
@@ -94,7 +94,7 @@ class uc14model extends ConnectDB{
     }
 
     public function update_status_archived($cv_id,$cur_status,$comment){
-        $update_api="http://127.0.0.1:5014/updatestatus";
+        $update_api="https://still-reef-91064.herokuapp.com/updatestatus";
         if ($cur_status=="Archived"){
             return null;
         }

@@ -17,11 +17,10 @@ config = {
 }
 
 config_main_service = {
-  'user': 'root',
-  'password': '',
-  'host': '127.0.0.1',
-  'database': 'main_service',
-  'port': 3306
+  'user': 'admin',
+  'password': 'admin123456',
+  'host': 'main-service.cizg8kaur6ll.ap-south-1.rds.amazonaws.com',
+  'database': 'main_service'
 }
 
 cnx = mysql.connector.connect(**config)
@@ -461,6 +460,3 @@ def deleteAllDetailRequestWFH(rwfhID):
     #             "description": "Internal server error",
     #         }
     #     })
-
-if __name__ == '__main__':
-    app.run(host='localhost', port=5041, debug=True)

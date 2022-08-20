@@ -42,7 +42,7 @@ class uc004Controller extends Controllers{
             $_SESSION["wfhRequestCurrentPage"] = 1;
         }
 
-        $ch = curl_init("http://localhost:5041/wfh-requests?current_page=$currentPage&employee_id=$employeeID");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-requests?current_page=$currentPage&employee_id=$employeeID");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -64,7 +64,7 @@ class uc004Controller extends Controllers{
         $rwfhID = $_POST['rwfhID'];
         $post = ['RWFH_ID' => $rwfhID,];
 
-        $ch = curl_init("http://localhost:5041/delete-wfh-request");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/delete-wfh-request");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -78,7 +78,7 @@ class uc004Controller extends Controllers{
         $this->middleware();
 
         $employeeID = $_SESSION['id'];
-        $ch = curl_init("http://localhost:5041/employee?employeeID=$employeeID");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/employee?employeeID=$employeeID");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -104,7 +104,7 @@ class uc004Controller extends Controllers{
         $status = $_POST['employeeID'];;
         $post = ['EMPLOYEE_ID' => $employeeID, 'MANAGER_ID' => $managerID, 'REASON' => $reason, 'STATUS' => $status ,'FROM_DATE' => $fromDate, 'TO_DATE' => $toDate, 'NOTIFICATION_FLAG' => $notificationFlag ];
 
-        $ch = curl_init("http://localhost:5041/wfh-request");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
         $response = curl_exec($ch);
@@ -118,7 +118,7 @@ class uc004Controller extends Controllers{
             while ($i < count($listWFHDetail) - 1){
                 $date = $listWFHDetail[$i];
                 $post = ['DATE' => $date];
-                $ch = curl_init("http://localhost:5041/wfh-request/$rwfhID");
+                $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request/$rwfhID");
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
                 $response= curl_exec($ch);
@@ -139,7 +139,7 @@ class uc004Controller extends Controllers{
         $rwfhID = $_POST['updateRwfhID'];
         $employeeID = $_SESSION['id'];
 
-        $ch = curl_init("http://localhost:5041/employee?employeeID=$employeeID");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/employee?employeeID=$employeeID");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -149,7 +149,7 @@ class uc004Controller extends Controllers{
         $valueManager = $res->{200}->content->examples->ManagerInfo->value;
         $valueManager = json_decode(json_encode($valueManager), true);
 
-        $ch = curl_init("http://localhost:5041/wfh-request?rWfhID=$rwfhID");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request?rWfhID=$rwfhID");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -173,7 +173,7 @@ class uc004Controller extends Controllers{
         $listWFHDetail = explode(" ", $_POST['listWFHDetail']);
         $patch = ['RWFH_ID' => $rwfhID, 'REASON' => $reason,'FROM_DATE' => $fromDate, 'TO_DATE' => $toDate, 'NOTIFICATION_FLAG' => $notificationFlag ];
 
-        $ch = curl_init("http://localhost:5041/wfh-request");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $patch);
@@ -186,7 +186,7 @@ class uc004Controller extends Controllers{
 
         if ($value="WFH Request Update Successfully"){
             // DELETE ALL REQUEST belong to that rwfhID
-            $ch = curl_init("http://localhost:5041/wfh-request/delete-wfh-request-details/$rwfhID");
+            $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request/delete-wfh-request-details/$rwfhID");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
             $response = curl_exec($ch);
@@ -197,7 +197,7 @@ class uc004Controller extends Controllers{
             while ($i < count($listWFHDetail) - 1){
                 $date = $listWFHDetail[$i];
                 $post = ['DATE' => $date];
-                $ch = curl_init("http://localhost:5041/wfh-request/$rwfhID");
+                $ch = curl_init("https://hidden-headland-19528.herokuapp.com/wfh-request/$rwfhID");
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
                 $response= curl_exec($ch);
@@ -215,7 +215,7 @@ class uc004Controller extends Controllers{
 
         $patch = ['RWFH_ID' => $rwfhID];
 
-        $ch = curl_init("http://localhost:5041/submit-wfh-request");
+        $ch = curl_init("https://hidden-headland-19528.herokuapp.com/submit-wfh-request");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $patch);

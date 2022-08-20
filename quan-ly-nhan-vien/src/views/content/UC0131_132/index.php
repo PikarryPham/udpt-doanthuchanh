@@ -31,7 +31,7 @@
     function call_data_My_PA_Goal() {
         var my_url = `${uc0131_132}/get-pa-goals`;
         var settings = {
-                url: "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+                url: "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
                 method: "POST",
                 timeout: 0,
                 headers: {

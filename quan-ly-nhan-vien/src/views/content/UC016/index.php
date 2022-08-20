@@ -73,7 +73,7 @@
     }
 
     function deleteFile(param) {
-        fetch('http://127.0.0.1:5016/delete-document/'+param)
+        fetch('https://whispering-wave-23569.herokuapp.com/delete-document/'+param)
         .then((response) => {
             //return response.json();
         })

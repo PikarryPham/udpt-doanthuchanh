@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?= $host_name ?>/public/css/insertDocument.css">
 
 <div>
-  <form action="http://127.0.0.1:5001/update-check-in-check-out" method="POST" id="form" target='_blank'>
+  <form action="https://guarded-island-72965.herokuapp.com/update-check-in-check-out" method="POST" id="form" target='_blank'>
     <?php
       $param = $_SESSION['id'];
       echo "<input type='hidden' name='EMPLOYEE_ID' value=$param>";

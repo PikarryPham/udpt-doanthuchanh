@@ -4,7 +4,7 @@ var id_delete = 0;
 const modal_view_goal = document.querySelector('.js-modal-view-goal')
 function call_api(){
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/get-pa-goal",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goal",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -30,7 +30,7 @@ function call_api(){
 
 function call_find_PA_GOAL(page){
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -61,7 +61,7 @@ document.getElementById("js-model-unsubmit").addEventListener("submit", function
     var reasons = document.getElementById("reason-unsubmit");
     if (reasons.value != ""){
         var settings = {
-            "url": "http://127.0.0.1:5000/api/uc0131_132/unsubmit",
+            "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/unsubmit",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -93,7 +93,7 @@ document.getElementById("modal-create-new-goal").addEventListener("submit", func
     }
     if (check){
         var settings = {
-            "url": "http://127.0.0.1:5000/api/uc0131_132/add-goal",
+            "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/add-goal",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -131,7 +131,7 @@ document.getElementById("edit-modal-create-new-goal").addEventListener("submit",
     }
     if (check){
         var settings = {
-            "url": "http://127.0.0.1:5000/api/uc0131_132/edit-goal",
+            "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/edit-goal",
             "method": "POST",
             "timeout": 0,
             "headers": {
@@ -160,7 +160,7 @@ document.getElementById("edit-modal-create-new-goal").addEventListener("submit",
 
 function delete_goal(ids = []){
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/delete-goal",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/delete-goal",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -179,7 +179,7 @@ function delete_goal(ids = []){
 function get_new_goal_detail(id_goal){
     var id = id_goal.toString();
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/view-goal",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/view-goal",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -200,7 +200,7 @@ function get_new_goal_detail(id_goal){
 function change_status(){
     
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/change-status",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/change-status",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -236,7 +236,7 @@ function get_email_admin(){
 
 function send_mail_admin(manager_email, id_employee, name_employee) {
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/send-email",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/send-email",
         "method": "POST",
         "timeout": 0,
         "headers": {

@@ -78,7 +78,7 @@
     }
 
     function deleteCICO(param) {
-        fetch('http://127.0.0.1:5001/delete-check-in-check-out/'+param)
+        fetch('https://guarded-island-72965.herokuapp.com/delete-check-in-check-out/'+param)
         .then((response) => {
             //return response.json();
         })

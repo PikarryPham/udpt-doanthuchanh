@@ -5,11 +5,11 @@ class Controllers
     #public $host_name = "http://localhost:8888/udpt-doanthuchanh/quan-ly-nhan-vien";
     public $host_name = "http://localhost/quan-ly-nhan-vien";
     public $api_uc002 = "http://localhost/API/api-quanlynhanvien-uc2/api_uc002";
-    public $base_api_external = "http://localhost:3000";
+    public $base_api_external = "https://lit-eyrie-06760.herokuapp.com";
     public $api_uc010;
     public $api_uc010_update_history; 
     public $api_uc010_summary;
-    public $uc0131_132  = "http://127.0.0.1:5000/api/uc0131_132";
+    public $uc0131_132  = "https://damp-shelf-80253.herokuapp.com/api/uc0131_132";
 
     public function __construct()
     {

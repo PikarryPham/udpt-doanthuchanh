@@ -2,7 +2,7 @@ var my_data = [];
 const modal_view_goal = document.querySelector('.js-modal-view-goal')
 function call_api(){
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/get-pa-goal",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goal",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -56,7 +56,7 @@ function formatDateShow(date) {
 
 function call_find_PA_GOAL(page){
     var settings = {
-        "url": "http://127.0.0.1:5000/api/uc0131_132/get-pa-goals",
+        "url": "https://damp-shelf-80253.herokuapp.com/api/uc0131_132/get-pa-goals",
         "method": "POST",
         "timeout": 0,
         "headers": {
