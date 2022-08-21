@@ -1,8 +1,0 @@
-Màu sắc chủ đạo quá tươi mắt, chói lóa khi hiển thị trên điện thoại, 
-Màu nền xanh neon chữ trắng khó đọc, 
-Màu nền overlay của nhóm nút dưới cùng trong trang chi tiết manga có màu quá trong suốt, 
-nội dung ở dưới đè lên trên,
-Tại trang xem thông tin truyện, app bar đè lên danh sách truyện gợi ý dẫn đến khó bấm,
-Nhiều thành phần trong các màn hình (trừ màn hình đăng nhập) hiển thị nhỏ đối với màn hình điện thoại, đặc biệt là một số input filter, quá nhỏ nên khó nhấn,
-Nhiều icon thể hiện ngữ nghĩa tốt (icon search, thông báo....), tuy nhiên, một số icon minh họa không mang tính gợi ý cao: tại màn hình “thể loại", icon minh hoạ “vui nhộn” là logo Reddit, 
-icon minh họa “thiếu nhi” là biểu tượng hộp quà, icon minh họa “hành động" là máy bay giấy,
